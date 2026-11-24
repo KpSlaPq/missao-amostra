@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Missão Amostra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Exo+2:wght@500;600;700;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+/* Plano: Y2K futurism. Esferas cromadas, azul elétrico, vidro e metal líquido, grade de ciberespaço, brilhos em estrela. Painéis claros com texto azul-marinho para leitura. */
+:root{
+  color-scheme:light;
+  --ink:#06143f; --muted:#3a5189; --paper:#ffffff;
+  --acc:#1556ff; --acc-d:#0a38b8; --acc-soft:#e0eaff; --cy:#00d9ff;
+  --bad:#d0213f; --bad-soft:#ffe3e8; --ok:#07803f; --ok-soft:#d9f7e6;
+  --line:rgba(21,86,255,.28);
+  --chrome:linear-gradient(135deg,#ffffff 0,#9fb9f2 22%,#ffffff 42%,#5d86e6 68%,#e9f1ff 100%);
+  --shadow:0 0 24px rgba(60,150,255,.55),0 12px 30px rgba(0,8,70,.55);
+  --display:'Orbitron','Exo 2','Segoe UI',system-ui,sans-serif; --body:'Exo 2','Segoe UI',system-ui,sans-serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{color:#fff;font-family:var(--body);font-weight:500;font-size:16px;line-height:1.5;position:relative;
+  background:linear-gradient(180deg,#020836 0,#06208a 34%,#1450e0 70%,#4b92ff 100%) fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+  radial-gradient(circle closest-side,transparent 68%,rgba(240,248,255,.95) 72%,rgba(110,150,230,.85) 80%,rgba(245,250,255,.95) 88%,transparent 95%) 44% 14%/150px 150px no-repeat,
+  radial-gradient(circle closest-side,transparent 68%,rgba(240,248,255,.95) 72%,rgba(110,150,230,.85) 80%,rgba(245,250,255,.95) 88%,transparent 95%) -6% 26%/120px 120px no-repeat,
+  radial-gradient(circle at 30% 26%,rgba(255,255,255,.95) 0 5%,rgba(255,255,255,0) 20%) 4% 7%/118px 118px no-repeat,radial-gradient(ellipse 28% 18% at 58% 80%,rgba(120,235,255,.7),transparent) 4% 7%/118px 118px no-repeat,radial-gradient(circle closest-side at 50% 50%,#5b96ff 0 36%,#1a4fe0 66%,#041b82 93%,rgba(4,27,130,0) 100%) 4% 7%/118px 118px no-repeat,
+  radial-gradient(circle at 30% 26%,rgba(255,255,255,.95) 0 5%,rgba(255,255,255,0) 20%) 88% 4%/64px 64px no-repeat,radial-gradient(ellipse 28% 18% at 58% 80%,rgba(120,235,255,.7),transparent) 88% 4%/64px 64px no-repeat,radial-gradient(circle closest-side at 50% 50%,#5b96ff 0 36%,#1a4fe0 66%,#041b82 93%,rgba(4,27,130,0) 100%) 88% 4%/64px 64px no-repeat,
+  radial-gradient(circle at 30% 26%,rgba(255,255,255,.95) 0 5%,rgba(255,255,255,0) 20%) 94% 46%/150px 150px no-repeat,radial-gradient(ellipse 28% 18% at 58% 80%,rgba(120,235,255,.7),transparent) 94% 46%/150px 150px no-repeat,radial-gradient(circle closest-side at 50% 50%,#5b96ff 0 36%,#1a4fe0 66%,#041b82 93%,rgba(4,27,130,0) 100%) 94% 46%/150px 150px no-repeat,
+  radial-gradient(circle at 30% 26%,rgba(255,255,255,.95) 0 5%,rgba(255,255,255,0) 20%) -3% 58%/104px 104px no-repeat,radial-gradient(ellipse 28% 18% at 58% 80%,rgba(120,235,255,.7),transparent) -3% 58%/104px 104px no-repeat,radial-gradient(circle closest-side at 50% 50%,#5b96ff 0 36%,#1a4fe0 66%,#041b82 93%,rgba(4,27,130,0) 100%) -3% 58%/104px 104px no-repeat,
+  radial-gradient(circle at 30% 26%,rgba(255,255,255,.95) 0 5%,rgba(255,255,255,0) 20%) 70% 78%/72px 72px no-repeat,radial-gradient(ellipse 28% 18% at 58% 80%,rgba(120,235,255,.7),transparent) 70% 78%/72px 72px no-repeat,radial-gradient(circle closest-side at 50% 50%,#5b96ff 0 36%,#1a4fe0 66%,#041b82 93%,rgba(4,27,130,0) 100%) 70% 78%/72px 72px no-repeat,
+  radial-gradient(circle at 30% 26%,rgba(255,255,255,.95) 0 5%,rgba(255,255,255,0) 20%) 18% 88%/56px 56px no-repeat,radial-gradient(ellipse 28% 18% at 58% 80%,rgba(120,235,255,.7),transparent) 18% 88%/56px 56px no-repeat,radial-gradient(circle closest-side at 50% 50%,#5b96ff 0 36%,#1a4fe0 66%,#041b82 93%,rgba(4,27,130,0) 100%) 18% 88%/56px 56px no-repeat;
+  animation:drift 18s ease-in-out infinite alternate}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 0 23 17 40 20 23 23 20 40 17 23 0 20 17 17Z' fill='white'/%3E%3C/svg%3E") 24% 10%/30px 30px no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 0 23 17 40 20 23 23 20 40 17 23 0 20 17 17Z' fill='white'/%3E%3C/svg%3E") 62% 6%/22px 22px no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 0 23 17 40 20 23 23 20 40 17 23 0 20 17 17Z' fill='white'/%3E%3C/svg%3E") 80% 30%/34px 34px no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 0 23 17 40 20 23 23 20 40 17 23 0 20 17 17Z' fill='white'/%3E%3C/svg%3E") 10% 40%/24px 24px no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 0 23 17 40 20 23 23 20 40 17 23 0 20 17 17Z' fill='white'/%3E%3C/svg%3E") 52% 52%/18px 18px no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 0 23 17 40 20 23 23 20 40 17 23 0 20 17 17Z' fill='white'/%3E%3C/svg%3E") 90% 70%/28px 28px no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 0 23 17 40 20 23 23 20 40 17 23 0 20 17 17Z' fill='white'/%3E%3C/svg%3E") 34% 74%/22px 22px no-repeat,
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Cpath d='M20 0 23 17 40 20 23 23 20 40 17 23 0 20 17 17Z' fill='white'/%3E%3C/svg%3E") 6% 92%/30px 30px no-repeat,
+  radial-gradient(ellipse 70% 18% at 50% 100%,rgba(150,225,255,.55),transparent 70%)}
+@keyframes drift{from{transform:translateY(0)}to{transform:translateY(-12px)}}
+#app{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:16px 16px 72px}
+#app::after{content:"";position:fixed;left:-40%;right:-40%;bottom:0;height:34vh;z-index:-1;pointer-events:none;
+  background:linear-gradient(rgba(150,215,255,.5) 1px,transparent 1px) 0 0/44px 44px,linear-gradient(90deg,rgba(150,215,255,.5) 1px,transparent 1px) 0 0/44px 44px;
+  transform:perspective(300px) rotateX(62deg);transform-origin:50% 100%;-webkit-mask-image:linear-gradient(to top,#000,transparent);mask-image:linear-gradient(to top,#000,transparent)}
+h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance;line-height:1.15;letter-spacing:.01em}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,textarea:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid #ffe600;outline-offset:2px;box-shadow:0 0 0 5px #0a38b8}
+.muted{color:#d3e3ff}
+.card .muted,.world .muted,.cardx .muted,.lrow .muted,.scene .muted,.sheet-in .muted,.fb .muted,.model .muted,.hook .muted,.map .muted{color:var(--muted)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.brand{font-family:var(--display);font-weight:800;font-size:21px;letter-spacing:.04em;text-transform:uppercase;background:linear-gradient(180deg,#fff 0,#cfe0ff 40%,#7ea6ff 52%,#e8f1ff 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 8px rgba(80,170,255,.9)) drop-shadow(0 2px 0 rgba(0,10,80,.6))}
+.brand::before{content:"✦ ";-webkit-text-fill-color:#9fe8ff}
+.brand b{-webkit-text-fill-color:#7af0ff;color:#7af0ff}
+.card,.world,.cardx,.lrow,.scene,.sheet-in{color:var(--ink);border:2px solid transparent;background:linear-gradient(180deg,#fbfdff 0,#e3edff 100%) padding-box,var(--chrome) border-box;box-shadow:var(--shadow),inset 0 1px 0 #fff,inset 0 -3px 8px rgba(80,130,230,.3)}
+.card{border-radius:18px;padding:18px;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;right:0;top:0;height:42px;background:linear-gradient(180deg,rgba(255,255,255,.9),rgba(255,255,255,0));pointer-events:none}
+.card>*{position:relative}
+.stack{display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.lvl{display:flex;flex-direction:column;gap:6px}
+.bar{height:16px;border-radius:99px;background:linear-gradient(180deg,#041a6e,#0a2fa8);border:1px solid #bcd3ff;box-shadow:inset 0 2px 5px rgba(0,0,40,.7),0 0 10px rgba(80,170,255,.6);overflow:hidden}
+.bar>i{display:block;height:100%;width:0;transition:width .4s;border-radius:99px;background:linear-gradient(180deg,rgba(255,255,255,.8),rgba(255,255,255,0) 55%),linear-gradient(90deg,#00b7ff,#7af0ff,#d8ffff);box-shadow:0 0 12px #5fe6ff}
+.worlds{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:560px){.worlds{grid-template-columns:1fr 1fr}}
+.world{text-align:left;border-radius:18px;padding:15px;display:flex;flex-direction:column;gap:6px;transition:transform .15s,box-shadow .15s}
+.world:hover,.cardx.on:hover,.lrow:hover{transform:translateY(-2px);box-shadow:0 0 34px rgba(110,200,255,.9),0 14px 30px rgba(0,8,70,.6),inset 0 1px 0 #fff}
+.world .n{font-family:var(--mono);font-size:13px;color:var(--acc-d)}
+.world h3{font-size:16px}
+.world p{margin:0;font-size:14px;color:var(--muted)}
+.btn{font-family:var(--body);font-weight:800;letter-spacing:.02em;background:linear-gradient(180deg,#a9c6ff 0%,#3f78f0 46%,#1245d0 52%,#2f6bf0 100%);color:#fff;border:1px solid #cfe0ff;border-radius:99px;padding:10px 20px;text-shadow:0 1px 2px rgba(0,10,90,.8);box-shadow:0 0 14px rgba(70,160,255,.7),0 4px 10px rgba(0,8,70,.5),inset 0 1px 0 rgba(255,255,255,.9);transition:transform .1s,filter .15s}
+.btn:not(:disabled):hover{filter:brightness(1.12)}
+.btn:not(:disabled):active{transform:translateY(1px)}
+.btn.pen{background:linear-gradient(180deg,#f2ffff 0%,#74ecff 46%,#00b6f0 52%,#5fe6ff 100%);color:#03154f;border-color:#fff;text-shadow:0 1px 0 rgba(255,255,255,.7);box-shadow:0 0 18px rgba(0,225,255,.85),0 4px 10px rgba(0,8,70,.5),inset 0 1px 0 #fff}
+.btn.ghost{background:linear-gradient(180deg,#ffffff,#cbdcff 55%,#a9c3f7);color:var(--acc-d);text-shadow:none;border-color:#fff;box-shadow:0 0 10px rgba(120,180,255,.6),inset 0 1px 0 #fff}
+.btn.sm{padding:6px 14px;font-size:14px}
+.btn:disabled{opacity:.55;cursor:not-allowed;filter:grayscale(.5)}
+.term{background:none;border:0;padding:0 1px;margin:0;font:inherit;color:inherit;cursor:help;border-bottom:2px dotted var(--acc);border-radius:2px}
+.term:hover{background:var(--acc-soft)}
+.termchip{cursor:pointer;font-weight:700;color:var(--acc-d)}
+#sheet{position:fixed;inset:0;background:rgba(2,8,60,.6);backdrop-filter:blur(3px);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+.sheet-in{border-radius:22px 22px 0 0;width:100%;max-width:720px;max-height:88vh;overflow-y:auto;padding:16px 18px 26px}
+.gh{font-size:14px;margin:16px 0 4px;color:var(--acc-d);text-transform:uppercase;letter-spacing:.06em}
+.opt.sel{outline:3px solid var(--acc);outline-offset:1px}
+.dots{display:flex;flex-wrap:wrap;gap:5px}
+.dot{width:24px;height:24px;border:1px solid #cfe0ff;border-radius:7px;display:grid;place-items:center;font-family:var(--mono);font-size:12px;color:var(--ink);background:linear-gradient(180deg,#fff,#cbdcff);box-shadow:0 0 6px rgba(120,180,255,.6),inset 0 1px 0 #fff}
+.dot.nw{background:var(--bad-soft);color:var(--bad);border-color:var(--bad)}
+.dot.n1,.dot.n2{background:linear-gradient(180deg,#e6f6ff,#8fd3ff);border-color:var(--acc)}
+.dot.n3{background:linear-gradient(180deg,#d2fbe3,#6fe3a1);color:var(--ok);border-color:var(--ok)}
+.hud{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;font-family:var(--mono);font-size:14px;color:#fff;text-shadow:0 0 8px rgba(80,170,255,.9)}
+.hearts{letter-spacing:2px;color:#ff6b86;font-size:18px}
+.chip{border:1px solid #fff;border-radius:99px;padding:3px 12px;color:var(--ink);text-shadow:none;background:linear-gradient(180deg,#fff,#cbdcff);white-space:nowrap;box-shadow:0 0 10px rgba(120,180,255,.7),inset 0 1px 0 #fff}
+.tag{font-family:var(--display);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--acc-d)}
+.q{font-size:18px;font-weight:700;margin:6px 0 14px}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{display:flex;gap:12px;text-align:left;background:linear-gradient(180deg,#ffffff,#dbe8ff);border:1px solid #8fb0f0;border-radius:14px;padding:12px 14px;align-items:flex-start;box-shadow:0 2px 8px rgba(20,60,180,.25),inset 0 1px 0 #fff;transition:transform .1s,background .15s}
+.opt .k{font-family:var(--mono);font-weight:500;color:#fff;background:radial-gradient(circle at 32% 25%,#cfe6ff 0,#4f8cff 38%,#0a2fa8 100%);border-radius:50%;min-width:26px;height:26px;display:grid;place-items:center;font-size:13px;box-shadow:inset 0 1px 0 rgba(255,255,255,.8),0 0 6px rgba(60,140,255,.7)}
+.opt:not(:disabled):hover{background:linear-gradient(180deg,#f4faff,#bcd6ff);transform:translateY(-1px)}
+.opt.right{background:linear-gradient(180deg,#e4fbee,#aeeccb);border-color:var(--ok)}
+.opt.wrong{background:linear-gradient(180deg,#fff0f2,#ffc4cd);border-color:var(--bad)}
+.opt:disabled{cursor:default}
+.fb{color:var(--ink);border-left:6px solid var(--ok);background:linear-gradient(180deg,#eefcf3,#cbf3dd);padding:12px 14px;border-radius:0 14px 14px 0;margin-top:14px}
+.fb.bad{border-color:var(--bad);background:linear-gradient(180deg,#fff4f6,#ffd5dc)}
+.fb b{font-family:var(--display);font-size:14px}
+.rev{font-family:var(--mono);font-size:12px;border:1px dashed var(--bad);color:var(--bad);padding:1px 9px;border-radius:99px;background:#fff}
+.big{font-family:var(--display);font-weight:800;font-size:48px;line-height:1}
+.grade{color:var(--acc);transform:rotate(-4deg);display:inline-block;text-shadow:0 0 10px rgba(0,217,255,.7)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+td,th{border-bottom:1px solid var(--line);padding:6px 4px;text-align:left}
+textarea{width:100%;min-height:140px;border:1px solid #8fb0f0;border-radius:14px;background:#fff;color:var(--ink);font:inherit;padding:10px;resize:vertical;box-shadow:inset 0 2px 5px rgba(20,60,180,.25)}
+.check{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid var(--line)}
+.check input{margin-top:5px;width:18px;height:18px;accent-color:var(--acc)}
+.model{color:var(--ink);background:linear-gradient(180deg,#f2f8ff,#d6e5ff);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:15px}
+.map ol{margin:8px 0 0;padding-left:20px}
+.map li{margin-bottom:6px}
+.sec{font-size:16px;margin:0 0 10px;display:flex;gap:10px;align-items:baseline;text-transform:uppercase;letter-spacing:.08em;color:#fff;text-shadow:0 0 10px rgba(90,180,255,1),0 2px 0 rgba(0,10,80,.7)}
+.sec .muted{color:#bcd6ff}
+.lessons{display:flex;flex-direction:column;gap:8px}
+.lrow{display:flex;gap:12px;align-items:center;text-align:left;border-radius:16px;padding:10px 14px;transition:transform .15s,box-shadow .15s}
+.lrow .ck{min-width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-size:13px;color:#fff;background:radial-gradient(circle at 32% 25%,#d8ecff 0,#4f8cff 40%,#0a2fa8 100%);border:1px solid #fff;box-shadow:0 0 8px rgba(60,150,255,.8),inset 0 1px 0 rgba(255,255,255,.8)}
+.lh{font-size:21px;margin:6px 0 10px}
+.lp{font-size:17px;margin:0}
+.formula{font-family:var(--mono);font-size:16px;color:var(--ink);background:linear-gradient(180deg,#eaf2ff,#cfe0ff);border:1px solid var(--line);border-left:6px solid var(--cy);border-radius:10px;padding:12px 14px;margin:0 0 12px;white-space:pre-wrap;overflow-x:auto}
+.stepline{border-left:4px solid var(--cy);padding:4px 0 4px 12px;margin:10px 0;border-radius:2px}
+.num{width:150px;font-size:18px;padding:9px 14px;border:1px solid #8fb0f0;border-radius:99px;background:#fff;color:var(--ink);box-shadow:inset 0 2px 5px rgba(20,60,180,.25)}
+.scene{display:flex;gap:16px;align-items:flex-start;border-radius:18px;padding:14px;margin-top:8px}
+.glyph{font-family:'Exo 2',var(--body);font-weight:800;font-size:32px;line-height:1;color:#fff;min-width:64px;text-align:center;border:1px solid #fff;border-radius:50%;aspect-ratio:1;display:grid;place-items:center;padding:8px;background:radial-gradient(circle at 30% 24%,#ffffff 0 7%,rgba(255,255,255,0) 22%),radial-gradient(ellipse at 62% 90%,rgba(120,235,255,.7),transparent 48%),radial-gradient(circle closest-side,#5b96ff 0,#1a4fe0 60%,#041b82 100%);box-shadow:0 0 18px rgba(60,160,255,.8),0 6px 12px rgba(0,8,70,.5);text-shadow:0 1px 3px rgba(0,10,90,.9)}
+.glyph.big2{font-size:50px;display:inline-grid;margin-bottom:10px;min-width:120px;min-height:120px}
+.stitle{font-size:16px;margin:2px 0 8px}
+.hook{color:var(--ink);background:linear-gradient(180deg,#f2f8ff,#d6e5ff);border-left:6px solid var(--cy);padding:10px 12px;border-radius:0 12px 12px 0;font-size:15px;margin-top:10px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:560px){.cards{grid-template-columns:repeat(3,1fr)}}
+.cardx{display:flex;flex-direction:column;gap:10px;align-items:center;text-align:center;border-radius:18px;padding:14px 10px;min-height:150px;transition:transform .15s,box-shadow .15s}
+.cardx.off{opacity:.6;filter:grayscale(.6);box-shadow:none}
+.cardx .glyph{font-size:24px;min-width:56px;width:62px}
+.cardx .ct{font-size:14px;font-weight:700}
+.scene.open{flex-direction:column;gap:10px;align-items:stretch}
+.glyph.sm{font-size:22px;min-width:52px;width:52px;padding:4px}
+.map-t{margin:10px 0 0;font-size:14px}
+.map-t th{font-family:var(--display);font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--acc-d)}
+.map-t td:first-child{width:48%;color:var(--muted)}
+.rcl{margin-top:10px;font-size:14px}.rcl summary{cursor:pointer;font-weight:700;color:var(--acc-d)}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+/* ---------- BANCO DE QUESTÕES ---------- */
+const WORLDS=[
+ {id:0,n:'FASE 1',name:'Conglomerados',desc:'Sortear grupos, estágios, deff e tamanho efetivo.'},
+ {id:1,n:'FASE 2',name:'Intervalos de confiança',desc:'z, t, proporção e qui-quadrado: qual usar e como ler.'},
+ {id:2,n:'FASE 3',name:'Testes de hipótese',desc:'H0 e Ha, erros, valor p e decisão.'}
+];
+const Q=[
+/* Fase 1 */
+{id:'c1',w:0,q:'A Secretaria de Educação só tem a lista das 400 escolas, não a dos alunos. O plano é sortear 10 escolas e entrevistar TODOS os alunos de cada uma. Qual plano é esse?',o:['AAS (amostragem aleatória simples)','Estratificada','Conglomerados em um estágio','Conglomerados em dois estágios'],a:2,ex:'Sorteiam-se grupos (escolas) e observa-se todo mundo dentro deles: conglomerados em um estágio. A lista de alunos só é necessária nas escolas sorteadas.'},
+{id:'c2',w:0,q:'Sorteiam-se 20 setores e, dentro de cada um, 50 moradores. Quantos estágios e qual o tamanho da amostra?',o:['Um estágio, n não controlado','Dois estágios, n = 20 × 50 = 1.000 (controlado)','Dois estágios, n = 20 + 50 = 70','Estratificada, n = 1.000'],a:1,ex:'Há dois sorteios (setores, depois moradores). No segundo estágio n = Σ mᵢ = 20 × 50 = 1.000, e esse tamanho é controlado.'},
+{id:'c3',w:0,q:'"Todos os grupos entram na amostra e o sorteio acontece dentro de cada grupo." Isso descreve:',o:['Estratificada','Conglomerados','AAS','Amostragem sistemática'],a:0,ex:'Na estratificada todos os estratos entram e sorteia-se dentro de cada um. Nos conglomerados, sorteiam-se os grupos e só os sorteados entram.'},
+{id:'c4',w:0,q:'N = 12.000 clientes em M = 40 agências. Sorteiam-se m = 8 agências e entrevistam-se todos os clientes delas. Qual a probabilidade de inclusão de um cliente?',o:['0,008','0,05','0,20','0,25'],a:2,ex:'π = m ÷ M = 8 ÷ 40 = 0,20. O tamanho médio (300) serve para o n esperado: 8 × 300 = 2.400.'},
+{id:'c5',w:0,q:'n = 180, tamanho médio do conglomerado M̄ = 30 e ρ = 0,05. Qual o tamanho efetivo (arredonde para baixo)?',o:['73','90','180','441'],a:0,ex:'deff = 1 + (M̄ − 1)·ρ = 1 + 29 × 0,05 = 2,45. n_ef = 180 ÷ 2,45 = 73,47 → 73.'},
+{id:'c6',w:0,q:'n = 500, M̄ = 25, ρ = 0,08, então deff = 2,92. Quantas observações em conglomerados equivalem a uma AAS de 500?',o:['171','500','1.460','2.920'],a:2,ex:'500 × deff = 500 × 2,92 = 1.460. O tamanho efetivo (500 ÷ 2,92 ≈ 171) é a pergunta inversa.'},
+{id:'c7',w:0,q:'Na amostragem por conglomerados, UPA significa:',o:['Unidade primária de amostragem: o conglomerado sorteado no 1º estágio','Unidade populacional de análise: o elemento medido','Unidade de probabilidade ajustada','Unidade de precisão aproximada'],a:0,ex:'UPA é o conglomerado (1º estágio). USA é o elemento sorteado dentro dele (2º estágio).'},
+{id:'c8',w:0,q:'Qual condição ajuda o plano por conglomerados a ser preciso?',o:['Conglomerados com médias parecidas entre si e variados por dentro','Conglomerados homogêneos por dentro e com médias muito diferentes','Poucos conglomerados muito grandes e iguais','Nenhuma: a precisão independe disso'],a:0,ex:'É o oposto da estratificada. Como só alguns grupos entram, a diferença entre as médias dos grupos vira erro; por isso convêm médias parecidas.'},
+{id:'c9',w:0,q:'deff = 2,3 indica que o plano por conglomerados é:',o:['Mais preciso que uma AAS do mesmo tamanho','Menos preciso: a variância é cerca de 2,3 vezes a da AAS','Igual a uma AAS','Inválido: deff nunca passa de 1'],a:1,ex:'deff > 1 significa perda de precisão. Esse é o preço da conveniência.'},
+{id:'c10',w:0,q:'Probabilidade de inclusão π = 0,15. Qual o peso amostral w?',o:['0,15','1,5','6,67','15'],a:2,ex:'w = 1 ÷ π = 1 ÷ 0,15 = 6,67. Cada elemento da amostra representa 6,67 elementos da população.'},
+{id:'c11',w:0,q:'Qual é a principal razão para usar conglomerados em vez de AAS?',o:['Não existe lista dos elementos e o campo fica mais barato','Porque é sempre mais preciso','Porque dispensa qualquer sorteio','Porque elimina o erro amostral'],a:0,ex:'Conglomerados trocam precisão por viabilidade e custo: só se visitam alguns grupos e a lista de elementos só é exigida neles.'},
+/* Fase 2 */
+{id:'i1',w:1,q:'Estimar o tempo médio de atendimento: n = 45, x̄ = 6,2 min, s = 1,8 min (σ desconhecido). Qual intervalo e distribuição?',o:['Média com z','Média com t de Student (44 g.l.)','Proporção com z','Variância com χ²'],a:1,ex:'Média + σ desconhecido → t com n − 1 g.l. Com n ≥ 30 não precisa de normalidade, mas continua sendo t.'},
+{id:'i2',w:1,q:'Massa média de pacotes: n = 20, σ = 5 g CONHECIDO, massa normal. Qual distribuição?',o:['t com 19 g.l.','Normal padrão (z)','χ² com 19 g.l.','Binomial'],a:1,ex:'σ conhecido + população normal → z, mesmo com n < 30.'},
+{id:'i3',w:1,q:'Estimar a VARIABILIDADE do diâmetro de parafusos (n = 12, s = 0,05 mm, diâmetros normais). Qual intervalo?',o:['Média com t','Proporção com z','σ² e σ com χ² (11 g.l.)','Média com z'],a:2,ex:'Primeira pergunta do fluxograma: dispersão → χ². Procure palavras como "variação", "dispersão" e "desvio padrão".'},
+{id:'i4',w:1,q:'Em 30 pessoas, só 2 aprovaram um serviço. Posso usar o IC normal para a proporção?',o:['Sim, sempre','Não: n·p̂ = 2 < 5, a aproximação normal falha','Sim, usando t','Sim, se arredondar p̂'],a:1,ex:'A condição é n·p̂ ≥ 5 e n·q̂ ≥ 5. Aqui n·p̂ ≈ 2, então faltaria amostra ou um método exato.'},
+{id:'i5',w:1,q:'x̄ = 8,4 h, σ = 2,5 h, n = 40, 95% (zc = 1,96). Qual é o IC?',o:['7,63 < μ < 9,17','8,40 ± 0,39','6,44 < μ < 10,36','7,89 < μ < 8,91'],a:0,ex:'E = 1,96 × 2,5 ÷ √40 = 1,96 × 0,3953 ≈ 0,77. IC: 8,4 − 0,77 = 7,63 e 8,4 + 0,77 = 9,17.'},
+{id:'i6',w:1,q:'Tamanho mínimo da amostra: σ = 2,5 h, E = 0,5 h, 95% (zc = 1,96).',o:['96','96,04','97','49'],a:2,ex:'n = (1,96 × 2,5 ÷ 0,5)² = 9,8² = 96,04. Sempre arredonda para CIMA: 97.'},
+{id:'i7',w:1,q:'Você quer reduzir a margem de erro pela metade (mesma confiança e σ). O que acontece com o n necessário?',o:['Dobra','Quadruplica','Fica igual','Cai pela metade'],a:1,ex:'n é proporcional a 1 ÷ E². Metade de E → 4 vezes mais observações.'},
+{id:'i8',w:1,q:'Mesmos dados. Passando de 95% para 99% de confiança, o intervalo fica:',o:['Mais estreito','Mais largo','Igual','Deslocado'],a:1,ex:'Mais confiança exige zc maior, então E maior. Mais dados estreitam; mais confiança alarga.'},
+{id:'i9',w:1,q:'Um relatório publicou apenas o IC (111,7 ; 118,3). Quais são a média amostral e a margem de erro?',o:['x̄ = 115,0 e E = 3,3','x̄ = 111,7 e E = 6,6','x̄ = 118,3 e E = 3,3','x̄ = 115,0 e E = 6,6'],a:0,ex:'x̄ = (LI + LS) ÷ 2 = 115,0. E = (LS − LI) ÷ 2 = 3,3. A amplitude total é 2E = 6,6.'},
+{id:'i10',w:1,q:'n = 1.000 adolescentes, 372 têm smartphone. IC de 95% para p (zc = 1,96)?',o:['0,342 < p < 0,402','0,372 ± 0,300','0,300 < p < 0,444','0,360 < p < 0,384'],a:0,ex:'p̂ = 0,372; E = 1,96 × √(0,372 × 0,628 ÷ 1000) ≈ 0,030. IC: 0,342 a 0,402.'},
+{id:'i11',w:1,q:'Sem estimativa preliminar de p, E = 0,03 e 95% de confiança. Tamanho mínimo da amostra?',o:['385','1.067','1.068','914'],a:2,ex:'Sem estimativa usa-se p̂ = q̂ = 0,5 (o pior caso): n = 0,25 × (1,96 ÷ 0,03)² = 1.067,11 → 1.068.'},
+{id:'i12',w:1,q:'Qual frase interpreta corretamente um IC de 95% já calculado?',o:['Há 95% de probabilidade de μ estar neste intervalo','Em 95 de cada 100 amostras, o intervalo construído conteria μ','95% dos dados estão dentro do intervalo','μ varia 95% das vezes'],a:1,ex:'A confiança está no MÉTODO. μ é fixo; depois de calculado, o intervalo contém μ ou não contém.'},
+{id:'i13',w:1,q:'No IC para σ², o MAIOR valor crítico (χ²R) entra:',o:['No denominador do limite inferior','No denominador do limite superior','No numerador do limite inferior','Somando à variância'],a:0,ex:'Limite inferior = (n−1)s² ÷ χ²R e superior = (n−1)s² ÷ χ²L. Trocar os dois inverte o intervalo.'},
+{id:'i14',w:1,q:'O intervalo para a variância tem a forma s² ± E?',o:['Sim, como o da média','Não: não existe margem de erro; o intervalo não é simétrico','Sim, mas com t','Só se n ≥ 30'],a:1,ex:'A estimativa pontual não fica no centro do intervalo, por isso a variância é a única sem margem de erro.'},
+{id:'i15',w:1,q:'Para o IC da variância com n = 300, a população precisa ser normal?',o:['Não: n ≥ 30 basta','Sim, sempre: é a exceção à regra do n ≥ 30','Só se σ for conhecido','Só para proporções'],a:1,ex:'Nos casos da média e da proporção a normalidade é dispensável com amostra grande. Na variância, nunca.'},
+/* Fase 3 */
+{id:'t1',w:2,q:'Um fabricante afirma que a taxa de falha é de NO MÁXIMO 1%. Quais as hipóteses?',o:['H0: p ≤ 0,01 (afirmação); Ha: p > 0,01','H0: p ≥ 0,01; Ha: p < 0,01 (afirmação)','H0: p = 0,01; Ha: p ≠ 0,01','H0: p > 0,01 (afirmação); Ha: p ≤ 0,01'],a:0,ex:'"No máximo" tem igualdade, então a afirmação cai em H0 (≤). Ha é o complemento estrito: p > 0,01.'},
+{id:'t2',w:2,q:'"O preço médio é de PELO MENOS US$ 20.500." Qual o par de hipóteses e o tipo do teste?',o:['H0: μ ≥ 20.500 (afirmação); Ha: μ < 20.500; unilateral à esquerda','H0: μ ≤ 20.500; Ha: μ > 20.500; unilateral à direita','H0: μ = 20.500; Ha: μ ≠ 20.500; bilateral','H0: μ < 20.500; Ha: μ ≥ 20.500; esquerda'],a:0,ex:'"Pelo menos" é ≥, que tem igualdade e fica em H0. O símbolo de Ha (<) dá o tipo: esquerda.'},
+{id:'t3',w:2,q:'"A duração média da bateria é de MAIS de 6 h." Onde fica a afirmação e qual o tipo do teste?',o:['Em H0; bilateral','Em Ha (μ > 6); unilateral à direita','Em Ha (μ > 6); unilateral à esquerda','Em H0 (μ ≤ 6); esquerda'],a:1,ex:'"Mais de" é desigualdade estrita, então a afirmação cai em Ha (μ > 6). O símbolo > indica cauda direita.'},
+{id:'t4',w:2,q:'Erro tipo I é:',o:['Não rejeitar H0 quando ela é falsa','Rejeitar H0 quando ela é verdadeira','Aceitar H0 como verdade','Escolher α depois de ver os dados'],a:1,ex:'Tipo I = alarme falso (probabilidade máxima α). Tipo II = o alarme não toca (probabilidade β).'},
+{id:'t5',w:2,q:'H0: p ≤ 0,01 (taxa de falha de paraquedas). Qual erro é mais grave, e qual α combina?',o:['Tipo I; α pequeno (0,01)','Tipo II (paraquedas ruins seguem em uso); α maior (0,10) reduz β','Tipo I; α grande','Tipo II; α sempre 0,05'],a:1,ex:'O mais grave é não detectar a falha (tipo II). Como α e β se opõem, aumentar α reduz β: o rigor deve recair sobre o erro mais custoso.'},
+{id:'t6',w:2,q:'Valor p = 0,03. Qual a decisão com α = 0,05 e com α = 0,01?',o:['Rejeita nos dois','Rejeita com 0,05; não rejeita com 0,01','Não rejeita com 0,05; rejeita com 0,01','Não rejeita nos dois'],a:1,ex:'Regra: p ≤ α rejeita H0. 0,03 ≤ 0,05 rejeita; 0,03 > 0,01 não rejeita.'},
+{id:'t7',w:2,q:'Teste z: H0: μ ≥ 68.000; Ha: μ < 68.000; x̄ = 66.900, σ = 5.500, n = 20, α = 0,05 (crítico −1,645). Decisão?',o:['z ≈ −0,89; não rejeita H0','z ≈ −0,89; rejeita H0','z ≈ −2,24; rejeita H0','z ≈ 0,89; não rejeita H0'],a:0,ex:'z = (66.900 − 68.000) ÷ (5.500 ÷ √20) = −1.100 ÷ 1.229,8 ≈ −0,89. Não está em z < −1,645, então não rejeita H0.'},
+{id:'t8',w:2,q:'A afirmação está em H0 e você REJEITOU H0. Qual a conclusão?',o:['Há evidência suficiente para rejeitar a afirmação','Há evidência suficiente para apoiar a afirmação','A afirmação é verdadeira','Não há evidência para rejeitar a afirmação'],a:0,ex:'Rejeitar H0 significa que a amostra traz evidência a favor de Ha. Com a afirmação em H0, isso derruba a afirmação.'},
+{id:'t9',w:2,q:'Teste t: H0: μ ≥ 20.500; Ha: μ < 20.500; n = 14, x̄ = 19.850, s = 1.084, α = 0,05, crítico (13 g.l.) = −1,771. Decisão?',o:['t ≈ −2,244; rejeita H0','t ≈ −2,244; não rejeita H0','t ≈ −0,60; não rejeita H0','t ≈ 2,244; rejeita H0'],a:0,ex:'t = (19.850 − 20.500) ÷ (1.084 ÷ √14) ≈ −2,244. −2,244 < −1,771: está na região, rejeita H0.'},
+{id:'t10',w:2,q:'Valor crítico z para teste unilateral à esquerda com α = 0,01?',o:['−1,645','−2,33','±2,576','2,33'],a:1,ex:'Toda a área α fica na cauda esquerda, então o crítico é negativo: −2,33. O sinal vem do lado da cauda.'},
+{id:'t11',w:2,q:'Teste bilateral: a estatística caiu numa cauda com área 0,0125. Qual o valor p?',o:['0,0125','0,0250','0,0625','0,975'],a:1,ex:'No bilateral o valor p é o DOBRO da área da cauda: 2 × 0,0125 = 0,0250.'},
+{id:'t12',w:2,q:'Teste de proporção: H0: p ≥ 0,60; Ha: p < 0,60; n = 200, 108 sucessos, α = 0,05 (crítico −1,645). Decisão?',o:['z ≈ −1,73; rejeita H0','z ≈ −1,73; não rejeita H0','z ≈ −0,06; não rejeita H0','z ≈ 1,73; rejeita H0'],a:0,ex:'p̂ = 0,54. z = (0,54 − 0,60) ÷ √(0,6 × 0,4 ÷ 200) = −0,06 ÷ 0,0346 ≈ −1,73 < −1,645: rejeita.'},
+{id:'t13',w:2,q:'Teste de variância: H0: σ² ≤ 4; Ha: σ² > 4; n = 16, s² = 7, α = 0,05, crítico χ² (15 g.l.) = 24,996. Decisão?',o:['χ² = 26,25; rejeita H0','χ² = 26,25; não rejeita H0','χ² = 1,75; não rejeita H0','χ² = 7,0; rejeita H0'],a:0,ex:'χ² = (n − 1)·s² ÷ σ² = 15 × 7 ÷ 4 = 26,25 > 24,996: está na cauda direita, rejeita H0.'},
+{id:'t14',w:2,q:'"Não rejeitar H0" significa:',o:['Que H0 foi provada verdadeira','Que a evidência da amostra foi insuficiente para rejeitá-la','Que o erro tipo II é zero','Que p < α'],a:1,ex:'É como "não culpado": não prova inocência, só indica que a evidência não bastou. Nunca escreva "aceito H0".'},
+{id:'t15',w:2,q:'Teste de média com σ DESCONHECIDO. Qual estatística?',o:['z = (x̄ − μ) ÷ (σ/√n)','t = (x̄ − μ) ÷ (s/√n), com n − 1 g.l.','χ² = (n − 1)s² ÷ σ²','z = (p̂ − p) ÷ √(pq/n)'],a:1,ex:'Trocar σ por s acrescenta incerteza, que a distribuição t incorpora.'},
+{id:'t16',w:2,q:'Diminuir α de 0,05 para 0,01, com o mesmo n, faz β:',o:['Diminuir','Aumentar','Ficar igual','Virar zero'],a:1,ex:'Os dois erros se opõem. Só aumentar n reduz os dois ao mesmo tempo.'},
+{id:'t17',w:2,q:'Teste de variância à ESQUERDA: H0: σ² ≥ 25; Ha: σ² < 25; n = 21, s² = 14, α = 0,05, crítico χ² (20 g.l., cauda esquerda) = 10,851. Decisão?',o:['χ² = 11,2; não rejeita H0','χ² = 11,2; rejeita H0','χ² = 0,56; rejeita H0','χ² = 14; não rejeita H0'],a:0,ex:'χ² = (n − 1)·s² ÷ σ² = 20 × 14 ÷ 25 = 11,2. A região de rejeição é χ² < 10,851. Como 11,2 não está abaixo, não rejeita H0.'},
+{id:'t18',w:2,q:'Teste bilateral de média com σ desconhecido: H0: μ = 50; Ha: μ ≠ 50; n = 10, α = 0,05. Quais os valores críticos de t?',o:['±1,833','±2,262','±1,960','±2,228'],a:1,ex:'Bilateral: α/2 = 0,025 em cada cauda, com n − 1 = 9 g.l. → ±2,262. (1,833 seria unilateral com 9 g.l.; 1,960 é do z; 2,228 é de 10 g.l.)'}
+];
+const BOSS=[
+ {q:'Diferencie amostragem estratificada de amostragem por conglomerados.',pts:['Estratificada: todos os grupos entram e sorteia-se dentro de cada um','Conglomerados: sorteiam-se grupos inteiros e só os sorteados entram','Estratificada busca precisão (estratos homogêneos por dentro)','Conglomerados busca reduzir custo (grupos variados por dentro)'],m:'Na estratificada todos os estratos entram e o sorteio é feito dentro de cada um; o objetivo é ganhar precisão, e os estratos devem ser homogêneos por dentro. Na por conglomerados sorteiam-se grupos inteiros e só os sorteados entram; o objetivo é reduzir custo, e os conglomerados devem ser variados por dentro e parecidos entre si.'},
+ {q:'Explique a diferença entre erro tipo I e erro tipo II e dê um exemplo.',pts:['Tipo I: rejeitar H0 quando ela é verdadeira (probabilidade α)','Tipo II: não rejeitar H0 quando ela é falsa (probabilidade β)','Exemplo no contexto de um problema concreto'],m:'Erro tipo I é rejeitar H0 quando ela é verdadeira (alarme falso), com probabilidade máxima α. Erro tipo II é não rejeitar H0 quando ela é falsa, com probabilidade β. Exemplo: se H0 diz que a taxa de falha é de no máximo 1%, o tipo I é concluir que excede quando não excede; o tipo II é não perceber que excede.'},
+ {q:'Por que "não rejeitar H0" não significa que H0 é verdadeira?',pts:['O teste mede se a evidência foi suficiente contra H0','Não rejeitar = evidência insuficiente, não prova','Analogia ou conclusão em termos de evidência (como "não culpado")'],m:'Porque o teste só mede se a amostra trouxe evidência suficiente contra H0. Não rejeitar quer dizer que a evidência foi insuficiente, e não que H0 foi provada, como "não culpado" no tribunal não prova inocência. Por isso a conclusão se escreve em termos de evidência.'},
+ {q:'Quando se usa a distribuição t em vez da normal (z) para uma média?',pts:['σ populacional é desconhecido e usa-se s','População normal ou n ≥ 30','Graus de liberdade n − 1 e caudas mais pesadas'],m:'Usa-se t quando σ é desconhecido e só se conhece s, com população normal ou n ≥ 30. A distribuição t tem caudas mais pesadas pela incerteza extra de estimar σ e depende dos graus de liberdade (n − 1). Com n grande, t e z ficam quase iguais.'},
+ {q:'Por que o plano por conglomerados costuma ter precisão menor que a AAS e por que ainda assim é usado?',pts:['Elementos do mesmo grupo são parecidos entre si, a informação é redundante','Variância maior (deff > 1)','Dispensa a lista de elementos e reduz custo e deslocamento'],m:'Como os elementos de um mesmo conglomerado tendem a ser parecidos, cada observação a mais traz menos informação nova, e isso aumenta a variância (deff > 1). Mesmo assim o plano é usado porque dispensa a lista de todos os elementos e reduz custo e deslocamento, já que só se visitam alguns grupos.'}
+];
+const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+BOSS[0].kw=[[['todos os estratos'],['todos os grupos'],['dentro de cada']],[['grupos inteiros'],['sorteados'],['sorteiam-se grupos'],['sorteia-se grupos']],[['precis'],['homogene']],[['custo'],['heterogene'],['variado'],['deslocamento']]];
+BOSS[1].kw=[[['rejeit','verdadeir']],[['nao rejeit','falsa'],['aceit','falsa'],['nao rejeit','falso']],[['exemplo']]];
+BOSS[2].kw=[[['evidencia']],[['insuficien'],['nao prova'],['nao significa']],[['culpado'],['inocen'],['tribunal']]];
+BOSS[3].kw=[[['desconhecid'],['somente s'],['apenas s'],['so s ']],[['normal'],['n >= 30'],['n ≥ 30'],['30']],[['n - 1'],['n-1'],['graus de liberdade'],['cauda']]];
+BOSS[4].kw=[[['parecid'],['redundan'],['semelhant'],['homogene']],[['variancia','maior'],['deff'],['menos precis'],['precisao menor']],[['lista'],['custo'],['deslocamento'],['barato']]];
+const MAP=['O que quero estimar? Dispersão (variação, desvio padrão) → χ². Centro ou fração → continue.','A variável é qualitativa, de duas categorias? Sim → proporção, com z. Não → continue.','σ é conhecido? Sim → normal padrão (z). Não → t de Student com n − 1 g.l.','Verifique as condições: normalidade ou n ≥ 30; para proporção, n·p̂ ≥ 5 e n·q̂ ≥ 5. Variância exige população normal sempre.'];
+const LEVELS=['Calouro','Monitor','Estagiário de dados','Analista júnior','Estatístico','Doutor em amostragem'];
+
+const LESSONS=[
+{id:'L0',w:-1,title:'O básico que falta',time:'6 min',s:[
+ {t:'i',h:'População e amostra',p:'**População** é o grupo inteiro que você quer conhecer. **Amostra** é a parte dele que você realmente observa. Quase nunca dá para medir a população toda, então medimos uma amostra e tiramos conclusões sobre o todo.'},
+ {t:'i',h:'Parâmetro x estatística',p:'Um número da **população** é um **parâmetro** e usa letra grega: `μ` (média), `σ` (desvio padrão), `p` (proporção). Um número da **amostra** é uma **estatística** e usa letra latina: `x̄` (média), `s` (desvio padrão), `p̂` (proporção). Regra de bolso: grego = população, latino = amostra.'},
+ {t:'q',q:'`s` é o desvio padrão da...',o:['População (parâmetro)','Amostra (estatística)','Tabela normal','Margem de erro'],a:1,ex:'Letra latina (s) = amostra. O desvio padrão da população é σ.'},
+ {t:'i',h:'Média e desvio padrão',p:'A **média** diz o centro dos dados. O **desvio padrão** diz o quanto os valores costumam se afastar da média: quanto maior, mais espalhados.'},
+ {t:'i',h:'Erro padrão: por que mais amostra ajuda',p:'A média de uma amostra muda de amostra para amostra. O quanto ela costuma variar é o **erro padrão**: `σ ÷ √n`. Quanto maior o `n`, menor o erro. Para cortar o erro **pela metade** é preciso **4 vezes** mais dados.'},
+ {t:'n',q:'σ = 12 e n = 36. Qual o erro padrão `σ ÷ √n`?',ans:2,tol:0.01,ex:'√36 = 6, então 12 ÷ 6 = 2.'},
+ {t:'f',h:'Escore z',f:'z = (x̄ − μ) ÷ (σ ÷ √n)',p:'Diz **a quantos erros padrão** a média da amostra está da média da população. z perto de 0: amostra comum. z longe de 0 (acima de 2 ou abaixo de −2): amostra incomum.'},
+ {t:'n',q:'μ = 100, x̄ = 106, σ = 12, n = 36. Qual o valor de z?',ans:3,tol:0.01,ex:'Erro padrão = 12 ÷ 6 = 2. z = (106 − 100) ÷ 2 = 3.'},
+ {t:'i',h:'Curva normal e tabela',p:'A tabela da normal dá a **área à esquerda** de cada z. Marcos para guardar: `z = 1,96` deixa 2,5% na cauda direita (por isso o 95% usa 1,96); `1,645` deixa 5% numa cauda; `2,576` deixa 0,5% (99%). A curva é simétrica: o que vale para +z vale para −z.'},
+ {t:'q',q:'Para 95% de confiança, qual o valor crítico zc usado?',o:['1,645','1,96','2,576','1,28'],a:1,ex:'95% no centro deixa 2,5% em cada cauda, o que corresponde a 1,96.'}
+]},
+{id:'L1',w:0,title:'Conglomerados: a ideia',time:'5 min',s:[
+ {t:'i',h:'O problema que ele resolve',p:'Para sortear alunos um a um (AAS) é preciso ter a lista de **todos** os alunos. Muitas vezes só existe a lista das **escolas**. Além disso, alunos sorteados ao acaso espalham a amostra por quase todas as escolas, e cada visita custa dinheiro.'},
+ {t:'i',h:'A solução: sortear grupos',p:'Na amostragem por **conglomerados** você sorteia **grupos inteiros** (escolas, agências, setores) e só estuda os grupos sorteados. O grupo é o próprio objeto do sorteio. Objetivo: **reduzir custo e viabilizar a coleta**.'},
+ {t:'i',h:'Cuidado: não é estratificada',p:'Imagine caixas de bombom. **Estratificada**: você abre TODAS as caixas e prova alguns bombons de cada uma. **Conglomerados**: você sorteia 2 caixas e come todos os bombons delas; as outras nem são abertas.'},
+ {t:'q',q:'"Sorteio 5 agências bancárias e entrevisto todos os clientes delas." Qual técnica?',o:['Estratificada','Conglomerados','AAS','Sistemática'],a:1,ex:'Sorteou grupos inteiros (agências) e só entram os sorteados: conglomerados.'},
+ {t:'i',h:'O que cada uma quer dos grupos',p:'**Estratificada**: grupos **homogêneos por dentro** e diferentes entre si (objetivo: precisão). **Conglomerados**: grupos **variados por dentro** e com médias **parecidas entre si** (porque só alguns entram, a diferença entre grupos vira erro). As condições ideais são opostas.'},
+ {t:'q',q:'Qual conjunto de grupos é melhor para estratificar?',o:['Médias parecidas e muita variação interna','Cada grupo parecido por dentro e médias bem diferentes entre grupos','Grupos de tamanhos iguais','Grupos com um só elemento'],a:1,ex:'Na estratificada todos os grupos entram, então a diferença entre as médias é captada inteira. Convém homogeneidade dentro do estrato.'}
+]},
+{id:'L2',w:0,title:'Estágios, probabilidade e peso',time:'6 min',s:[
+ {t:'i',h:'Um estágio ou dois?',p:'O número de estágios é quantas vezes você sorteia antes de medir. **Um estágio**: sorteia `m` conglomerados e observa **todos** os elementos deles (n não é controlado). **Dois estágios**: sorteia `m` conglomerados e, dentro de cada um, sorteia `mᵢ` elementos (n é controlado: soma dos mᵢ).'},
+ {t:'i',h:'Siglas',p:'**UPA** = unidade primária de amostragem (o conglomerado sorteado no 1º estágio). **USA** = unidade secundária (o elemento sorteado no 2º estágio).'},
+ {t:'f',h:'Contas do um estágio',f:'M̄ = N ÷ M      π = m ÷ M      n = m × M̄',p:'`N` = elementos na população; `M` = conglomerados; `m` = conglomerados sorteados; `M̄` = tamanho médio do conglomerado; `π` = probabilidade de um elemento entrar na amostra.'},
+ {t:'w',h:'Exemplo resolvido',prob:'N = 24.000 alunos, M = 80 escolas, m = 10 escolas sorteadas, todos os alunos observados. Calcule M̄, π e n esperado.',steps:[['Tamanho médio','M̄ = N ÷ M = 24.000 ÷ 80 = 300 alunos por escola'],['Probabilidade de inclusão','π = m ÷ M = 10 ÷ 80 = 0,125'],['Tamanho esperado','n = m × M̄ = 10 × 300 = 3.000 alunos']]},
+ {t:'n',q:'Sua vez: N = 12.000, M = 40, m = 8. Qual a probabilidade de inclusão π?',ans:0.2,tol:0.001,ex:'π = 8 ÷ 40 = 0,20.'},
+ {t:'f',h:'Peso amostral',f:'w = 1 ÷ π',p:'Cada elemento da amostra "representa" `w` elementos da população. Se π = 0,2, cada um representa 5.'},
+ {t:'n',q:'Se π = 0,20, qual o peso w?',ans:5,tol:0.01,ex:'w = 1 ÷ 0,2 = 5.'}
+]},
+{id:'L3',w:0,title:'Efeito do delineamento (deff)',time:'5 min',s:[
+ {t:'i',h:'Por que perde precisão',p:'Elementos do mesmo conglomerado costumam ser parecidos (alunos da mesma escola, clientes da mesma agência). Medir o 30º aluno da escola traz **pouca informação nova**. Resultado: a amostra por conglomerados vale **menos** que uma AAS do mesmo tamanho.'},
+ {t:'f',h:'As duas fórmulas',f:'deff = 1 + (M̄ − 1) × ρ      n_ef = n ÷ deff',p:'`ρ` mede o quanto os elementos do grupo se parecem. `deff` maior que 1 = perda de precisão. `n_ef` = tamanho efetivo: a AAS equivalente. Arredonde `n_ef` para baixo.'},
+ {t:'w',h:'Exemplo resolvido',prob:'n = 180, M̄ = 30, ρ = 0,05. Calcule deff e tamanho efetivo.',steps:[['deff','1 + (30 − 1) × 0,05 = 1 + 1,45 = 2,45'],['Tamanho efetivo','180 ÷ 2,45 = 73,47, arredonda para baixo: 73'],['Leitura','Os 180 entrevistados valem só como 73 de uma AAS.']]},
+ {t:'n',q:'Sua vez: n = 240, M̄ = 21, ρ = 0,04. Qual o deff?',ans:1.8,tol:0.01,ex:'1 + (21 − 1) × 0,04 = 1 + 0,8 = 1,8.'},
+ {t:'n',q:'Com esse deff = 1,8, qual o tamanho efetivo (arredondado para baixo)?',ans:133,tol:0.5,ex:'240 ÷ 1,8 = 133,3 → 133.'},
+ {t:'q',q:'Para igualar uma AAS de 500, com deff = 2,92, quantas observações em conglomerados?',o:['171','500','1.460','2.920'],a:2,ex:'Pergunta inversa: 500 × 2,92 = 1.460.'}
+]},
+{id:'L4',w:1,title:'Intervalo de confiança: a ideia',time:'5 min',s:[
+ {t:'i',h:'Estimar com um número ou com uma faixa',p:'A média da amostra `x̄` é a **estimativa pontual** de μ. Mas é quase impossível acertar μ exatamente. Por isso se dá uma **faixa**: `x̄ ± E`. `E` é a **margem de erro**.'},
+ {t:'f',h:'O intervalo',f:'x̄ − E  <  μ  <  x̄ + E',p:'O centro do intervalo é `x̄` e a metade da largura é `E`. Se você só tem os limites: `x̄ = (LI + LS) ÷ 2` e `E = (LS − LI) ÷ 2`.'},
+ {t:'n',q:'O relatório diz IC (111,7 ; 118,3). Qual a margem de erro E?',ans:3.3,tol:0.01,ex:'E = (118,3 − 111,7) ÷ 2 = 3,3. A média é (111,7 + 118,3) ÷ 2 = 115.'},
+ {t:'i',h:'O que "95% de confiança" significa',p:'Se você repetisse a pesquisa muitas vezes, cerca de **95% dos intervalos** construídos conteriam μ. A confiança está no **método**. Depois de calculado, o intervalo contém μ ou não: não existe "95% de chance de μ estar aqui".'},
+ {t:'q',q:'Qual frase está correta?',o:['Há 95% de probabilidade de μ estar neste intervalo','Em 95 de cada 100 amostras, o intervalo construído conteria μ','95% dos dados estão no intervalo','μ muda 95% das vezes'],a:1,ex:'A confiança é do método, não deste intervalo específico.'},
+ {t:'i',h:'Três alavancas',p:'**Mais confiança** (95% → 99%) deixa o intervalo **mais largo**. **Mais dados** (n maior) deixa **mais estreito**. **Mais variação** (σ ou s maior) deixa **mais largo**.'}
+]},
+{id:'L5',w:1,title:'IC da média: σ conhecido (z)',time:'6 min',s:[
+ {t:'f',h:'Fórmula',f:'E = zc × σ ÷ √n      IC: x̄ ± E',p:'Use quando o enunciado dá **σ da população** (histórico, "sabe-se que"). Valores de `zc`: 90% → 1,645; 95% → 1,96; 99% → 2,576. Condições: amostra aleatória e população normal **ou** n ≥ 30.'},
+ {t:'w',h:'Exemplo resolvido',prob:'AAS de 40 alunos, x̄ = 8,4 h, σ = 2,5 h. IC de 95% para a média.',steps:[['Escolher zc','95% → zc = 1,96'],['Erro padrão','σ ÷ √n = 2,5 ÷ √40 = 2,5 ÷ 6,325 = 0,3953'],['Margem de erro','E = 1,96 × 0,3953 ≈ 0,77'],['Intervalo','8,4 − 0,77 = 7,63 e 8,4 + 0,77 = 9,17 → 7,63 < μ < 9,17']]},
+ {t:'n',q:'Sua vez: x̄ = 50, σ = 10, n = 25, 95%. Qual a margem de erro E?',ans:3.92,tol:0.02,ex:'Erro padrão 10 ÷ 5 = 2; E = 1,96 × 2 = 3,92.'},
+ {t:'f',h:'Quantos dados preciso?',f:'n = (zc × σ ÷ E)²',p:'Você escolhe a margem E e a confiança; a fórmula devolve o n. **Sempre arredonde para CIMA** (96,04 vira 97).'},
+ {t:'n',q:'σ = 15, E = 3, 95%. Qual o tamanho mínimo da amostra?',ans:97,tol:0.5,ex:'(1,96 × 15 ÷ 3)² = 9,8² = 96,04 → 97.'},
+ {t:'q',q:'Para reduzir E pela metade, o n...',o:['Dobra','Quadruplica','Fica igual','Cai pela metade'],a:1,ex:'n é proporcional a 1 ÷ E². Metade de E, quatro vezes o n.'}
+]},
+{id:'L6',w:1,title:'IC da média: σ desconhecido (t)',time:'5 min',s:[
+ {t:'i',h:'Quando troca z por t',p:'Quase nunca se conhece σ. Se o enunciado só dá o desvio padrão **da amostra** (`s`), a incerteza extra de estimar σ engrossa as caudas. A distribuição de referência passa a ser a **t de Student**, com **g.l. = n − 1** graus de liberdade.'},
+ {t:'f',h:'Fórmula',f:'E = tc × s ÷ √n      IC: x̄ ± E',p:'Só mudam duas peças em relação ao z: `tc` (da tabela t, linha g.l. = n − 1, coluna da confiança) no lugar de `zc`, e `s` no lugar de `σ`. Mesmo com n ≥ 30, se só tem `s`, é **t**.'},
+ {t:'q',q:'n = 45, x̄ = 6,2 e s = 1,8 (σ desconhecido). Qual distribuição?',o:['z','t com 44 g.l.','χ² com 44 g.l.','Binomial'],a:1,ex:'Só tem s, então t. O n ≥ 30 apenas dispensa a normalidade da população.'},
+ {t:'w',h:'Exemplo resolvido',prob:'12 execuções de um treino: x̄ = 20,30 min, s = 1,659 min. IC de 95%, população normal.',steps:[['Graus de liberdade','g.l. = 12 − 1 = 11'],['Valor da tabela t','g.l. 11, 95% → tc = 2,201'],['Margem de erro','E = 2,201 × 1,659 ÷ √12 = 1,05'],['Intervalo','20,30 ± 1,05 → 19,25 < μ < 21,35']]},
+ {t:'n',q:'Sua vez: n = 16, x̄ = 30, s = 4, tc = 2,131. Qual a margem de erro E?',ans:2.131,tol:0.01,ex:'√16 = 4; E = 2,131 × 4 ÷ 4 = 2,131. IC: 27,87 < μ < 32,13.'},
+ {t:'i',h:'Se o g.l. não está na tabela',p:'Use o g.l. imediatamente **menor**: o intervalo fica um pouco mais largo, escolha conservadora.'}
+]},
+{id:'L7',w:1,title:'IC de proporção',time:'5 min',s:[
+ {t:'i',h:'Quando é proporção',p:'A variável é uma **categoria de duas opções** (recomenda ou não, defeituoso ou não). A estimativa é `p̂ = x ÷ n` e `q̂ = 1 − p̂`, onde `x` é o número de sucessos.'},
+ {t:'f',h:'Fórmula e condição',f:'E = zc × √(p̂ q̂ ÷ n)      IC: p̂ ± E',p:'Condição: `n·p̂ ≥ 5` **e** `n·q̂ ≥ 5`. Se falhar (por exemplo 2 aprovações em 30), o IC normal não vale. Usa-se z, não t: na proporção o desvio padrão sai do próprio p̂ (através de p̂q̂), então não existe um s separado para estimar.'},
+ {t:'w',h:'Exemplo resolvido',prob:'1.000 adolescentes, 372 têm smartphone. IC de 95%.',steps:[['Estimativas','p̂ = 372 ÷ 1.000 = 0,372 e q̂ = 0,628'],['Condição','n·p̂ = 372 ≥ 5 e n·q̂ = 628 ≥ 5: vale'],['Margem de erro','E = 1,96 × √(0,372 × 0,628 ÷ 1000) ≈ 0,030'],['Intervalo','0,342 < p < 0,402']]},
+ {t:'n',q:'Sua vez: n = 400 e x = 120. Qual a margem de erro E (95%)? Use 3 casas.',ans:0.045,tol:0.002,ex:'p̂ = 0,30; q̂ = 0,70; √(0,21 ÷ 400) = 0,02291; E = 1,96 × 0,02291 ≈ 0,045.'},
+ {t:'f',h:'Tamanho mínimo',f:'n = p̂ q̂ × (zc ÷ E)²',p:'Sem estimativa prévia de p, use `p̂ = q̂ = 0,5` (pior caso, maior amostra). Arredonde para cima.'},
+ {t:'n',q:'Sem estimativa prévia, E = 0,03 e 95%. Qual o n mínimo?',ans:1068,tol:0.5,ex:'0,25 × (1,96 ÷ 0,03)² = 1.067,11 → 1.068.'}
+]},
+{id:'L8',w:1,title:'IC de variância e o fluxograma',time:'6 min',s:[
+ {t:'i',h:'Quando é variância',p:'Quando o enunciado pede **variação, dispersão ou desvio padrão** de uma variável. Usa a distribuição **qui-quadrado (χ²)** com `n − 1` g.l. e **exige população normal sempre**, mesmo com n grande.'},
+ {t:'f',h:'Fórmula',f:'(n − 1)s² ÷ χ²R  <  σ²  <  (n − 1)s² ÷ χ²L',p:'`χ²R` (cauda direita) é o **maior** valor crítico e vai no limite **inferior**. `χ²L` é o menor e vai no limite **superior**. Para o desvio padrão, tire a raiz dos dois limites. Não existe margem de erro e o intervalo não é simétrico.'},
+ {t:'w',h:'Exemplo resolvido',prob:'15 arruelas, s = 0,42 mm, população normal. IC de 90% para σ² (χ²R = 23,685; χ²L = 6,571).',steps:[['Numerador','(n − 1)s² = 14 × 0,1764 = 2,4696'],['Limite inferior','2,4696 ÷ 23,685 = 0,1043'],['Limite superior','2,4696 ÷ 6,571 = 0,3758'],['Intervalo','0,1043 < σ² < 0,3758']]},
+ {t:'n',q:'Sua vez: n = 11, s = 2, χ²R = 18,307. Qual o limite INFERIOR de σ²?',ans:2.185,tol:0.01,ex:'(n − 1)s² = 10 × 4 = 40; 40 ÷ 18,307 = 2,185.'},
+ {t:'i',h:'O fluxograma do professor',p:'Quatro perguntas, em ordem: **1)** quero estimar dispersão? → χ². **2)** a variável é qualitativa? → proporção (z). **3)** σ é conhecido? → z; senão, t. **4)** conferir condições.'},
+ {t:'q',q:'Estimar a variação do diâmetro de parafusos (n = 12, s = 0,05, normal).',o:['Média com t','Proporção','σ² com χ²','Média com z'],a:2,ex:'Palavra "variação": dispersão, então χ².'},
+ {t:'q',q:'Massa média de pacotes, n = 20, σ = 5 g conhecido, massa normal.',o:['t','z','χ²','Proporção'],a:1,ex:'Média com σ conhecido → z.'}
+]},
+{id:'L9',w:2,title:'Teste de hipótese: H0 e Ha',time:'6 min',s:[
+ {t:'i',h:'A ideia',p:'No intervalo você **estima**. No teste, alguém **afirma** um valor ("a duração média é 50 h") e a amostra serve para **julgar** a afirmação. A resposta não é um número: é **rejeitar** ou **não rejeitar**.'},
+ {t:'i',h:'H0 e Ha',p:'**H0** (hipótese nula) **sempre contém a igualdade**: `≤`, `=` ou `≥`. **Ha** (alternativa) é o complemento, com desigualdade estrita: `<`, `>` ou `≠`. A afirmação pode estar em qualquer uma das duas.'},
+ {t:'i',h:'Tradução das palavras',p:'"É igual a k" → H0: `=` / Ha: `≠`.   "No máximo k" → H0: `≤` / Ha: `>`.   "No mínimo k" ou "pelo menos k" → H0: `≥` / Ha: `<`.   "Mais de k" → H0: `≤` / Ha: `>` (afirmação em Ha).   "Menos de k" → H0: `≥` / Ha: `<` (afirmação em Ha).'},
+ {t:'q',q:'"A taxa de defeitos é de no máximo 2%." Qual o par?',o:['H0: p ≤ 0,02; Ha: p > 0,02','H0: p ≥ 0,02; Ha: p < 0,02','H0: p = 0,02; Ha: p ≠ 0,02','H0: p > 0,02; Ha: p ≤ 0,02'],a:0,ex:'"No máximo" = ≤, tem igualdade, vai para H0.'},
+ {t:'q',q:'"A vida útil média é superior a 18 anos." Qual o par?',o:['H0: μ ≤ 18; Ha: μ > 18 (afirmação)','H0: μ ≥ 18 (afirmação); Ha: μ < 18','H0: μ = 18; Ha: μ ≠ 18','H0: μ > 18 (afirmação); Ha: μ ≤ 18'],a:0,ex:'"Superior a" não tem igualdade, então é Ha. H0 é o complemento: μ ≤ 18.'},
+ {t:'i',h:'Tipo do teste',p:'O símbolo de **Ha** define o teste: `<` unilateral à **esquerda**; `>` unilateral à **direita**; `≠` **bilateral**. É em Ha que você olha para saber de que lado fica a região de rejeição.'},
+ {t:'q',q:'Ha: μ ≠ 100. Que tipo de teste é?',o:['Esquerda','Direita','Bilateral','Não existe'],a:2,ex:'≠ indica as duas caudas.'}
+]},
+{id:'L10',w:2,title:'Erros, α e valor p',time:'6 min',s:[
+ {t:'i',h:'Dois erros possíveis',p:'**Tipo I**: rejeitar H0 quando ela é **verdadeira** (alarme falso). **Tipo II**: **não** rejeitar H0 quando ela é **falsa** (o alarme não toca). Analogia do tribunal: condenar um inocente é tipo I; absolver um culpado é tipo II.'},
+ {t:'i',h:'α e β',p:'`α` (nível de significância) é a probabilidade **máxima** de erro tipo I. Valores usuais: 0,10, 0,05 e 0,01. `β` é a probabilidade do tipo II. Os dois se opõem: **diminuir α aumenta β**. Só aumentar n reduz os dois. O α é escolhido **antes** de ver os dados.'},
+ {t:'q',q:'Diminuir α de 0,05 para 0,01 (mesmo n) faz β...',o:['Diminuir','Aumentar','Ficar igual','Virar zero'],a:1,ex:'Os dois erros se opõem.'},
+ {t:'i',h:'Valor p',p:'É a probabilidade de a amostra ser **tão extrema quanto a observada** (ou mais), supondo H0 verdadeira. Quanto **menor** o p, mais evidência contra H0. **Regra: se p ≤ α, rejeita H0.** Esquerda: área à esquerda de z. Direita: área à direita. Bilateral: o **dobro** da área da cauda.'},
+ {t:'n',q:'Teste bilateral, área da cauda = 0,0125. Qual o valor p?',ans:0.025,tol:0.0005,ex:'Bilateral: 2 × 0,0125 = 0,025.'},
+ {t:'q',q:'p = 0,03. Decisão com α = 0,05?',o:['Rejeita H0','Não rejeita H0','Aceita H0','Não dá para decidir'],a:0,ex:'0,03 ≤ 0,05 → rejeita.'},
+ {t:'i',h:'Como escrever a conclusão',p:'Rejeitou H0: afirmação em **H0** → "há evidência para **rejeitar** a afirmação"; afirmação em **Ha** → "há evidência para **apoiar** a afirmação". Não rejeitou: "**não há** evidência suficiente para rejeitar/apoiar a afirmação". Nunca diga "aceito H0": fale sempre da **evidência**.'},
+ {t:'q',q:'Afirmação em Ha e você NÃO rejeitou H0. Conclusão?',o:['Há evidência para apoiar a afirmação','Não há evidência suficiente para apoiar a afirmação','A afirmação é falsa','A afirmação é verdadeira'],a:1,ex:'Não rejeitar não prova nada; apenas falta evidência para apoiar a afirmação.'}
+]},
+{id:'L11',w:2,title:'Teste z passo a passo',time:'7 min',s:[
+ {t:'i',h:'A receita',p:'**1.** Escreva H0 e Ha. **2.** Escolha α. **3.** Ache o valor crítico (ou o valor p). **4.** Calcule a estatística. **5.** Decida (p ≤ α, ou estatística dentro da região de rejeição → rejeita). **6.** Interprete no contexto da afirmação.'},
+ {t:'f',h:'Estatística (σ conhecido)',f:'z = (x̄ − μ) ÷ (σ ÷ √n)',p:'Onde μ é o valor que aparece em H0. Críticos de z, unilateral: α 0,10 → 1,28; 0,05 → 1,645; 0,01 → 2,33 (negativos se esquerda). Bilateral: ±1,645; ±1,96; ±2,576.'},
+ {t:'w',h:'Exemplo resolvido',prob:'"O salário médio dos engenheiros é menor que US$ 68.000." Amostra de 20: x̄ = 66.900; σ = 5.500; população normal; α = 0,05.',steps:[['Hipóteses','H0: μ ≥ 68.000   Ha: μ < 68.000 (afirmação). Teste à esquerda.'],['Valor crítico','α = 0,05, esquerda → z₀ = −1,645. Região: z < −1,645'],['Estatística','z = (66.900 − 68.000) ÷ (5.500 ÷ √20) = −1.100 ÷ 1.229,8 ≈ −0,89'],['Decisão','−0,89 não está na região → NÃO rejeita H0'],['Conclusão','Não há evidência suficiente, a 5%, para apoiar a afirmação.']]},
+ {t:'n',q:'Sua vez: H0: μ ≥ 500; x̄ = 490, σ = 30, n = 36. Qual o valor de z?',ans:-2,tol:0.01,ex:'Erro padrão = 30 ÷ 6 = 5; z = (490 − 500) ÷ 5 = −2.'},
+ {t:'q',q:'Com z = −2 e crítico −1,645 (esquerda), qual a decisão?',o:['Rejeita H0','Não rejeita H0','Aceita H0','Teste inválido'],a:0,ex:'−2 < −1,645: está na região de rejeição.'}
+]},
+{id:'L12',w:2,title:'Teste t, proporção e variância',time:'7 min',s:[
+ {t:'i',h:'O procedimento é o mesmo',p:'Os passos não mudam. O que muda é a **estatística** e a **tabela**. Escolha pelas mesmas perguntas do fluxograma.'},
+ {t:'f',h:'As quatro estatísticas',f:'z = (x̄ − μ)÷(σ/√n)      t = (x̄ − μ)÷(s/√n)\nz = (p̂ − p)÷√(pq/n)      χ² = (n − 1)s² ÷ σ²',p:'**z**: média com σ conhecido. **t** (n − 1 g.l.): média só com s. **z de proporção**: p é o valor de H0 (e `q = 1 − p`). **χ²** (n − 1 g.l.): variância; à direita, rejeita se χ² passar do crítico da direita; à esquerda, se ficar abaixo do crítico da esquerda; bilateral usa os dois. No teste de proporção, confira `n·p ≥ 5` e `n·q ≥ 5` usando o p de H0.'},
+ {t:'w',h:'Exemplo resolvido (t)',prob:'"Preço médio de pelo menos US$ 20.500." n = 14, x̄ = 19.850, s = 1.084, α = 0,05.',steps:[['Hipóteses','H0: μ ≥ 20.500 (afirmação)   Ha: μ < 20.500. Esquerda'],['Crítico','g.l. = 13, esquerda → t₀ = −1,771'],['Estatística','t = (19.850 − 20.500) ÷ (1.084 ÷ √14) ≈ −2,244'],['Decisão','−2,244 < −1,771 → rejeita H0'],['Conclusão','Há evidência para rejeitar a afirmação de que o preço médio é de pelo menos US$ 20.500.']]},
+ {t:'n',q:'Sua vez (t): H0: μ = 100; x̄ = 103, s = 10, n = 25. Qual o valor de t?',ans:1.5,tol:0.01,ex:'√25 = 5; erro padrão = 10 ÷ 5 = 2; t = 3 ÷ 2 = 1,5. Fica dentro de ±2,064, então não rejeita.'},
+ {t:'n',q:'Sua vez (proporção): H0: p ≥ 0,60; n = 200; 108 sucessos. Qual o valor de z?',ans:-1.73,tol:0.02,ex:'p̂ = 0,54. Erro padrão = √(0,6 × 0,4 ÷ 200) = 0,03464. z = (0,54 − 0,60) ÷ 0,03464 ≈ −1,73.'},
+ {t:'n',q:'Sua vez (variância): H0: σ² ≤ 4; n = 16; s² = 7. Qual o valor de χ²?',ans:26.25,tol:0.02,ex:'χ² = (n − 1)s² ÷ σ² = 15 × 7 ÷ 4 = 26,25. Com crítico 24,996 (15 g.l., α = 0,05), rejeita H0.'}
+]}
+];
+
+const SCENES={
+L0:{g:'μ  x̄',t:'O Censo Impossível do Prefeito',
+ s:'A prefeita de Amostrópolis jura que a altura média dos 50.000 moradores é 170 cm. Medir todo mundo levaria um ano. Então um analista sorteia 100 moradores e mede só eles: deu 172 cm. Ele não sabe se a prefeita errou ou se deu azar no sorteio. Para decidir, imagina 1.000 analistas fazendo o mesmo: cada um traria um número um pouco diferente. O quanto esses palpites se espalham é o erro padrão. Se o 172 estiver a mais de 2 erros padrão de 170, o azar fica uma explicação fraca.',
+ m:[['Os 50.000 moradores','população'],['A altura média real (170 ou não)','parâmetro μ, que ninguém vê'],['Os 100 medidos','amostra'],['Os 172 cm que ele trouxe','estatística x̄'],['O espalhamento dos palpites de 1.000 analistas','erro padrão σ ÷ √n'],['"Está a quantos erros padrão de 170?"','escore z']],
+ f:'Na vida real só existe UM analista. Os outros 999 são imaginários: servem para dar nome à incerteza do sorteio.',
+ r:{q:'Para o palpite do analista variar só metade, quantos moradores a mais ele precisa medir?',a:'4 vezes mais (de 100 para 400), porque o erro cai com a raiz de n: √4 = 2.'},
+ h:'Grego = população (invisível). Latino = amostra (na sua mão). Erro padrão = espalhamento dos palpites.'},
+L1:{g:'▦',t:'A Festa das Caixas de Bombom',
+ s:'Numa festa há 40 caixas de bombom. A Chef Estrato abre TODAS as caixas e prova alguns bombons de cada uma: assim nenhuma caixa fica sem representante, e isso dá precisão. O Glutão Conglomerado sorteia só 2 caixas e come tudo que há nelas. As outras 38 nem saem do armário, e ele economiza a viagem. O Glutão só acerta o sabor médio da festa se as caixas forem parecidas entre si. Se uma for toda de menta e outra toda de chocolate, a escolha das 2 vira o resultado.',
+ m:[['Cada caixa','um grupo (estrato ou conglomerado)'],['Abrir todas e provar alguns','estratificada: todos os grupos entram'],['Sortear 2 caixas e comer tudo','conglomerados: só os sorteados entram'],['As 38 caixas fechadas','grupos fora da amostra'],['A viagem economizada','custo menor (o objetivo do conglomerado)'],['Caixas diferentes entre si','bom para estratificar, ruim para conglomerar']],
+ f:'Se os bombons de uma mesma caixa forem muito parecidos, o Glutão aprende pouco a cada bombom extra: é o efeito que a lição 3 mede (deff).',
+ r:{q:'Num plano estratificado, quais caixas entram na amostra? E no de conglomerados?',a:'Estratificada: todas, sorteando dentro de cada uma. Conglomerados: só as sorteadas, com tudo dentro delas.'},
+ h:'Estratificada: prova um pouco de CADA caixa (precisão). Conglomerados: come caixas INTEIRAS, mas só algumas (custo).'},
+L2:{g:'π',t:'O Ônibus das 80 Escolas',
+ s:'Amostrópolis tem 80 escolas e 24.000 alunos, mas o ônibus da pesquisa só consegue parar em 10 escolas. Cada escola tem a mesma chance de ser sorteada: 10 ÷ 80 = 0,125. Se o ônibus observa todos os alunos das 10 escolas, esse 0,125 vale para cada aluno (é o π). Cada aluno que entra no estudo ganha um crachá: "eu represento 1 ÷ 0,125 = 8 alunos". Se, em vez de todos, o ônibus sorteia 30 alunos dentro de cada escola parada, são DOIS sorteios (dois estágios) e o total é 10 × 30 = 300 alunos.',
+ m:[['As 80 escolas','M conglomerados'],['As 10 paradas do ônibus','m sorteados (UPA)'],['Os alunos sorteados dentro da escola','USA, no 2º estágio'],['A chance 10 ÷ 80','π = m ÷ M'],['O crachá "represento 8 alunos"','peso w = 1 ÷ π'],['Observar todos ou só 30 por escola','um estágio ou dois estágios']],
+ f:'No plano de dois estágios o π de um aluno também depende do sorteio dentro da escola; aqui usamos a versão de um estágio, que é a cobrada.',
+ r:{q:'12.000 clientes, 40 agências, 8 agências sorteadas e todos os clientes delas entrevistados. Qual o π e o peso?',a:'π = 8 ÷ 40 = 0,20; w = 1 ÷ 0,2 = 5.'},
+ h:'π = m ÷ M (fatia das escolas sorteadas). w = 1 ÷ π (quantos cada um representa). Conte os sorteios para saber os estágios.'},
+L3:{g:'ρ',t:'O Eco do Mesmo Bairro',
+ s:'Você precisa de 180 opiniões e vai a 6 quarteirões de 30 casas. O 1º vizinho do quarteirão conta uma novidade. O 2º dá a mesma opinião com outras palavras. O 30º repete o que já se ouviu 29 vezes. Quanto mais parecidos os vizinhos (ρ alto), mais eco. A conta: deff = 1 + (30 − 1) × 0,05 = 2,45, e 180 ÷ 2,45 ≈ 73. Suas 180 entrevistas valem como 73 sorteadas direto da cidade. Para valer 500 de verdade, seriam 500 × 2,45 ≈ 1.225.',
+ m:[['Os vizinhos de um quarteirão','elementos de um conglomerado'],['O quanto eles se parecem','ρ (correlação intraclasse)'],['O eco crescendo com o tamanho do quarteirão','M̄ − 1 na fórmula do deff'],['180 entrevistas','n'],['73 opiniões "de verdade"','n_ef = n ÷ deff'],['Pagar mais entrevistas para compensar','n × deff']],
+ f:'Se os vizinhos fossem todos diferentes (ρ perto de 0), não haveria eco: deff ficaria perto de 1 e os conglomerados perderiam quase nada.',
+ r:{q:'n = 240, M̄ = 21 e ρ = 0,04. Qual o deff e o tamanho efetivo?',a:'deff = 1 + 20 × 0,04 = 1,8; n_ef = 240 ÷ 1,8 = 133 (arredonda para baixo).'},
+ h:'deff = 1 + (M̄ − 1)·ρ: quanto maior o grupo e mais parecidos os membros, mais eco. n_ef = n ÷ deff, PARA BAIXO.'},
+L4:{g:'±',t:'O Pescador e a Rede',
+ s:'Um peixe grande (μ) está parado num ponto do lago, e ninguém sabe onde. O pescador lança uma rede centrada no palpite x̄ e com raio E. A rede ou pegou o peixe ou não pegou: depois do lançamento não existe "95% de chance". Os 95% são da técnica: se ele lançar 100 redes com esse método, cerca de 95 pegam o peixe. Quer mais certeza? Usa uma rede maior (99%), que pega mais vezes, mas cobre mais lago e diz menos sobre onde o peixe está. Quer rede menor sem perder certeza? Precisa de mais informação (mais dados).',
+ m:[['O peixe parado','μ (fixo, desconhecido)'],['O centro da rede','x̄'],['O raio da rede','margem de erro E'],['A rede inteira','intervalo x̄ ± E'],['95 de 100 redes pegam','nível de confiança (do método)'],['Rede maior','mais confiança, intervalo mais largo']],
+ f:'Quem se mexe é a rede (o intervalo muda a cada amostra). O peixe (μ) nunca se move. É por isso que se diz "o intervalo contém μ" e nunca "μ cai no intervalo".',
+ r:{q:'Passando de 95% para 99% com os mesmos dados, a rede fica maior ou menor? E para estreitá-la sem perder confiança?',a:'Maior (mais larga). Para estreitar sem perder confiança, aumente n.'},
+ h:'Confiança é do MÉTODO (da técnica), não deste intervalo. Mais confiança = rede mais larga. Mais dados = rede mais estreita.'},
+L5:{g:'4×',t:'Quatro Pizzas para Metade do Erro',
+ s:'Uma pizzaria pesquisa 100 clientes e erra por ±4 pontos. O dono quer errar só ±2. Ele acha que dobrar para 200 resolve. Não resolve: como o erro cai com a raiz de n, para cortar pela metade ele precisa de 400. Quadruplicar a pesquisa para ganhar metade da precisão é o preço da raiz. Depois, a conta do mínimo dá 96,04 pessoas. Ele não pode pesquisar 0,04 de pessoa: sobe para 97, porque arredondar para baixo deixaria o erro maior que o combinado.',
+ m:[['±4 pontos, depois ±2','margem de erro E'],['100 para 400 clientes','n quadruplica para E cair pela metade'],['Raiz no erro','E ∝ 1 ÷ √n, logo n ∝ 1 ÷ E²'],['96,04 pessoas','n = (zc·σ ÷ E)²'],['Subir para 97','arredondar para CIMA']],
+ f:'A fórmula do tamanho supõe σ conhecido ou estimado antes. Sem essa estimativa, a conta fica sem ponto de partida.',
+ r:{q:'σ = 15, E = 3, 95%. Qual o n mínimo e por que se arredonda para cima?',a:'n = (1,96 × 15 ÷ 3)² = 96,04 → 97. Para baixo, o erro ficaria maior que E.'},
+ h:'Metade da margem = 4× os dados. n mínimo: sempre arredonda para CIMA.'},
+L6:{g:'t',t:'O Juiz z e a Estagiária t',
+ s:'O Juiz z conhece o desvio padrão verdadeiro σ e fala com firmeza: usa o 1,96 de sempre. Um dia ninguém sabe o σ, e entra a Estagiária t: ela só tem o s da própria amostra, e s também oscila de amostra para amostra. Como ela sabe que pode estar errando no s, pede uma margem maior (tc > zc). Com 12 casos, tc = 2,201 contra 1,96. Com 1.000 casos, o s é confiável e ela fala quase como o juiz. O "n − 1": se a média já está fixada, o último dado da lista não é livre, ele é refém dos outros.',
+ m:[['Juiz z','σ conhecido, usa zc'],['Estagiária t','só tem s, usa tc'],['A margem maior da estagiária','caudas mais pesadas da t'],['Poucos casos, mais insegurança','poucos g.l. = tc maior'],['Último dado refém','graus de liberdade = n − 1'],['1.000 casos','t se aproxima de z']],
+ f:'Ter n ≥ 30 NÃO promove a estagiária a juiz. Quem decide é saber ou não o σ.',
+ r:{q:'n = 16, s = 4, tc = 2,131. Qual a margem de erro?',a:'E = 2,131 × 4 ÷ √16 = 2,131.'},
+ h:'Só tem s? Estagiária t, com n − 1 graus de liberdade (mesmo com n ≥ 30). Tem σ? Juiz z.'},
+L7:{g:'½',t:'A Moeda e a Festa dos Cinco',
+ s:'Uma empresa quer saber a proporção de clientes satisfeitos e não tem palpite nenhum. A proporção p(1 − p) é maior quando p = 0,5, o ponto em que a moeda é mais imprevisível: é o pior caso e pede a maior amostra. Se ele planejar para esse pior caso, qualquer p real exigirá menos. Há um segundo cuidado: a aproximação normal é uma festa que só começa com pelo menos 5 aprovados e 5 reprovados na amostra. Com 2 aprovados em 30 pessoas, a festa nem abre.',
+ m:[['Cliente satisfeito ou não','variável de duas categorias'],['Moeda justa','p̂ = q̂ = 0,5 (pior caso)'],['Pior caso = maior amostra','n = p̂q̂ (zc ÷ E)²'],['5 convidados de cada lado','n·p̂ ≥ 5 e n·q̂ ≥ 5'],['Festa que não abre','IC normal não vale']],
+ f:'Se você já tem uma estimativa prévia de p, use-a: a amostra pedida será menor que a do pior caso.',
+ r:{q:'Sem estimativa prévia, E = 0,03 e 95%. Qual o n mínimo?',a:'0,25 × (1,96 ÷ 0,03)² = 1.067,11 → 1.068.'},
+ h:'Sem p prévio: use 0,5. Condição: n·p̂ ≥ 5 e n·q̂ ≥ 5.'},
+L8:{g:'χ²',t:'A Balança da Bagunça',
+ s:'Uma fábrica de parafusos não liga tanto para o diâmetro médio, e sim para a bagunça: parafusos de tamanhos muito diferentes não encaixam. Quando o enunciado grita "variação", "dispersão" ou "desvio padrão", entra a Balança da Bagunça (χ²). A bagunça é calculada com quadrados, então nunca é negativa e tem um limite embaixo (zero) mas não em cima: por isso a balança é torta (assimétrica). Em vez de um ±, ela dá dois números críticos diferentes. O MAIOR deles (R) divide e produz o limite de baixo. A balança só funciona com parafusos de distribuição normal, sem exceção.',
+ m:[['Bagunça dos parafusos','variância σ²'],['Balança torta','χ² assimétrico, só valores positivos'],['Dois pesos diferentes','χ²R e χ²L'],['O maior peso divide','χ²R no limite INFERIOR'],['Só com parafusos normais','exige população normal sempre']],
+ f:'Não existe margem de erro nem simetria: a estimativa s² não fica no meio do intervalo.',
+ r:{q:'n = 11, s = 2, χ²R = 18,307. Qual o limite inferior de σ²?',a:'(11 − 1) × 4 ÷ 18,307 = 40 ÷ 18,307 = 2,185.'},
+ h:'"Variação" → χ². O MAIOR crítico (R) fica embaixo e dá o limite INFERIOR. Sempre exige normal.'},
+L9:{g:'H0 · Ha',t:'O Réu e a Promotoria',
+ s:'Numa sala de tribunal, o Réu H0 diz o que se acredita até prova em contrário: "a vida útil média é de no máximo 18 anos". A Promotoria Ha tenta mostrar o contrário: "é superior a 18". Quem manda o primeiro golpe é o réu, e ele sempre tem o "=" na sua frase (≤, = ou ≥): é a única forma de saber o que calcular. A promotoria tem as desigualdades estritas (<, >, ≠). A amostra é a prova. O dedo da promotoria aponta para um lado: > aponta para a direita, < para a esquerda, ≠ para os dois.',
+ m:[['O réu','H0, sempre com a igualdade'],['A promotoria','Ha: <, > ou ≠'],['A prova','a amostra'],['O dedo da promotoria','tipo do teste (cauda)'],['"Pelo menos", "no máximo"','vão para H0 (têm igualdade)'],['"Mais de", "menos de"','vão para Ha (afirmação em Ha)']],
+ f:'No tribunal, a defesa ganha se a prova for fraca; aqui também: não rejeitar H0 não prova que ela é verdadeira.',
+ r:{q:'"A taxa de defeitos é de no máximo 2%." Qual o par H0 e Ha?',a:'H0: p ≤ 0,02 (afirmação) e Ha: p > 0,02, teste à direita.'},
+ h:'H0 tem sempre o "=" (≤, =, ≥). Ha é o complemento estrito (<, >, ≠) e aponta a cauda.'},
+L10:{g:'α β',t:'O Alarme de Incêndio',
+ s:'Um prédio tem um alarme. Tipo I: o alarme dispara sem fogo (você rejeitou um H0 verdadeiro); o α é a taxa de falsos alarmes que o síndico aceita. Tipo II: há fogo e o alarme dorme (você não rejeitou um H0 falso); essa é a probabilidade β. Se o síndico deixa o alarme menos sensível para evitar falsos alarmes (α menor), aumenta o fogo despercebido (β maior). Só um alarme melhor (mais dados) melhora os dois. O valor p mede o quanto o susto foi grande: p pequeno demais derruba o "foi só um susto" (p ≤ α rejeita H0).',
+ m:[['Alarme dispara sem fogo','erro tipo I (probabilidade α)'],['Fogo e alarme mudo','erro tipo II (probabilidade β)'],['Sensibilidade do alarme','nível de significância α'],['Quão grande foi o susto','valor p'],['Alarme melhor','mais dados (n maior)']],
+ f:'Tipo I e II dependem de qual hipótese é H0. Para decidir qual erro é mais grave, pergunte qual deles custa mais no problema (ex.: paraquedas).',
+ r:{q:'p = 0,03. Qual a decisão com α = 0,05 e com α = 0,01?',a:'Com 0,05 rejeita (0,03 ≤ 0,05). Com 0,01 não rejeita.'},
+ h:'p ≤ α rejeita H0 ("p baixo, H0 fora"). Tipo I = alarme falso. Tipo II = fogo sem alarme. Não rejeitar ≠ aceitar.'},
+L11:{g:'z',t:'A Linha Vermelha no Chão',
+ s:'Antes do julgamento, o juiz pinta no chão uma linha vermelha: o valor crítico. Para um teste à esquerda com α = 0,05 a linha fica em −1,645. Depois chega a prova: a estatística z, que conta quantos erros padrão a amostra está do que o réu alegou. O engenheiro que ganhava US$ 66.900 (contra 68.000 alegados) tem z = −0,89: o ponto não passou da linha, e a defesa se segura. Se tivesse caído em −2, passaria da linha e o réu cairia. A linha é pintada ANTES, sem olhar a prova: é o α em forma de lugar.',
+ m:[['A linha vermelha','valor crítico'],['A área além da linha','região de rejeição (α)'],['A prova que chega','estatística z = (x̄ − μ) ÷ (σ/√n)'],['Passou da linha','rejeita H0'],['Ficou antes da linha','não rejeita H0']],
+ f:'Passar da linha é só uma decisão sobre H0. A conclusão final deve ser escrita no contexto da afirmação (apoiar ou rejeitar).',
+ r:{q:'H0: μ ≥ 500; x̄ = 490, σ = 30, n = 36. Qual o z e qual a decisão com crítico −1,645?',a:'z = (490 − 500) ÷ 5 = −2; −2 < −1,645, então rejeita H0.'},
+ h:'z = (x̄ − μ) ÷ (σ/√n). Dentro da região de rejeição (passou da linha crítica) → rejeita H0.'},
+L12:{g:'z t χ²',t:'O Quarteto do Tribunal',
+ s:'O tribunal tem sempre o mesmo ritual de seis passos, mas quatro juízes diferentes. Para saber quem entra em cena, o oficial faz as perguntas do fluxograma, na ordem: "Querem julgar a bagunça?" Entra o χ². "É uma resposta de sim ou não?" Entra o z de proporção. "Alguém sabe o σ?" Se sim, z; se não, t. Depois ele confere as condições (normal, n ≥ 30, n·p ≥ 5). O juiz muda; o ritual (H0, Ha, α, crítico, estatística, decisão, conclusão) nunca muda.',
+ m:[['O ritual','os mesmos passos em todo teste'],['Juiz χ²','teste de variância: (n − 1)s² ÷ σ²'],['Juiz z de proporção','sim ou não: (p̂ − p) ÷ √(pq/n)'],['Juiz z','média com σ conhecido'],['Juiz t','média só com s, n − 1 g.l.']],
+ f:'A ordem do fluxograma importa: se o enunciado fala em variação, o χ² vem antes de qualquer pergunta sobre média.',
+ r:{q:'Teste de média, n = 25, x̄ = 103, s = 10, H0: μ = 100. Qual juiz e qual o valor?',a:'t (só tem s): t = 3 ÷ (10 ÷ 5) = 1,5, com 24 g.l.'},
+ h:'Mesmos passos. Troca só a estatística: z (σ conhecido), t (só s), z de proporção, χ² (variância).'}
+};
+const QSC={t17:'L12',t18:'L12',c1:'L1',c2:'L2',c3:'L1',c4:'L2',c5:'L3',c6:'L3',c7:'L2',c8:'L1',c9:'L3',c10:'L2',c11:'L1',i1:'L6',i2:'L5',i3:'L8',i4:'L7',i5:'L5',i6:'L5',i7:'L5',i8:'L4',i9:'L4',i10:'L7',i11:'L7',i12:'L4',i13:'L8',i14:'L8',i15:'L8',t1:'L9',t2:'L9',t3:'L9',t4:'L10',t5:'L10',t6:'L10',t7:'L11',t8:'L10',t9:'L12',t10:'L11',t11:'L10',t12:'L12',t13:'L12',t14:'L10',t15:'L12',t16:'L10'};
+
+/* ---------- DETETIVE DE MÉTODO (intercalado) ---------- */
+WORLDS.push({id:3,n:'INTERCALADO',name:'Detetive de método',desc:'Cenários misturados: qual distribuição ou plano de amostragem?'});
+const OPT4=['z (média, σ conhecido)','t de Student (média, só s)','z de proporção','χ² (variância ou desvio padrão)'];
+const OPTS=['Estratificada','Conglomerados em um estágio','Conglomerados em dois estágios','AAS (aleatória simples)'];
+const D=(id,q,o,a,ex)=>({id,w:3,q,o,a,ex});
+Q.push(
+ D('d1','Intervalo de confiança para o tempo médio de entrega. O histórico da empresa garante σ = 4 min. A amostra tem n = 50. Qual a estatística?',OPT4,0,'Parâmetro: média. Como σ é conhecido, usa-se z. O que decide é saber ou não o σ, e não o tamanho da amostra.'),
+ D('d2','Intervalo para o tempo médio de atendimento. Você só tem a amostra: n = 15, x̄ = 12 min, s = 3 min, população aproximadamente normal. Qual a estatística?',OPT4,1,'Média com σ desconhecido: t de Student com n − 1 = 14 graus de liberdade.'),
+ D('d3','Pesquisa com 800 clientes: 320 aprovam o novo serviço. Quer-se um intervalo para a taxa de aprovação. Qual a estatística?',OPT4,2,'Variável de duas categorias (aprova ou não): proporção, com z. Condições: n·p̂ = 320 e n·q̂ = 480, ambos ≥ 5.'),
+ D('d4','A máquina de enchimento precisa ser regular: o que importa é a VARIAÇÃO do peso. n = 21, s² = 0,36 g². Quer-se um intervalo para σ². Qual a estatística?',OPT4,3,'Dispersão (variância ou desvio padrão): χ² com n − 1 = 20 g.l. Exige população normal.'),
+ D('d5','Teste de hipótese: H0: μ = 500 g. O processo tem σ = 20 g conhecido de longa data e a amostra é n = 36. Qual a estatística do teste?',OPT4,0,'Média com σ conhecido: z = (x̄ − μ) ÷ (σ/√n).'),
+ D('d6','Teste: um site afirma carregar em no máximo 3 s, em média. Amostra: n = 12, x̄ = 3,4 s, s = 0,5 s, população normal. Qual a estatística do teste?',OPT4,1,'Média com σ desconhecido: t = (x̄ − μ) ÷ (s/√n), com 11 g.l.'),
+ D('d7','Teste: um candidato afirma ter pelo menos 40% dos votos. Pesquisa com 500 eleitores: 180 a favor. Qual a estatística do teste?',OPT4,2,'A afirmação é sobre uma fração (proporção): z de proporção. Aqui p̂ = 180 ÷ 500 = 0,36.'),
+ D('d8','Teste: o fabricante afirma que o desvio padrão da espessura é de no máximo 0,2 mm. Amostra: n = 25, s = 0,27 mm. Qual a estatística do teste?',OPT4,3,'Afirmação sobre desvio padrão (dispersão): χ². Trabalha-se com a variância: H0: σ² ≤ 0,04.'),
+ D('d9','Intervalo para o salário médio. Amostra grande: n = 200, s = R$ 800, e σ é desconhecido. Qual a estatística?',OPT4,1,'σ desconhecido: t de Student (199 g.l.). Com n grande o t fica quase igual ao z, mas a regra do fluxograma continua sendo t.'),
+ D('d10','Controle de qualidade: 12 de 400 peças saíram defeituosas. Intervalo para a taxa de defeitos. Qual a estatística?',OPT4,2,'Defeituosa ou não: proporção, com z. n·p̂ = 12 ≥ 5 e n·q̂ = 388 ≥ 5, então a condição vale.'),
+ D('d11','Teste: alegam que a variância do tempo de reação é MAIOR que 9 s². Amostra: n = 18, s² = 13. Qual a estatística do teste?',OPT4,3,'Afirmação sobre variância: χ² = (n − 1)s² ÷ σ0², com 17 g.l.'),
+ D('d12','Teste: H0: μ ≥ 170 cm. A norma antropométrica diz σ = 7 cm. Amostra: n = 40. Qual a estatística do teste?',OPT4,0,'Média com σ conhecido: z.'),
+ D('d13','Uma rede tem 30 lojas. Sorteiam-se 5 lojas e entrevistam-se todos os clientes presentes nelas no dia. Qual o plano?',OPTS,1,'Sorteio de grupos (lojas) e observação de todos dentro deles: conglomerados em um estágio.'),
+ D('d14','A universidade separa os alunos por curso (4 cursos) e sorteia 50 alunos de CADA curso. Qual o plano?',OPTS,0,'Todos os grupos entram e o sorteio é feito dentro de cada um: estratificada.'),
+ D('d15','Sorteiam-se 12 bairros e, dentro de cada um, sorteiam-se 30 domicílios. Qual o plano?',OPTS,2,'Dois sorteios em sequência (bairros, depois domicílios): conglomerados em dois estágios, com n = 12 × 30 = 360.'),
+ D('d16','Há a lista completa dos 5.000 funcionários e sorteiam-se 300 nomes diretamente dela, sem agrupar. Qual o plano?',OPTS,3,'Lista dos elementos e sorteio direto: AAS.'),
+ D('d17','Homens e mulheres respondem de forma muito diferente, e você quer garantir que os dois grupos estejam representados na amostra. Qual o plano?',OPTS,0,'Grupos diferentes entre si e parecidos por dentro, todos presentes: estratificada. Busca precisão.'),
+ D('d18','Não existe lista de moradores da cidade, só um mapa dividido em 200 quadras. Você sorteia quadras e entrevista todos os moradores das sorteadas. Qual o plano?',OPTS,1,'Sem lista de elementos, usa-se o grupo (quadra = UPA) e observam-se todos dentro dele: conglomerados em um estágio. Troca precisão por viabilidade.')
+);
+Object.assign(QSC,{d1:'L5',d2:'L6',d3:'L7',d4:'L8',d5:'L11',d6:'L12',d7:'L12',d8:'L12',d9:'L6',d10:'L7',d11:'L12',d12:'L11',d13:'L1',d14:'L1',d15:'L2',d16:'L1',d17:'L1',d18:'L1'});
+
+const GLOSS={"populacao": {"t": "População", "c": "Base", "l": "L0", "al": ["população", "populações"], "s": "O grupo inteiro sobre o qual você quer concluir algo: todos os clientes, todos os parafusos produzidos.", "why": "A estatística existe porque quase nunca dá para medir todo mundo: é caro, demorado ou até impossível (testar um parafuso até quebrar destrói o parafuso). A população é a pergunta que você quer responder. A amostra é o que dá para fazer na prática.", "use": "Antes de qualquer conta, diga com palavras quem é a população. Todo resultado só vale para ela.", "ex": "Quer saber a satisfação dos 12.000 clientes de um banco: a população são os 12.000.", "err": "Concluir sobre um grupo diferente do que foi sorteado (amostrar alunos de uma escola e falar de todas as escolas do país).", "see": ["amostra", "parametro"]}, "amostra": {"t": "Amostra", "c": "Base", "l": "L0", "al": ["amostra", "amostras"], "s": "A parte da população que você realmente observa.", "why": "Sua amostra é só uma entre muitas possíveis. Outra amostra daria números um pouco diferentes. Todos os intervalos e testes servem para medir e controlar essa incerteza causada pelo sorteio.", "use": "Precisa ser sorteada (aleatória), senão não dá para calcular o tamanho da incerteza.", "ex": "400 clientes sorteados entre 12.000.", "err": "Achar que uma amostra grande escolhida a dedo é boa. O sorteio importa mais que o tamanho.", "see": ["populacao", "estatistica", "aas"]}, "parametro": {"t": "Parâmetro", "c": "Base", "l": "L0", "al": ["parâmetro", "parâmetros"], "s": "Um número que descreve a **população inteira**: a média μ, o desvio padrão σ, a proporção p. Quase sempre é desconhecido.", "why": "É o \"valor verdadeiro\" que você quer descobrir. Usa letra grega para lembrar que é o valor ideal, que ninguém chega a ver.", "use": "Intervalos e testes são sempre sobre parâmetros, nunca sobre estatísticas: você estima μ, não x̄.", "ex": "μ = tempo médio de espera de todos os clientes.", "err": "Escrever \"H0: x̄ = 50\". Hipóteses falam do parâmetro (μ), não da média da amostra.", "see": ["estatistica", "populacao"]}, "estatistica": {"t": "Estatística (número da amostra)", "c": "Base", "l": "L0", "al": ["estatística", "estatísticas"], "s": "Um número calculado com a **amostra**: x̄, s, p̂. É o que você consegue ver.", "why": "Como a amostra muda a cada sorteio, a estatística também muda. Ela funciona como um palpite para o parâmetro. O quanto ela costuma variar de amostra para amostra é o erro padrão.", "use": "Use a estatística para estimar o parâmetro (intervalo) ou para julgar uma afirmação sobre ele (teste).", "ex": "x̄ = 106 numa amostra, enquanto μ real é desconhecido.", "err": "Usar s quando o enunciado dá σ (ou o contrário). Letra grega = população, letra latina = amostra.", "see": ["parametro", "erro-padrao"]}, "media": {"t": "Média", "c": "Base", "l": "L0", "al": [], "s": "A soma dos valores dividida pela quantidade: o ponto de equilíbrio dos dados.", "why": "Resume tudo num número típico. E tem uma propriedade valiosa: a média de muitas observações varia menos que uma observação isolada, porque os valores altos e baixos se compensam. É daí que vem o erro padrão.", "use": "Use para variáveis numéricas (tempo, peso, salário).", "ex": "5, 7 e 9 têm média 7.", "err": "Esquecer que um valor extremo puxa a média.", "see": ["desvio", "erro-padrao"]}, "desvio": {"t": "Desvio padrão", "c": "Base", "l": "L0", "al": ["desvio padrão", "desvios padrão", "desvio-padrão"], "s": "O quanto os valores costumam se afastar da média. Tem a mesma unidade dos dados.", "why": "Só a média não diz se os dados são parecidos (todos perto de 50) ou espalhados (de 0 a 100). O desvio padrão mede esse espalhamento. E ele é a matéria-prima do erro padrão: dados mais espalhados dão estimativas mais incertas.", "use": "σ é o da população; s é o da amostra. Quando o enunciado diz \"σ conhecido\", isso decide entre z e t.", "ex": "Tempos de 10 e 50 min (média 30) têm desvio maior que 28 e 32 (mesma média).", "err": "Confundir desvio padrão (espalhamento dos dados) com erro padrão (espalhamento da média).", "see": ["variancia", "erro-padrao"]}, "variancia": {"t": "Variância", "c": "Base", "l": "L8", "al": ["variância", "variâncias", "σ²"], "s": "O desvio padrão elevado ao quadrado: σ² (população) ou s² (amostra).", "why": "Elevar ao quadrado impede que desvios para cima e para baixo se cancelem e dá mais peso aos afastamentos grandes. As contas de dispersão se encaixam melhor na variância, e por isso a distribuição χ² trabalha com ela.", "use": "Intervalos e testes de dispersão usam χ² com s². Se o enunciado falar em desvio padrão, eleve ao quadrado.", "ex": "σ = 0,2 mm → σ² = 0,04 mm².", "err": "Esquecer de elevar o desvio da afirmação ao quadrado (H0: σ ≤ 0,2 vira σ² ≤ 0,04).", "see": ["quiquad", "desvio"]}, "erro-padrao": {"t": "Erro padrão", "c": "Base", "l": "L0", "al": ["erro padrão", "erros padrão", "erro-padrão"], "s": "O quanto a **média de uma amostra** costuma variar de um sorteio para outro: **σ ÷ √n**.", "why": "Imagine medir sua altura 100 vezes com uma régua imprecisa. Cada medida erra um pouco para cima ou para baixo, e ao tirar a média os erros se cancelam em parte. Quanto mais medidas, mais cancelamento e mais estável a média. Os erros não se somam em linha reta, eles se compensam, e por isso o encolhimento acompanha a **raiz** de n, e não o próprio n. É por isso que 4 vezes mais dados só cortam o erro **pela metade** (√4 = 2): cada dado novo ajuda um pouco menos que o anterior. E o σ fica em cima porque dados mais espalhados dão uma média mais instável.", "use": "É a \"régua\" de tudo o que vem depois: a margem de erro é o valor crítico × erro padrão, e o z do teste é a diferença dividida pelo erro padrão. Quando σ é desconhecido, troca-se σ por s.", "ex": "σ = 12 e n = 36 → 12 ÷ 6 = 2. Com n = 144, 12 ÷ 12 = 1: quadruplicou os dados, o erro caiu pela metade.", "err": "Confundir com o desvio padrão dos dados. Desvio padrão: espalhamento dos dados. Erro padrão: espalhamento da média.", "see": ["desvio", "media", "z", "margem"]}, "z": {"t": "Escore z", "c": "Base", "l": "L0", "al": ["escore z", "valor de z", "valor z"], "s": "Quantos **erros padrão** a média da amostra está da média esperada: **z = (x̄ − μ) ÷ (σ/√n)**.", "why": "Uma diferença de 6 pontos pode ser enorme ou irrelevante, dependendo do quanto as médias costumam variar. Dividir pelo erro padrão troca a unidade: \"6 pontos\" vira \"3 erros padrão\". Aí dá para comparar com a curva normal padrão, que é a mesma para qualquer problema, não importa se é peso, tempo ou dinheiro.", "use": "Perto de 0: amostra comum. Além de uns ±2: amostra incomum. No teste, compara-se o z com o valor crítico.", "ex": "x̄ = 106, μ = 100, erro padrão 2 → z = 3: a média da amostra está 3 erros padrão acima do esperado.", "err": "Dividir só por σ e esquecer o √n. O denominador é o erro padrão.", "see": ["erro-padrao", "normal", "valor-critico"]}, "normal": {"t": "Curva normal e tabela", "c": "Base", "l": "L0", "al": ["curva normal", "distribuição normal", "normal padrão", "tabela da normal"], "s": "A curva em forma de sino, simétrica, que descreve como as médias e os erros costumam se distribuir. A tabela dá a **área à esquerda** de cada z.", "why": "Quando muitos pequenos efeitos independentes se somam, o resultado tende a esse sino (veja o Teorema central do limite). Como o sino tem formato conhecido, dá para afirmar exatamente que 95% da área fica entre −1,96 e +1,96.", "use": "Marcos para guardar: 1,645 (5% numa cauda), 1,96 (2,5% numa cauda), 2,576 (0,5% numa cauda). É simétrica: o que vale para +z vale para −z.", "ex": "Área à esquerda de 1,96 = 0,975.", "err": "Ler a tabela como a área central. Ela dá a área à esquerda.", "see": ["z", "valor-critico", "tcl"]}, "tcl": {"t": "Teorema central do limite", "c": "Base", "l": "L5", "al": ["teorema central do limite"], "s": "Com amostras grandes, a **média da amostra** tem distribuição aproximadamente normal, mesmo que os dados originais não sejam normais.", "why": "A média é uma soma (dividida por n) de muitos pequenos efeitos independentes, e somas assim tendem ao sino, qualquer que seja a forma original. É por isso que o curso pede \"população normal **ou** n ≥ 30\": com n grande o teorema socorre; com n pequeno os dados precisam ser normais desde o início.", "use": "Condição para z e t na média: população normal ou n ≥ 30. Para variância (χ²) ele **não** ajuda: a população precisa ser normal sempre.", "ex": "", "err": "Achar que n ≥ 30 dispensa a normalidade no teste de variância.", "see": ["normal", "quiquad"]}, "aas": {"t": "Amostragem aleatória simples (AAS)", "c": "Amostragem", "l": "L1", "al": ["AAS", "amostragem aleatória simples"], "s": "Todo elemento tem a mesma chance de entrar e você tem a lista completa da população.", "why": "É o padrão-ouro: com sorteio puro dá para calcular o erro com as fórmulas básicas. Quase nunca é viável, porque exige a lista de todos e visitar elementos espalhados. Por isso existem a estratificada e os conglomerados.", "use": "É a referência de comparação: o deff compara um plano com uma AAS do mesmo tamanho.", "ex": "Sortear 300 nomes diretamente de uma lista de 5.000 funcionários.", "err": "Chamar de AAS um plano que sorteia grupos.", "see": ["conglomerado", "estratificada", "deff"]}, "conglomerado": {"t": "Conglomerado", "c": "Amostragem", "l": "L1", "al": ["conglomerado", "conglomerados"], "s": "Um grupo natural de elementos (uma escola, uma agência, uma quadra) usado como unidade de sorteio.", "why": "Muitas vezes não existe lista dos elementos, só dos grupos, e visitar elementos espalhados custa caro. Sorteando grupos inteiros, a lista de elementos só é necessária dentro dos grupos sorteados e o trabalho de campo fica mais barato. O preço: elementos do mesmo grupo se parecem, então cada observação traz menos informação nova (deff > 1).", "use": "Sorteiam-se os grupos e só os sorteados entram. Funciona melhor quando os grupos são variados por dentro e parecidos entre si.", "ex": "400 escolas: sorteiam-se 10 e entrevistam-se todos os alunos delas.", "err": "Confundir com estratificada. Conglomerados: nem todos os grupos entram.", "see": ["estratificada", "upa", "deff"]}, "estratificada": {"t": "Amostragem estratificada", "c": "Amostragem", "l": "L1", "al": ["estratificada", "amostragem estratificada", "estrato", "estratos"], "s": "Divide a população em grupos (estratos) e sorteia dentro de **todos** eles.", "why": "Quando os grupos são muito diferentes entre si, uma AAS pode, por azar, sub-representar um deles. Forçando a presença de todos, essa fonte de variação desaparece e a estimativa fica mais precisa. Funciona melhor quando cada estrato é parecido por dentro.", "use": "Todos os estratos entram e o sorteio é dentro de cada um. O objetivo é precisão. Contraste: conglomerados sorteiam grupos; estratificada sorteia dentro de todos os grupos.", "ex": "4 cursos, 50 alunos sorteados em cada um.", "err": "Inverter as duas: estratificada = todos os grupos entram; conglomerados = só os sorteados.", "see": ["conglomerado", "aas"]}, "upa": {"t": "UPA e USA", "c": "Amostragem", "l": "L2", "al": ["UPA", "USA", "unidade primária de amostragem"], "s": "UPA: unidade primária de amostragem, o conglomerado sorteado no 1º estágio. USA: unidade secundária, o elemento sorteado dentro dele no 2º estágio.", "why": "São só nomes para as camadas do sorteio: primeiro sorteia-se o grupo (primário), depois o que há dentro dele (secundário). Os nomes ajudam a perguntar \"em que etapa estou?\".", "use": "Enunciado com \"escolas e depois alunos\": UPA = escola, USA = aluno.", "ex": "12 bairros e 30 domicílios por bairro: UPA = bairro, USA = domicílio.", "err": "Trocar as duas siglas.", "see": ["estagio", "conglomerado"]}, "estagio": {"t": "Estágio", "c": "Amostragem", "l": "L2", "al": ["estágio", "estágios"], "s": "Cada etapa de sorteio. **Um estágio**: sorteiam-se grupos e observam-se todos dentro deles. **Dois estágios**: sorteiam-se grupos e depois elementos dentro deles.", "why": "Observar todos os elementos de um grupo grande custa caro e repete informação (eles são parecidos). Sortear só parte deles no segundo estágio economiza e perde pouco.", "use": "Conte os sorteios do enunciado. Em dois estágios, com m grupos e k elementos por grupo, n = m × k.", "ex": "20 setores e 50 moradores em cada: dois estágios, n = 20 × 50 = 1.000.", "err": "Somar em vez de multiplicar (20 + 50 no lugar de 20 × 50).", "see": ["upa", "pi"]}, "pi": {"t": "Probabilidade de inclusão (π)", "c": "Amostragem", "l": "L2", "al": ["probabilidade de inclusão"], "s": "A chance de um elemento da população entrar na amostra. Em um estágio, **π = m ÷ M**.", "why": "Se você sorteia m dos M grupos e todos os elementos de um grupo entram juntos, a chance de um elemento entrar é a chance do grupo dele ser sorteado: m ÷ M. Saber π permite compensar o plano na hora de estimar, por meio do peso.", "use": "Conta direta: m (grupos sorteados) ÷ M (grupos existentes).", "ex": "8 de 40 agências → π = 0,20.", "err": "Usar o número de elementos (N) no lugar do número de grupos (M).", "see": ["peso", "conglomerado"]}, "peso": {"t": "Peso amostral (w)", "c": "Amostragem", "l": "L2", "al": ["peso amostral"], "s": "Quantos elementos da população cada elemento da amostra representa: **w = 1 ÷ π**.", "why": "Se cada elemento tinha 1 chance em 5 de ser escolhido (π = 0,2), ele \"fala por\" 5 elementos. Quem tinha menos chance de entrar precisa de peso maior para a amostra refletir a população.", "use": "Multiplica cada observação pelo seu peso ao estimar totais.", "ex": "π = 0,20 → w = 5.", "err": "Usar w = π em vez de w = 1 ÷ π.", "see": ["pi"]}, "deff": {"t": "Efeito do delineamento (deff)", "c": "Amostragem", "l": "L3", "al": ["deff", "efeito do delineamento"], "s": "Quantas vezes a variância do plano por conglomerados é maior que a de uma AAS do mesmo tamanho: **deff = 1 + (M̄ − 1) × ρ**.", "why": "Se os elementos de um grupo são parecidos (ρ alto) e os grupos são grandes (M̄ alto), cada elemento extra traz quase nada de novo e a variância infla. A fórmula aponta os dois culpados: o tamanho do grupo e o quanto o grupo é parecido por dentro.", "use": "Compare com 1. deff > 1 significa menos preciso que a AAS.", "ex": "M̄ = 30 e ρ = 0,05 → deff = 1 + 29 × 0,05 = 2,45.", "err": "Esquecer de subtrair 1 de M̄ na fórmula.", "see": ["rho", "nef"]}, "rho": {"t": "Correlação intraclasse (ρ)", "c": "Amostragem", "l": "L3", "al": [], "s": "Mede o quanto os elementos de um mesmo grupo se parecem entre si. Perto de 0: grupo variado por dentro. Maior: elementos parecidos.", "why": "É a medida do \"quanto cada novo elemento do mesmo grupo repete o que eu já sei\". Se todos os alunos da escola são muito parecidos, ρ é alto e o 30º aluno é quase redundante.", "use": "Entra na fórmula do deff.", "ex": "ρ = 0,05: um pouco de semelhança dentro do grupo.", "err": "", "see": ["deff"]}, "nef": {"t": "Tamanho efetivo", "c": "Amostragem", "l": "L3", "al": ["tamanho efetivo", "n_ef"], "s": "O tamanho de uma AAS que daria a mesma precisão: **n_ef = n ÷ deff**.", "why": "Traduz a perda de precisão para algo concreto: \"meus 180 entrevistados valem como 73 sorteados diretamente\".", "use": "Arredonde para baixo. Para igualar uma AAS de tamanho n, precisa de n × deff observações em conglomerados.", "ex": "n = 180, deff = 2,45 → n_ef = 73.", "err": "Multiplicar quando deveria dividir (ou o contrário).", "see": ["deff"]}, "confianca": {"t": "Nível de confiança", "c": "Intervalos", "l": "L4", "al": ["nível de confiança", "confiança"], "s": "A porcentagem de vezes que o **método** de construir o intervalo acerta o parâmetro, se repetido muitas vezes.", "why": "A confiança é uma propriedade do método, não de um intervalo específico: depois de calculado, o intervalo contém μ ou não contém. É como um atirador que acerta 95% dos tiros. Antes de atirar há 95% de chance, e depois o tiro já acertou ou errou. Mais confiança exige um intervalo mais largo, que é o preço de errar menos.", "use": "Escolhe-se a confiança (90%, 95%, 99%) e ela define o valor crítico.", "ex": "95% de confiança: de cada 100 pesquisas feitas assim, cerca de 95 intervalos pegam μ.", "err": "Dizer \"há 95% de chance de μ estar neste intervalo\".", "see": ["ic", "valor-critico"]}, "ic": {"t": "Intervalo de confiança (IC)", "c": "Intervalos", "l": "L4", "al": ["intervalo de confiança", "intervalos de confiança", "IC"], "s": "Uma faixa de valores plausíveis para o parâmetro: **estimativa ± margem de erro**.", "why": "Um número único (x̄) quase nunca acerta μ exatamente. A faixa admite a incerteza do sorteio: o tamanho dela vem do erro padrão e da confiança escolhida.", "use": "Receita: (1) escolha a distribuição pelo fluxograma, (2) ache o valor crítico, (3) calcule E, (4) monte x̄ − E < μ < x̄ + E.", "ex": "x̄ = 8,4 e E = 0,77 → 7,63 < μ < 9,17.", "err": "Interpretar como \"95% dos dados estão no intervalo\".", "see": ["confianca", "margem"]}, "margem": {"t": "Margem de erro (E)", "c": "Intervalos", "l": "L5", "al": ["margem de erro"], "s": "Metade da largura do intervalo: o quanto você aceita errar para mais ou para menos. **E = valor crítico × erro padrão**.", "why": "Une duas peças: o valor crítico diz o quão confiante você quer ser; o erro padrão diz o quão instável é sua média. O produto dos dois é o \"colchão\" de incerteza.", "use": "Três alavancas: mais confiança aumenta E; mais dados diminuem E; mais variação aumenta E.", "ex": "IC (111,7 ; 118,3) → E = (118,3 − 111,7) ÷ 2 = 3,3.", "err": "Confundir margem de erro com erro padrão.", "see": ["erro-padrao", "valor-critico", "ic"]}, "valor-critico": {"t": "Valor crítico", "c": "Intervalos", "l": "L0", "al": ["valor crítico", "valores críticos", "zc", "tc", "crítico"], "s": "O valor de z (ou t, χ²) que marca o limite: o quão longe na curva você vai para fechar o intervalo ou para cair na região de rejeição.", "why": "Ele traduz a confiança em um número da curva. Para 95%, queremos deixar 2,5% em cada cauda, e na normal isso acontece em ±1,96. Mais confiança exige ir mais longe na curva (2,576 para 99%), e por isso o intervalo fica mais largo.", "use": "No intervalo é o zc (ou tc). No teste é a linha: passou dela, rejeita H0.", "ex": "90% → 1,645; 95% → 1,96; 99% → 2,576.", "err": "Usar o crítico de uma cauda num teste bilateral (ou o contrário).", "see": ["normal", "confianca", "regiao"]}, "t": {"t": "Distribuição t de Student", "c": "Intervalos", "l": "L6", "al": ["distribuição t", "t de Student", "t-Student"], "s": "Uma curva parecida com a normal, mas com **caudas mais pesadas**, usada para a média quando só se conhece s.", "why": "Ao trocar σ (desconhecido) por s (estimado na amostra), entra uma incerteza extra: s também varia de amostra para amostra, principalmente quando a amostra é pequena. A curva t foi criada para pagar essa incerteza: caudas mais pesadas fazem o valor crítico crescer e o intervalo ficar mais largo. Com n grande, s fica confiável e a t se aproxima da z.", "use": "σ desconhecido → t com n − 1 graus de liberdade.", "ex": "n = 16, 95% → tc = 2,131, maior que o 1,96 da z.", "err": "Usar z só porque n é grande, quando o enunciado não dá σ.", "see": ["gl", "z", "estatistica"]}, "gl": {"t": "Graus de liberdade", "c": "Intervalos", "l": "L6", "al": ["graus de liberdade", "g.l."], "s": "Quantos valores da amostra ainda podem variar livremente depois de calcular x̄. Para uma média, **g.l. = n − 1**.", "why": "Para calcular s você usa x̄, que já \"gastou\" um pedaço da informação: se você conhece x̄ e n − 1 valores, o último fica determinado. Por isso conta-se n − 1. Menos graus de liberdade significam estimativa menos confiável, e a curva t fica mais pesada.", "use": "Serve para escolher a linha da tabela t ou χ².", "ex": "n = 12 → 11 g.l.", "err": "Entrar na tabela com n em vez de n − 1.", "see": ["t", "quiquad"]}, "proporcao": {"t": "Proporção", "c": "Intervalos", "l": "L7", "al": ["proporção", "proporções"], "s": "A fração de elementos que têm uma característica (sim ou não). **p** na população, **p̂** na amostra.", "why": "Cada elemento é \"sim\" (1) ou \"não\" (0). A proporção é só a média desses uns e zeros, então o mesmo raciocínio da média vale: aparece um erro padrão e a curva normal. A diferença é que a variação vem de p(1 − p): num sim ou não, o espalhamento é determinado pela própria proporção.", "use": "Variável de duas categorias. Condição: n·p̂ ≥ 5 e n·q̂ ≥ 5 (q̂ = 1 − p̂). Sem estimativa prévia, use p̂ = 0,5: é o pior caso, o que dá o maior n.", "ex": "372 de 1.000 → p̂ = 0,372.", "err": "Esquecer o q̂ = 1 − p̂ na fórmula.", "see": ["estatistica", "normal"]}, "quiquad": {"t": "Qui-quadrado (χ²)", "c": "Intervalos", "l": "L8", "al": ["qui-quadrado", "χ²"], "s": "Uma distribuição usada para **variância e desvio padrão**. Só tem valores positivos e não é simétrica.", "why": "A variância é uma soma de quadrados, por isso nunca é negativa e é puxada para a direita. A normal, simétrica, não serve. O χ² é a distribuição certa para (n − 1)s² ÷ σ². Como é assimétrica, o intervalo usa dois valores críticos diferentes (um da direita e outro da esquerda) e não um \"±\".", "use": "Dispersão → χ² com n − 1 graus de liberdade. Exige população normal. No IC, o limite inferior divide pelo χ² da direita.", "ex": "(n − 1)s² = 40 e χ²_R = 18,307 → limite inferior = 2,185.", "err": "Usar ± como na normal.", "see": ["variancia", "gl"]}, "h0": {"t": "Hipótese nula (H0)", "c": "Testes", "l": "L9", "al": ["hipótese nula", "H0"], "s": "A afirmação \"de partida\", que só é derrubada se a amostra trouxer evidência forte contra ela. **Sempre contém a igualdade** (=, ≤ ou ≥).", "why": "O teste funciona como um tribunal: começa-se presumindo inocência (H0) e só se condena se as provas (a amostra) forem fortes. Para calcular probabilidades é preciso um valor exato com que comparar, e só a igualdade fornece esse valor. Por isso H0 sempre tem o \"=\".", "use": "Traduza a afirmação do enunciado com a tabela das palavras e coloque o \"=\" em H0.", "ex": "\"No máximo 1%\" → H0: p ≤ 0,01.", "err": "Colocar desigualdade estrita (< ou >) em H0.", "see": ["ha", "valorp"]}, "ha": {"t": "Hipótese alternativa (Ha)", "c": "Testes", "l": "L9", "al": ["hipótese alternativa", "Ha"], "s": "O que você concluirá se rejeitar H0: o complemento dela, com <, > ou ≠.", "why": "É a \"tese da acusação\": só é aceita se a evidência for convincente. O sinal de Ha define o tipo de teste: ≠ é bilateral, < é unilateral à esquerda, > é unilateral à direita.", "use": "Quando a afirmação do enunciado é \"mais de\" ou \"menos de\", ela está em Ha.", "ex": "\"A duração média é superior a 6 h\" → Ha: μ > 6.", "err": "Esquecer que a afirmação pode estar em H0 ou em Ha, e isso muda a redação da conclusão.", "see": ["h0", "unilateral"]}, "tipo1": {"t": "Erro tipo I", "c": "Testes", "l": "L10", "al": ["erro tipo I", "tipo I"], "s": "Rejeitar H0 quando ela é **verdadeira**: um alarme falso. A probabilidade máxima é α.", "why": "Decidimos com base numa amostra, e às vezes o sorteio dá azar e parece que H0 é falsa. O α é o risco que aceitamos correr. No tribunal: condenar um inocente.", "use": "Quem escolhe o risco é você, antes de ver os dados.", "ex": "Concluir que a taxa de falha passa de 1% quando, na verdade, não passa.", "err": "Trocar com o tipo II.", "see": ["alfa", "tipo2"]}, "tipo2": {"t": "Erro tipo II", "c": "Testes", "l": "L10", "al": ["erro tipo II", "tipo II", "β"], "s": "Não rejeitar H0 quando ela é **falsa**: o alarme não toca. A probabilidade é β.", "why": "Se o efeito real é pequeno ou a amostra é pequena, a amostra não consegue distinguir H0 da realidade. No tribunal: absolver um culpado.", "use": "α e β se opõem: diminuir α aumenta β. Só aumentar n reduz os dois ao mesmo tempo.", "ex": "Paraquedas ruins seguem em uso porque o teste não percebeu o problema.", "err": "Achar que \"não rejeitar H0\" prova que H0 é verdadeira.", "see": ["alfa", "tipo1"]}, "alfa": {"t": "Nível de significância (α)", "c": "Testes", "l": "L10", "al": ["nível de significância", "significância", "α"], "s": "A probabilidade máxima de erro tipo I que você aceita. Valores usuais: 0,10, 0,05 e 0,01.", "why": "Define o quão forte a prova precisa ser para derrubar H0: com α = 0,05, só se rejeita H0 se a amostra for tão extrema que apareceria em no máximo 5% das amostras caso H0 fosse verdadeira. Diminuir α protege do alarme falso, mas exigir prova mais forte deixa escapar mais casos: β aumenta.", "use": "É escolhido antes de ver os dados. Compare p com α: p ≤ α rejeita H0.", "ex": "α = 0,05 → 5% de risco de alarme falso.", "err": "Escolher α depois de ver o resultado.", "see": ["tipo1", "valorp"]}, "valorp": {"t": "Valor p", "c": "Testes", "l": "L10", "al": ["valor p", "valor-p"], "s": "A probabilidade de obter uma amostra tão extrema quanto a observada (ou mais), **supondo que H0 seja verdadeira**.", "why": "Responde: \"se H0 fosse mesmo verdadeira, quão surpreendente seria o que eu vi?\". p pequeno quer dizer muito surpreendente, então é razoável duvidar de H0. A regra p ≤ α só diz que a surpresa passou do limite que você tinha definido.", "use": "p ≤ α rejeita H0. No teste bilateral, p é o dobro da área da cauda.", "ex": "p = 0,03: rejeita com α = 0,05, não rejeita com α = 0,01.", "err": "Ler o p como a probabilidade de H0 ser verdadeira. Não é.", "see": ["h0", "alfa"]}, "regiao": {"t": "Região de rejeição", "c": "Testes", "l": "L11", "al": ["região de rejeição"], "s": "Os valores da estatística que levam a rejeitar H0, delimitados pelo valor crítico.", "why": "É a \"linha vermelha no chão\", desenhada antes do julgamento: se a estatística passar dela, a amostra é extrema demais para combinar com H0. Fica na cauda indicada por Ha.", "use": "Calcule a estatística e veja se ela caiu dentro da região. Dentro: rejeita H0.", "ex": "Teste à esquerda com crítico −1,645: z = −2 cai na região, então rejeita H0.", "err": "Esquecer o sinal do crítico.", "see": ["valor-critico", "unilateral"]}, "unilateral": {"t": "Teste unilateral e bilateral", "c": "Testes", "l": "L9", "al": ["unilateral", "bilateral", "unilaterais"], "s": "Unilateral: a região de rejeição fica em **uma** cauda (Ha com < ou >). Bilateral: nas **duas** (Ha com ≠).", "why": "Se a afirmação só se importa com \"maior\" ou \"menor\", só um lado contradiz H0. Com ≠, tanto o muito alto quanto o muito baixo contradizem H0, então o α se divide em duas caudas (α/2 em cada) e o crítico fica mais exigente.", "use": "< é esquerda; > é direita; ≠ são as duas. No bilateral, o valor p dobra.", "ex": "Ha: μ ≠ 100 → bilateral.", "err": "Usar o crítico de uma cauda num teste bilateral.", "see": ["ha", "regiao", "valorp"]}};
+/* ---------- ESTADO ---------- */
+let SAVE={xp:0,best:{},wrong:[],done:[],run:null,lesson:null,boss:null,mem:{},hc:[],cal:{g:[0,0],a:[0,0],c:[0,0]},cfg:{think:true,conf:true},day:null,labk:{},labn:0};
+try{const s=localStorage.getItem('missao-amostra-v1');if(s)SAVE=Object.assign(SAVE,JSON.parse(s));SAVE.cfg=Object.assign({think:true,conf:true},SAVE.cfg||{})}catch(e){}
+function serRun(r){return{cal:r.cal||null,mode:r.mode,i:r.i,hearts:r.hearts,xp:r.xp,streak:r.streak,first:r.first,firstOk:r.firstOk,by:r.by,missed:r.missed.map(q=>q.id),queue:r.queue.map(x=>({id:x.q.id,rev:x.rev,view:x.view||null}))}}
+function desRun(d){const m={};Q.forEach(q=>m[q.id]=q);return Object.assign({},d,{cal:d.cal||{g:[0,0],a:[0,0],c:[0,0]},queue:d.queue.filter(x=>m[x.id]).map(x=>({q:m[x.id],rev:x.rev,view:x.view||null})),missed:d.missed.map(id=>m[id]).filter(Boolean),done:false})}
+function persist(){try{if(run&&run.queue&&!run.done)SAVE.run=serRun(run);localStorage.setItem('missao-amostra-v1',JSON.stringify(SAVE))}catch(e){}}
+function navRow(canPrev){return`<div class="row" style="justify-content:space-between;margin-bottom:12px"><button class="btn ghost sm" id="prev" ${canPrev?'':'disabled'}>← Anterior</button><button class="btn ghost sm" id="sx">Salvar e sair</button></div>`}
+let run=null;
+const $=s=>document.querySelector(s);
+const app=$('#app');
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function lvl(){const L=Math.floor(SAVE.xp/100);return{n:LEVELS[Math.min(L,LEVELS.length-1)],L:L+1,pct:SAVE.xp%100}}
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+/* ---------- MELHORIAS: tempo, contrato, memória espaçada ---------- */
+const GAP=3*3600*1000;
+function today(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function dayRec(){if(!SAVE.day||SAVE.day.d!==today())SAVE.day={d:today(),rev:0,pas:0,boss:0,lab:0,test:0,les:0,paid:0};return SAVE.day}
+function planFor(){
+  const d=today(),r=dayRec(),dn=SAVE.done.length,t=(label,cur,need)=>({label,cur:Math.min(cur,need),need});
+  if(d==='2026-11-23')return{title:'segunda, 23/11',items:[t('Lições concluídas (L0 a L6)',dn,7),t('Laboratório de contas',r.lab,1),t('Revisão do dia (à noite, 3 h ou mais depois)',r.rev,1)]};
+  if(d==='2026-11-24')return{title:'terça, 24/11',items:[t('Todas as 13 lições',dn,13),t('Revisão do dia (manhã e noite)',r.rev,2),t('Laboratório de contas',r.lab,1),t('Chefão (dissertativas)',r.boss,1)]};
+  if(d==='2026-11-25')return{title:'dia da prova',items:[t('Revisão do dia',r.rev,1),t('Passeio relâmpago',r.pas,1)]};
+  return{title:'meta do dia',items:[t('Uma lição',r.les,1),t('Revisão do dia',r.rev,1),t('Laboratório de contas',r.lab,1)]};
+}
+function bump(k){const r=dayRec();r[k]=(r[k]||0)+1;const p=planFor();if(!r.paid&&p.items.every(i=>i.cur>=i.need)){r.paid=1;SAVE.xp+=40}persist()}
+function vesperaHtml(){const d=today();if(d!=='2026-11-24'&&d!=='2026-11-25')return'';
+  const t=d==='2026-11-24'?['Véspera da prova','Estudo curto e dormir bem vale mais que virar a noite. O sono consolida o que você aprendeu hoje e a falta dele piora a atenção e a memória. Faça a revisão do dia à noite, pare e durma pelo menos 7 horas.']:['Dia da prova','Quinze minutos de recuperação ativa de manhã (Revisão do dia ou Passeio relâmpago), sem reler lição. Na prova, comece pelas questões que você tem certeza, marque as dissertativas com palavras-chave e escreva sempre algo: em branco rende zero.'];
+  return`<div class="card"><span class="tag">${t[0]}</span><p style="margin:6px 0 0">${t[1]}</p></div>`}
+function contractHtml(){
+  const p=planFor(),all=p.items.every(i=>i.cur>=i.need);
+  return`<div class="card"><div class="row" style="justify-content:space-between"><span class="tag">Contrato · ${p.title}</span>${all?'<span class="chip">cumprido · +40 XP</span>':''}</div>${p.items.map(i=>`<div class="check" style="align-items:center"><span class="mono" style="min-width:44px">${i.cur>=i.need?'✓':i.cur+'/'+i.need}</span><span>${esc(i.label)}</span></div>`).join('')}</div>`;
+}
+function memUpd(q,ok,conf){
+  const m=SAVE.mem[q.id]||(SAVE.mem[q.id]={n:0,last:0,seen:0}),now=Date.now();
+  m.seen++;
+  if(ok&&conf!=='g'){if(m.n===0||now-m.last>=GAP){m.n++;m.last=now}if(m.n>=2)SAVE.hc=SAVE.hc.filter(x=>x!==q.id)}
+  else if(!ok){m.n=0;m.last=now}
+}
+function isSeen(q){const m=SAVE.mem[q.id];return (m&&m.seen>0)||SAVE.wrong.includes(q.id)}
+function dueList(){const now=Date.now();return Q.filter(q=>{const m=SAVE.mem[q.id];if(m&&m.n>=3)return false;if(SAVE.wrong.includes(q.id)||SAVE.hc.includes(q.id))return true;return !!(m&&m.seen>0&&(m.n===0||now-m.last>=GAP))})}
+function freshList(){return Q.filter(q=>!isSeen(q))}
+function masteredN(){return Q.filter(q=>{const m=SAVE.mem[q.id];return m&&m.n>=3}).length}
+function buildMix(){
+  const due=shuffle(dueList());let pool=due.slice(0,8);
+  pool=pool.concat(shuffle(freshList())).slice(0,12);
+  if(pool.length<12)pool=pool.concat(shuffle(Q.filter(q=>!pool.includes(q)&&!(SAVE.mem[q.id]&&SAVE.mem[q.id].n>=3)))).slice(0,12);
+  if(pool.length<12)pool=pool.concat(shuffle(Q.filter(q=>!pool.includes(q)))).slice(0,12);
+  return shuffle(pool);
+}
+function domHtml(){
+  return Q.map(q=>{const m=SAVE.mem[q.id];let c='n0',t='';
+    if(m&&m.seen>0){if(m.n>=3){c='n3';t='✓'}else if(m.n===0){c='nw';t='!'}else{c='n'+m.n;t=String(m.n)}}
+    return`<span class="dot ${c}" title="${esc(q.q.slice(0,60))}">${t}</span>`}).join('');
+}
+
+/* ---------- PAUSA ---------- */
+const FOCUS={last:Date.now(),seen:Date.now()};
+function breakDue(){const n=Date.now();if(n-FOCUS.seen>5*60e3)FOCUS.last=n;FOCUS.seen=n;return n-FOCUS.last>=15*60e3}
+function pauseScreen(resume){
+  FOCUS.last=Date.now();let s=120;
+  app.innerHTML=`<div class="card"><span class="tag">Pausa de 2 minutos</span><h2 class="lh">15 minutos de foco. Hora de mexer o corpo.</h2><p class="lp">Levante, beba água, olhe para longe da tela e respire fundo. Uma pausa curta com movimento costuma ajudar a espantar o sono. Depois você volta exatamente de onde parou.</p><div class="big mono" id="cd" style="margin:14px 0">2:00</div><div class="row"><button class="btn pen" id="rs" disabled>Voltar ao jogo</button><button class="btn ghost" id="sk">Pular</button></div></div>`;
+  const go=()=>{clearInterval(tm);FOCUS.last=Date.now();FOCUS.seen=Date.now();resume()};
+  const tm=setInterval(()=>{s--;const el=document.getElementById('cd');if(!el){clearInterval(tm);return}el.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');if(s<=0){clearInterval(tm);document.getElementById('rs').disabled=false;document.getElementById('rs').textContent='Voltar ao jogo'}},1000);
+  $('#rs').onclick=go;$('#sk').onclick=go;
+}
+
+/* ---------- LABORATÓRIO DE CONTAS ---------- */
+const R=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const nf=(x,d)=>(d==null?String(+(+x).toFixed(6)):(+x).toFixed(d)).replace('.',',');
+const FAM={ep:'Margem de erro (z)',icz:'Limites do IC (z)',nm:'n para uma média',ict:'Margem de erro (t)',icp:'Margem de erro (proporção)',np:'n para uma proporção',chiic:'IC de variância (χ²)',zt:'Estatística z',tt:'Estatística t',zp:'z de proporção',chi:'Estatística χ²',pw:'π e peso amostral',def:'deff e n efetivo'};
+const FAML={ep:'L5',icz:'L5',nm:'L5',ict:'L6',icp:'L7',np:'L7',chiic:'L8',zt:'L11',tt:'L12',zp:'L12',chi:'L12',pw:'L2',def:'L3'};
+const GEN={
+ ep(){const s=pick([6,8,10,12,15,20,24]),n=pick([16,25,36,49,64,100]),z=pick([[1.645,'90%'],[1.96,'95%'],[2.576,'99%']]),se=s/Math.sqrt(n),E=z[0]*se;
+  return{f:'ep',q:`σ = ${s}, n = ${n}, confiança de ${z[1]} (z crítico = ${nf(z[0])}). Qual a margem de erro E? (2 casas)`,ans:E,tol:0.02,ex:`Erro padrão = σ ÷ √n = ${s} ÷ ${nf(Math.sqrt(n),3)} = ${nf(se,3)}. E = zc × erro padrão = ${nf(z[0])} × ${nf(se,3)} = ${nf(E,2)}.`}},
+ icz(){const s=pick([5,10,12,15,20]),n=pick([25,36,49,64,100]),xb=R(40,120),up=Math.random()<.5,E=1.96*s/Math.sqrt(n);
+  return{f:'icz',q:`x̄ = ${xb}, σ = ${s} (conhecido), n = ${n}, confiança de 95% (zc = 1,96). Qual o limite ${up?'SUPERIOR':'INFERIOR'} do intervalo para μ? (2 casas)`,ans:up?xb+E:xb-E,tol:0.03,ex:`E = 1,96 × ${s} ÷ ${nf(Math.sqrt(n),3)} = ${nf(E,3)}. O IC é x̄ ± E: ${nf(xb-E,2)} < μ < ${nf(xb+E,2)}.`}},
+ nm(){const s=pick([10,12,15,20,25]),E=pick([2,3,4,5]),z=pick([[1.645,'90%'],[1.96,'95%']]),raw=Math.pow(z[0]*s/E,2),n=Math.ceil(raw-1e-9);
+  return{f:'nm',q:`Para estimar uma média com ${z[1]} de confiança (zc = ${nf(z[0])}), com σ = ${s} e margem de erro desejada E = ${E}, qual o tamanho mínimo da amostra?`,ans:n,tol:0.5,ex:`n = (zc × σ ÷ E)² = (${nf(z[0])} × ${s} ÷ ${E})² = ${nf(raw,2)}. Arredonda-se sempre para cima: ${n}.`}},
+ ict(){const c=pick([[9,2.306],[10,2.262],[16,2.131],[20,2.093],[25,2.064]]),n=c[0],tc=c[1],s=pick([2,3,4,5,6]),E=tc*s/Math.sqrt(n);
+  return{f:'ict',q:`σ desconhecido: n = ${n}, s = ${s}, confiança de 95% (t crítico = ${nf(tc)} com ${n-1} g.l.). Qual a margem de erro E? (3 casas)`,ans:E,tol:0.012,ex:`E = tc × s ÷ √n = ${nf(tc)} × ${s} ÷ ${nf(Math.sqrt(n),3)} = ${nf(E,3)}.`}},
+ icp(){const n=pick([100,200,400,500]),ph=pick([.2,.3,.4,.6]),x=Math.round(ph*n),p=x/n,E=1.96*Math.sqrt(p*(1-p)/n);
+  return{f:'icp',q:`Em ${n} pessoas, ${x} responderam "sim". Para a proporção, qual a margem de erro E com 95% (zc = 1,96)? (3 casas)`,ans:E,tol:0.0025,ex:`p̂ = ${x} ÷ ${n} = ${nf(p,3)}; q̂ = ${nf(1-p,3)}. E = 1,96 × √(p̂ × q̂ ÷ n) = 1,96 × √(${nf(p*(1-p),4)} ÷ ${n}) = ${nf(E,3)}.`}},
+ np(){const p=pick([.2,.3,.4]),E=pick([.03,.04,.05]),raw=p*(1-p)*Math.pow(1.96/E,2),n=Math.ceil(raw-1e-9);
+  return{f:'np',q:`Estimativa prévia p̂ = ${nf(p)}. Para 95% de confiança (zc = 1,96) e margem de erro E = ${nf(E)}, qual o tamanho mínimo da amostra?`,ans:n,tol:0.5,ex:`n = p̂ × q̂ × (zc ÷ E)² = ${nf(p)} × ${nf(1-p)} × (1,96 ÷ ${nf(E)})² = ${nf(raw,2)}. Para cima: ${n}.`}},
+ chiic(){const c=pick([[11,20.483,3.247],[16,27.488,6.262],[21,34.170,9.591]]),n=c[0],cr=c[1],cl=c[2],s=pick([2,3,4]),low=Math.random()<.5,ss=(n-1)*s*s;
+  return{f:'chiic',q:`n = ${n}, s = ${s}. Para o intervalo de σ² (95%), os críticos são χ²_R = ${nf(cr)} (direita) e χ²_L = ${nf(cl)} (esquerda). Qual o limite ${low?'INFERIOR':'SUPERIOR'} de σ²? (2 casas)`,ans:low?ss/cr:ss/cl,tol:0.03,ex:`(n − 1)s² = ${n-1} × ${s*s} = ${ss}. Inferior = ${ss} ÷ ${nf(cr)} = ${nf(ss/cr,2)}; superior = ${ss} ÷ ${nf(cl)} = ${nf(ss/cl,2)}. Dividir pelo crítico da DIREITA dá o limite inferior.`}},
+ zt(){const mu=pick([50,100,200,500]),s=pick([6,10,12,15,20]),n=pick([16,25,36,49,64]),zz=pick([-2.5,-2,-1.5,1,1.5,2,2.5,3]),se=s/Math.sqrt(n),xb=+(mu+zz*se).toFixed(2),z=(xb-mu)/se;
+  return{f:'zt',q:`H0: μ = ${mu}; σ = ${s} (conhecido), n = ${n}, x̄ = ${nf(xb)}. Qual o valor de z? (2 casas)`,ans:z,tol:0.02,ex:`Erro padrão = ${s} ÷ ${Math.sqrt(n)} = ${nf(se,3)}. z = (${nf(xb)} − ${mu}) ÷ ${nf(se,3)} = ${nf(z,2)}. No teste bilateral com α = 0,05 (±1,96): ${Math.abs(z)>1.96?'está fora, então rejeita H0':'está dentro, então não rejeita H0'}.`}},
+ tt(){const mu=pick([50,100,200]),s=pick([4,5,8,10]),n=pick([9,16,25,36]),tv=pick([-2.5,-1.5,-1,1,1.5,2,2.5]),se=s/Math.sqrt(n),xb=+(mu+tv*se).toFixed(2),t=(xb-mu)/se;
+  return{f:'tt',q:`H0: μ = ${mu}; σ desconhecido, n = ${n}, x̄ = ${nf(xb)}, s = ${s}. Qual o valor de t? (2 casas)`,ans:t,tol:0.02,ex:`Erro padrão = s ÷ √n = ${s} ÷ ${Math.sqrt(n)} = ${nf(se,3)}. t = (${nf(xb)} − ${mu}) ÷ ${nf(se,3)} = ${nf(t,2)} (${n-1} g.l.).`}},
+ zp(){const p0=pick([.5,.6,.4,.3]),n=pick([100,200,400]),x=Math.round(n*(p0+pick([-.08,-.05,.04,.06]))),ph=x/n,se=Math.sqrt(p0*(1-p0)/n),z=(ph-p0)/se;
+  return{f:'zp',q:`H0: p = ${nf(p0)}; n = ${n}; ${x} sucessos. Qual o valor de z? (2 casas)`,ans:z,tol:0.03,ex:`p̂ = ${x} ÷ ${n} = ${nf(ph,3)}. No teste, o erro padrão usa o p de H0: √(${nf(p0)} × ${nf(1-p0)} ÷ ${n}) = ${nf(se,4)}. z = (${nf(ph,3)} − ${nf(p0)}) ÷ ${nf(se,4)} = ${nf(z,2)}.`}},
+ chi(){const n=pick([11,16,21,26]),s2=pick([3,5,6,7,9]),v0=pick([4,9,16]),c=(n-1)*s2/v0;
+  return{f:'chi',q:`H0: σ² = ${v0}; n = ${n}; s² = ${s2}. Qual o valor de χ²? (2 casas)`,ans:c,tol:0.03,ex:`χ² = (n − 1)s² ÷ σ0² = ${n-1} × ${s2} ÷ ${v0} = ${nf(c,2)} (${n-1} g.l.).`}},
+ pw(){const M=pick([40,50,80,100,200]),m=pick([4,5,8,10,20]),pi=m/M,aw=Math.random()<.5;
+  return{f:'pw',q:`Há ${M} conglomerados; sorteiam-se ${m} e observam-se todos os elementos deles. Qual ${aw?'o peso amostral w (2 casas)':'a probabilidade de inclusão π (3 casas)'}?`,ans:aw?1/pi:pi,tol:aw?0.02:0.002,ex:`π = m ÷ M = ${m} ÷ ${M} = ${nf(pi,3)}. w = 1 ÷ π = ${nf(1/pi,2)}.`}},
+ def(){const Mb=pick([10,15,21,25,30]),rho=pick([.02,.04,.05,.08]),n=pick([200,240,300,500]),d=1+(Mb-1)*rho,ne=pick([0,1]);
+  return ne?{f:'def',q:`n = ${n}, tamanho médio do conglomerado M̄ = ${Mb}, ρ = ${nf(rho)}. Qual o tamanho efetivo n_ef (arredonde para baixo)?`,ans:Math.floor(n/d),tol:0.5,ex:`deff = 1 + (M̄ − 1)·ρ = 1 + ${Mb-1} × ${nf(rho)} = ${nf(d,3)}. n_ef = ${n} ÷ ${nf(d,3)} = ${nf(n/d,2)} → ${Math.floor(n/d)}.`}
+   :{f:'def',q:`Tamanho médio do conglomerado M̄ = ${Mb} e ρ = ${nf(rho)}. Qual o efeito do delineamento deff? (2 casas)`,ans:d,tol:0.015,ex:`deff = 1 + (M̄ − 1)·ρ = 1 + ${Mb-1} × ${nf(rho)} = ${nf(d,2)}.`}}
+};
+let lab=null;
+function labStart(){lab={q:shuffle(Object.keys(GEN)).slice(0,10).map(f=>GEN[f]()),i:0,ok:0,xp:0,res:[]};labQ()}
+function labQ(){
+  if(lab.i>=lab.q.length)return labEnd();
+  if(breakDue())return pauseScreen(labQ);
+  const p=lab.q[lab.i];let tries=0;
+  app.innerHTML=`<div class="hud"><button class="btn ghost sm" id="exit">Sair</button><span class="chip">Laboratório</span><span>${lab.i+1}/${lab.q.length}</span></div><div class="bar" style="margin-bottom:14px"><i style="width:${Math.round(lab.i/lab.q.length*100)}%"></i></div>
+  <div class="card"><span class="tag">${esc(FAM[p.f])}</span><p class="q">${esc(p.q)}</p><p class="muted" style="margin:-6px 0 12px;font-size:14px">Use papel e a tabela de fórmulas. Escreva a resposta com vírgula ou ponto.</p><div class="row"><input id="num" class="num mono" inputmode="decimal" autocomplete="off" aria-label="Sua resposta" placeholder="resposta"><button class="btn pen" id="chk">Conferir</button></div><div id="fb"></div></div>`;
+  $('#exit').onclick=home;
+  const inp=$('#num');inp.focus();
+  const done=(ok,tr)=>{
+    inp.disabled=true;$('#chk').disabled=true;
+    const g=ok?(tr===1?12:6):0;lab.xp+=g;if(ok)lab.ok++;lab.res.push({f:p.f,ok,tr});
+    const k=SAVE.labk[p.f]||(SAVE.labk[p.f]=[0,0]);k[1]++;if(ok)k[0]++;SAVE.labn=(SAVE.labn||0)+1;persist();
+    $('#fb').innerHTML=`<div class="fb ${ok?'':'bad'}"><b>${ok?(tr===1?'Certo de primeira.':'Certo na segunda.'):'A resposta é '+nf(p.ans,Math.abs(p.ans)>=100?0:3)+'.'}</b> ${lk(esc(p.ex))}</div><div class="row" style="margin-top:12px;justify-content:flex-end"><button class="btn pen" id="go">${lab.i+1>=lab.q.length?'Ver resultado':'Próxima'}</button></div>`;
+    $('#go').onclick=()=>{lab.i++;labQ()};$('#go').focus();
+  };
+  const check=()=>{
+    const vs=parseNum(inp.value);if(!vs.length){inp.focus();return}
+    tries++;const ok=vs.some(v=>Math.abs(v-p.ans)<=p.tol);
+    if(ok||tries>=2)return done(ok,tries);
+    $('#fb').innerHTML=`<div class="fb bad"><b>Ainda não.</b> Confira cada passo e tente mais uma vez.</div>`;inp.select();
+  };
+  $('#chk').onclick=check;inp.onkeydown=e=>{if(e.key==='Enter')check()};
+}
+function labEnd(){
+  SAVE.xp+=lab.xp;bump('lab');
+  const by={};lab.res.forEach(r=>{(by[r.f]||(by[r.f]=[0,0]))[1]++;if(r.ok)by[r.f][0]++});
+  const miss=Object.keys(by).filter(f=>by[f][0]<by[f][1]);
+  const les=[...new Set(miss.map(f=>FAML[f]))].map(id=>LESSONS.find(x=>x.id===id)).filter(Boolean);
+  app.innerHTML=`<div class="top"><div class="brand">Laboratório <b>concluído</b></div></div><div class="stack"><div class="card"><div class="big mono"><span class="grade">${lab.ok}/${lab.q.length}</span></div><p class="muted" style="margin:6px 0 0">contas certas · +${lab.xp} XP</p>
+  <table style="margin-top:14px"><tr><th>Tipo de conta</th><th>Resultado</th></tr>${Object.keys(by).map(f=>`<tr><td>${esc(FAM[f])}</td><td class="mono">${by[f][0]===by[f][1]?'certo':'errou'}</td></tr>`).join('')}</table></div>
+  ${les.length?`<div class="card"><h3 style="margin-bottom:8px">Reveja antes de repetir</h3>${les.map(L=>`<div class="check" style="display:block"><b style="font-size:15px">${esc(L.title)}</b></div>`).join('')}</div>`:'<div class="card">Nenhuma conta errada. Repita: os números mudam a cada vez.</div>'}
+  <div class="row"><button class="btn pen" id="again">Outras 10 contas</button><button class="btn ghost" id="hm">Início</button></div></div>`;
+  $('#again').onclick=labStart;$('#hm').onclick=home;
+}
+
+/* ---------- DICIONÁRIO: termos clicáveis com explicação e porquê ---------- */
+const WHYMAP={'L0|População e amostra':'populacao','L0|Parâmetro x estatística':'parametro','L0|Média e desvio padrão':'desvio','L0|Erro padrão: por que mais amostra ajuda':'erro-padrao','L0|Escore z':'z','L0|Curva normal e tabela':'normal','L1|O problema que ele resolve':'conglomerado','L1|A solução: sortear grupos':'conglomerado','L1|Cuidado: não é estratificada':'estratificada','L1|O que cada uma quer dos grupos':'estratificada','L2|Um estágio ou dois?':'estagio','L2|Siglas':'upa','L2|Contas do um estágio':'pi','L2|Peso amostral':'peso','L3|Por que perde precisão':'deff','L3|As duas fórmulas':'rho','L4|Estimar com um número ou com uma faixa':'ic','L4|O intervalo':'ic','L4|O que "95% de confiança" significa':'confianca','L4|Três alavancas':'margem','L5|Fórmula':'margem','L5|Quantos dados preciso?':'erro-padrao','L6|Quando troca z por t':'t','L6|Fórmula':'gl','L7|Quando é proporção':'proporcao','L7|Fórmula e condição':'proporcao','L8|Quando é variância':'quiquad','L8|Fórmula':'quiquad','L9|A ideia':'h0','L9|H0 e Ha':'h0','L9|Tipo do teste':'unilateral','L10|Dois erros possíveis':'tipo1','L10|α e β':'alfa','L10|Valor p':'valorp','L11|A receita':'regiao','L11|Estatística (σ conhecido)':'z','L12|O procedimento é o mesmo':'regiao'};
+LESSONS.forEach(L=>L.s.forEach(st=>{const k=WHYMAP[L.id+'|'+st.h];if(k)st.g=k}));
+const LK=(()=>{
+  const ci=[],cs=[],mi={},mc={};
+  Object.keys(GLOSS).forEach(k=>GLOSS[k].al.forEach(a=>{if(/[A-ZΑ-Ωα-ωσρχβ]/.test(a)){cs.push(a);mc[a]=k}else{ci.push(a);mi[a.toLowerCase()]=k}}));
+  const build=(arr,f)=>new RegExp('(^|[^\\p{L}\\p{N}])('+arr.slice().sort((a,b)=>b.length-a.length).map(x=>x.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('|')+')(?![\\p{L}\\p{N}])',f);
+  return{ri:build(ci,'giu'),rc:build(cs,'gu'),mi,mc};
+})();
+function linkSeg(seg,seen,ex,st){
+  const m=[];
+  [[LK.ri,t=>LK.mi[t.toLowerCase()]],[LK.rc,t=>LK.mc[t]]].forEach(([re,f])=>{re.lastIndex=0;let r;while((r=re.exec(seg))){const a=r.index+r[1].length;m.push([a,a+r[2].length,f(r[2])])}});
+  m.sort((x,y)=>x[0]-y[0]||(y[1]-y[0])-(x[1]-x[0]));
+  let out='',pos=0;
+  for(const [a,b,k] of m){
+    if(a<pos||!k||k===ex||seen.has(k)||st.n>=5)continue;
+    seen.add(k);st.n++;
+    out+=seg.slice(pos,a)+`<button type="button" class="term" data-g="${k}">${seg.slice(a,b)}</button>`;pos=b;
+  }
+  return out+seg.slice(pos);
+}
+function lk(h,ex){
+  if(!h)return h;
+  const seen=new Set(),st={n:0};let skip=0,mono=false;
+  return h.split(/(<[^>]*>)/).map(p=>{
+    if(p[0]==='<'){
+      if(/^<(button|pre|a)\b/i.test(p))skip++;
+      else if(/^<\/(button|pre|a)>/i.test(p))skip=Math.max(0,skip-1);
+      else if(/^<span class="mono"/.test(p))mono=true;
+      else if(/^<\/span>/.test(p))mono=false;
+      return p;
+    }
+    return(skip||mono||!p.trim())?p:linkSeg(p,seen,ex,st);
+  }).join('');
+}
+const fmtL=s=>lk(fmt(s));
+/* ---------- FIGURAS: curva normal (codificação dupla: texto + imagem) ---------- */
+function bell(o){
+  const W=o.w||300,H=o.h||118,L=14,R=W-14,B=H-26,T=14,X=x=>L+(x+3.6)/7.2*(R-L),Y=x=>B-(B-T)*Math.exp(-x*x/2);
+  const pts=(a,b)=>{let p=[];for(let x=a;x<=b+1e-9;x+=.05)p.push(X(x).toFixed(1)+','+Y(x).toFixed(1));return p};
+  const area=(a,b,c,op)=>`<polygon points="${X(a).toFixed(1)},${B} ${pts(a,b).join(' ')} ${X(b).toFixed(1)},${B}" fill="${c}" fill-opacity="${op}"/>`;
+  let g=area(-3.6,3.6,'var(--acc)',.16);
+  (o.shade||[]).forEach(s=>{g+=area(s[0],s[1],'var(--bad)',.55)});
+  g+=`<polyline points="${pts(-3.6,3.6).join(' ')}" fill="none" stroke="var(--acc-d)" stroke-width="2"/><line x1="${L}" y1="${B}" x2="${R}" y2="${B}" stroke="var(--acc-d)" stroke-width="1.5"/>`;
+  (o.ticks||[]).forEach(t=>{g+=`<line x1="${X(t[0])}" y1="${B}" x2="${X(t[0])}" y2="${B+4}" stroke="var(--ink)"/><text x="${X(t[0])}" y="${B+16}" text-anchor="middle" font-size="11" fill="var(--ink)" font-family="var(--mono)">${t[1]}</text>`});
+  (o.marks||[]).forEach(m=>{g+=`<line x1="${X(m.x)}" y1="${T+6}" x2="${X(m.x)}" y2="${B}" stroke="${m.c||'var(--ink)'}" stroke-width="2" ${m.d?'stroke-dasharray="4 3"':''}/><text x="${X(m.x)+(m.dx||0)}" y="${T+2}" text-anchor="${m.a||'middle'}" font-size="10.5" font-weight="700" fill="${m.c||'var(--ink)'}">${m.t}</text>`});
+  (o.labels||[]).forEach(t=>{g+=`<text x="${X(t[0])}" y="${t[2]||B-8}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">${t[1]}</text>`});
+  return `<svg viewBox="0 0 ${W} ${H}" width="100%" style="max-width:${o.mw||420}px;display:block" role="img" aria-label="${o.alt}">${g}</svg>`;
+}
+function bellFig(k){
+  let h='';
+  if(k==='n95')h=bell({alt:'Curva normal: 95% no centro entre menos 1,96 e 1,96, e 2,5% em cada cauda',shade:[[-3.6,-1.96],[1.96,3.6]],ticks:[[-1.96,'−1,96'],[0,'0'],[1.96,'1,96']],labels:[[0,'95%',B0()],[-2.7,'2,5%',70],[2.7,'2,5%',70]]});
+  else if(k==='tails'){
+    const mk=(s,tt,al,cap)=>`<figure style="margin:0;flex:1;min-width:0;text-align:center">${bell({w:140,h:92,mw:150,alt:al,shade:s,ticks:[[0,'0']]})}<figcaption class="muted" style="font-size:13px"><b>${tt}</b> ${cap}</figcaption></figure>`;
+    return `<div style="display:flex;gap:6px;margin:12px 0 4px">${mk([[-3.6,-1.645]],'Ha: <','Cauda esquerda sombreada','esquerda')}${mk([[1.645,3.6]],'Ha: >','Cauda direita sombreada','direita')}${mk([[-3.6,-1.96],[1.96,3.6]],'Ha: ≠','As duas caudas sombreadas','bilateral')}</div>`;
+  }
+  else if(k==='dec')h=bell({alt:'Teste à esquerda: linha crítica em menos 1,645; z de menos 0,89 fica fora da região; z de menos 2 fica dentro',shade:[[-3.6,-1.645]],ticks:[[-1.645,'−1,645'],[0,'0']],marks:[{x:-0.89,t:'z = −0,89',c:'var(--ok)',a:'start',dx:4,d:1},{x:-2.0,t:'z = −2',c:'var(--bad)',a:'end',dx:-4,d:1}]});
+  return `<div style="margin:12px 0 2px">${h}</div>`;
+}
+function B0(){return 52}
+LESSONS.forEach(L=>L.s.forEach(st=>{const k={'L0|Curva normal e tabela':'n95','L9|Tipo do teste':'tails','L11|A receita':'dec'}[L.id+'|'+st.h];if(k)st.v=k}));
+
+const GS={cur:null,hist:[],prev:null};
+function renderGloss(k){
+  const G=GLOSS[k],sh=document.getElementById('sheet');
+  const sec=(h,t)=>t?`<h3 class="gh">${h}</h3><p class="lp">${lk(fmt(t),k)}</p>`:'';
+  sh.setAttribute('role','dialog');sh.setAttribute('aria-modal','true');sh.setAttribute('aria-label',G.t);
+  sh.innerHTML=`<div class="sheet-in"><div class="row" style="justify-content:space-between;margin-bottom:8px"><button class="btn ghost sm" id="gback" ${GS.hist.length?'':'disabled'}>← Voltar</button><button class="btn sm" id="gclose">Fechar</button></div><span class="tag">${esc(G.c)}</span><h2 class="lh" style="margin-top:2px">${esc(G.t)}</h2><p class="lp">${lk(fmt(G.s),k)}</p>${sec('Por quê?',G.why)}${sec('Quando e como usar',G.use)}${sec('Exemplo',G.ex)}${sec('Erro comum',G.err)}${G.see.length?`<h3 class="gh">Veja também</h3><div class="row">${G.see.map(x=>`<button class="chip termchip" data-g="${x}">${esc(GLOSS[x].t)}</button>`).join('')}</div>`:''}<div class="row" style="margin-top:18px"><button class="btn pen" id="glesson">Ver a lição ${G.l.replace('L','')}</button></div></div>`;
+  sh.querySelector('.sheet-in').scrollTop=0;
+  document.getElementById('gclose').onclick=closeGloss;
+  document.getElementById('gback').onclick=()=>{if(GS.hist.length){GS.cur=GS.hist.pop();renderGloss(GS.cur)}};
+  document.getElementById('glesson').onclick=()=>{const l=G.l;closeGloss();lessonStart(l)};
+  document.getElementById('gclose').focus();
+}
+function openGloss(k){
+  if(!GLOSS[k])return;
+  let sh=document.getElementById('sheet');
+  if(!sh){
+    sh=document.createElement('div');sh.id='sheet';document.body.appendChild(sh);
+    GS.prev=document.activeElement;GS.hist=[];GS.cur=null;document.body.style.overflow='hidden';
+    sh.addEventListener('click',e=>{if(e.target===sh)closeGloss()});
+  }else if(GS.cur&&GS.cur!==k)GS.hist.push(GS.cur);
+  GS.cur=k;renderGloss(k);
+}
+function closeGloss(){
+  const sh=document.getElementById('sheet');if(sh)sh.remove();
+  document.body.style.overflow='';GS.cur=null;GS.hist=[];
+  if(GS.prev&&GS.prev.isConnected)try{GS.prev.focus()}catch(e){}
+}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-g]');if(!t)return;e.preventDefault();openGloss(t.dataset.g)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeGloss()});
+function dicScreen(){
+  const cats=['Base','Amostragem','Intervalos','Testes'];
+  app.innerHTML=`<div class="top"><div class="brand">Dicionário de <b>termos</b></div><button class="btn ghost" id="back">Voltar</button></div>
+  <p class="muted" style="margin-top:0">Toque num termo para ver o que é, por que existe e quando usar. Nas lições e nas explicações, os termos sublinhados abrem a mesma coisa.</p>
+  <input id="dq" class="num" style="width:100%;margin-bottom:14px" placeholder="Buscar (ex.: erro padrão, g.l., valor p)" aria-label="Buscar termo"><div id="dl"></div>`;
+  const draw=()=>{
+    const q=norm($('#dq').value.trim());
+    $('#dl').innerHTML=cats.map(c=>{
+      const ks=Object.keys(GLOSS).filter(k=>GLOSS[k].c===c&&(!q||norm(GLOSS[k].t+' '+GLOSS[k].al.join(' ')+' '+GLOSS[k].s).includes(q)));
+      return ks.length?`<h2 class="sec">${c}</h2><div class="lessons" style="margin-bottom:16px">${ks.map(k=>{const s=GLOSS[k].s.replace(/\*\*/g,'');return`<button class="lrow" data-g="${k}"><span><b>${esc(GLOSS[k].t)}</b><br><span class="muted" style="font-size:13px">${esc(s.slice(0,95))}${s.length>95?'…':''}</span></span></button>`}).join('')}</div>`:'';
+    }).join('')||'<p class="muted">Nada encontrado.</p>';
+  };
+  $('#back').onclick=home;$('#dq').oninput=draw;draw();
+}
+
+/* ---------- TELAS ---------- */
+/* ---------- MODO APRENDER ---------- */
+function fmt(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/`(.+?)`/g,'<span class="mono">$1</span>')}
+let ls=null;
+function parseNum(t){t=t.trim().replace(/\s/g,'');const c=[parseFloat(t.replace(',','.'))];if(/^-?\d{1,3}(\.\d{3})+(,\d+)?$/.test(t))c.push(parseFloat(t.replace(/\./g,'').replace(',','.')));return c.filter(x=>!isNaN(x))}
+function lessonStart(id,i){
+  const L0=LESSONS.find(x=>x.id===id),pq=!SAVE.done.includes(id)&&Q.find(q=>QSC[q.id]===id);
+  const L=pq?Object.assign({},L0,{s:[{t:'p',qid:pq.id}].concat(L0.s)}):L0;
+  ls={L,i:i||0};lessonRender()
+}
+function lessonHud(){const n=ls.L.s.length;return`<div class="hud"><span class="chip">${esc(ls.L.title)}</span><span>${ls.i+1}/${n}</span></div><div class="bar" style="margin-bottom:14px"><i style="width:${Math.round(ls.i/n*100)}%"></i></div>${navRow(ls.i>0)}`}
+function lessonNext(){ls.i++;lessonRender()}
+function lessonRender(){
+  if(ls.i>=ls.L.s.length)return lessonDone();
+  if(breakDue())return pauseScreen(lessonRender);
+  const s=ls.L.s[ls.i];let body='';
+  if(s.t==='i'||s.t==='f'){
+    body=`<div class="card"><span class="tag">${s.t==='f'?'Fórmula':'Ideia'}</span><h2 class="lh">${esc(s.h)}</h2>${s.f?`<pre class="formula">${esc(s.f)}</pre>`:''}<p class="lp">${fmtL(s.p||'')}</p>${s.v?bellFig(s.v):''}<div class="row" style="justify-content:${s.g?'space-between':'flex-end'};margin-top:12px">${s.g?`<button class="btn ghost" data-g="${s.g}">Por quê? Entender a ideia</button>`:''}<button class="btn pen" id="go">Entendi</button></div></div>`;
+  }else if(s.t==='w'){
+    body=`<div class="card"><span class="tag">Exemplo resolvido</span><h2 class="lh">${esc(s.h)}</h2><p class="lp"><b>${fmtL(s.prob)}</b></p><div id="steps"></div><p class="muted" id="pred" style="font-size:14px;margin:10px 0 0">Antes de clicar: como você começaria? Pense ou diga em voz alta.</p><div class="row" style="justify-content:flex-end;margin-top:12px"><button class="btn pen" id="go">Mostrar o 1º passo</button></div></div>`;
+  }else if(s.t==='q'){
+    const o=shuffle(s.o.map((t,k)=>({t,ok:k===s.a})));
+    body=`<div class="card"><span class="tag">Teste rápido (sem perder vida)</span><p class="q">${fmtL(s.q)}</p><div class="opts">${o.map((x,k)=>`<button class="opt" data-ok="${x.ok}"><span class="k">${'ABCD'[k]}</span><span>${esc(x.t)}</span></button>`).join('')}</div><div id="fb"></div></div>`;
+  }else if(s.t==='p'){
+    const pq=Q.find(x=>x.id===s.qid);
+    body=`<div class="card"><span class="tag">Palpite antes de aprender</span><p class="muted" style="margin:6px 0 10px;font-size:14px">Você ainda não viu esta lição. Chutar e errar aqui é de propósito: deixa a cabeça procurando a resposta, e ela fixa melhor quando aparece.</p><p class="q">${esc(pq.q)}</p><div class="opts">${shuffle(pq.o.map((t,k)=>k)).map((k,n)=>`<button class="opt" data-k="${k}"><span class="k">${'ABCD'[n]}</span><span>${esc(pq.o[k])}</span></button>`).join('')}</div><div id="fb"></div></div>`;
+  }else if(s.t==='n'){
+    body=`<div class="card"><span class="tag">Sua vez: faça a conta no papel</span><p class="q">${fmtL(s.q)}</p><div class="row"><input id="num" class="num mono" inputmode="decimal" autocomplete="off" aria-label="Sua resposta" placeholder="resposta"><button class="btn pen" id="chk">Conferir</button></div><div id="fb"></div></div>`;
+  }
+  app.innerHTML=lessonHud()+body;
+  SAVE.lesson={id:ls.L.id,i:ls.i};persist();
+  $('#prev').onclick=()=>{ls.i--;lessonRender()};$('#sx').onclick=home;
+  if(s.t==='p'){
+    app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+      app.querySelectorAll('.opt').forEach(x=>x.disabled=true);b.classList.add('sel');
+      $('#fb').innerHTML=`<div class="hook">Palpite anotado. Procure a resposta ao longo da lição: ela volta no teste.</div><div class="row" style="margin-top:12px;justify-content:flex-end"><button class="btn pen" id="go">Começar a lição</button></div>`;
+      $('#go').onclick=lessonNext;$('#go').focus();
+    });
+  }
+  if(s.t==='i'||s.t==='f')$('#go').onclick=lessonNext;
+  if(s.t==='w'){
+    let k=0;const st=s.steps,box=$('#steps'),go=$('#go');
+    go.onclick=()=>{
+      if(k>=st.length)return lessonNext();
+      box.insertAdjacentHTML('beforeend',`<div class="stepline"><span class="tag">${k+1}. ${esc(st[k][0])}</span><div class="mono">${fmt(st[k][1])}</div></div>`);
+      k++;go.textContent=k<st.length?`Mostrar o ${k+1}º passo`:'Entendi';$('#pred').textContent=k<st.length?'E o próximo passo, qual seria? Pense antes de clicar.':'';
+    };
+  }
+  if(s.t==='q'){
+    app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+      const ok=b.dataset.ok==='true';
+      app.querySelectorAll('.opt').forEach(x=>{x.disabled=true;if(x.dataset.ok==='true')x.classList.add('right')});
+      if(!ok)b.classList.add('wrong');
+      $('#fb').innerHTML=`<div class="fb ${ok?'':'bad'}"><b>${ok?'Certo.':'Quase.'}</b> ${fmtL(s.ex)}</div><div class="row" style="margin-top:12px;justify-content:flex-end"><button class="btn pen" id="go">Continuar</button></div>`;
+      $('#go').onclick=lessonNext;$('#go').focus();
+    });
+  }
+  if(s.t==='n'){
+    let tries=0;const inp=$('#num');inp.focus();
+    const check=()=>{
+      const vs=parseNum(inp.value);
+      if(!vs.length){inp.focus();return}
+      tries++;const ok=vs.some(v=>Math.abs(v-s.ans)<=s.tol);
+      if(ok||tries>=2){
+        inp.disabled=true;$('#chk').disabled=true;
+        $('#fb').innerHTML=`<div class="fb ${ok?'':'bad'}"><b>${ok?'Certo.':'A resposta é '+String(s.ans).replace('.',',')+'.'}</b> ${fmtL(s.ex)}</div><div class="row" style="margin-top:12px;justify-content:flex-end"><button class="btn pen" id="go">Continuar</button></div>`;
+        $('#go').onclick=lessonNext;$('#go').focus();
+      }else{
+        $('#fb').innerHTML=`<div class="fb bad"><b>Ainda não.</b> Revise a conta e tente mais uma vez.</div>`;inp.select();
+      }
+    };
+    $('#chk').onclick=check;inp.onkeydown=e=>{if(e.key==='Enter')check()};
+  }
+}
+function lessonDone(){
+  const L=ls.L,first=!SAVE.done.includes(L.id);
+  SAVE.lesson=null;
+  if(first){SAVE.done.push(L.id);SAVE.xp+=30}
+  bump('les');
+  const idx=LESSONS.findIndex(x=>x.id===L.id),nxt=LESSONS[idx+1];
+  app.innerHTML=`<div class="top"><div class="brand">Lição <b>concluída</b></div></div><div class="stack"><div class="card"><h2 class="lh">${esc(L.title)}</h2><p class="muted">${first?'+30 XP e uma carta nova no álbum. ':''}Guarde esta cena:</p>${SCENES[L.id]?sceneCard(L.id,true):''}<p class="muted" style="margin-top:12px">Agora teste o que aprendeu.</p>
+   <div class="row" style="margin-top:8px">${L.w>=0?`<button class="btn pen" id="play">Testar na Fase ${L.w+1}</button>`:''}${nxt?`<button class="btn" id="next">Próxima lição</button>`:''}<button class="btn ghost" id="hm">Início</button></div></div></div>`;
+  if(L.w>=0)$('#play').onclick=()=>start(String(L.w));
+  if(nxt)$('#next').onclick=()=>lessonStart(nxt.id);
+  $('#hm').onclick=home;
+}
+function resumeHtml(){
+  let h='';const r=SAVE.run,l=SAVE.lesson,b=SAVE.boss;
+  const card=(tag,txt,a,d)=>`<div class="card"><span class="tag">${tag}</span><p style="margin:6px 0 10px">${txt}</p><div class="row"><button class="btn pen" id="${a}">Continuar</button><button class="btn ghost" id="${d}">Descartar</button></div></div>`;
+  if(r&&r.queue&&r.i<r.queue.length){const w=WORLDS.find(x=>String(x.id)===String(r.mode));h+=card('Teste em andamento',`<b>${esc(r.mode==='mix'?'Revisão do dia':(w?w.name:'Teste'))}</b> · pergunta ${r.i+1} de ${r.queue.length} · ${r.hearts} vida(s)`,'rrun','drun')}
+  if(l){const L=LESSONS.find(x=>x.id===l.id);if(L&&l.i>0&&l.i<L.s.length+1)h+=card('Lição em andamento',`<b>${esc(L.title)}</b> · passo ${l.i+1}`,'rles','dles')}
+  if(b&&b.i>0&&b.i<BOSS.length)h+=card('Chefão em andamento',`<b>Dissertativas</b> · desafio ${b.i+1} de ${BOSS.length}`,'rbos','dbos');
+  return h;
+}
+function home(){
+  run=null;const l=lvl(),nd=SAVE.done.length,due=dueList().length,fresh=freshList().length,mast=masteredN(),cc=SAVE.cal.c;
+  app.innerHTML=`<div class="top"><div class="brand">Missão <b>Amostra</b></div><span class="chip mono">Nv ${l.L}</span></div>
+  <div class="stack">
+   <div class="card lvl"><div class="row" style="justify-content:space-between"><b>${l.n}</b><span class="mono muted">${SAVE.xp} XP</span></div><div class="bar"><i style="width:${l.pct}%"></i></div>
+    <p class="muted" style="margin:0;font-size:14px">Prova de quarta, 25/11. Primeiro aprenda (lições de 5 a 7 minutos), depois teste. Errou no teste: a pergunta volta mais adiante.${cc[1]>=5?` Quando você marca "certeza", acerta ${Math.round(cc[0]/cc[1]*100)}%.`:''}</p></div>
+   ${contractHtml()}
+   ${vesperaHtml()}
+   ${resumeHtml()}
+   <div><h2 class="sec">1. Aprender <span class="mono muted" style="font-size:14px">${nd}/${LESSONS.length}</span></h2>
+    <div class="lessons">${LESSONS.map((x,i)=>`<button class="lrow" data-l="${x.id}"><span class="ck mono">${SAVE.done.includes(x.id)?'✓':String(i).padStart(2,'0')}</span><span><b>${esc(x.title)}</b><br><span class="muted" style="font-size:13px">${x.time}${x.w>=0?' · '+WORLDS[x.w].name:' · comece por aqui'}</span></span></button>`).join('')}</div></div>
+   <div><button class="btn ghost" id="dic">Dicionário: o que é, por quê e quando usar</button></div>
+   <div><h2 class="sec">2. Testar</h2><div class="worlds">${WORLDS.map(w=>{const b=SAVE.best[w.id];return`<button class="world" data-w="${w.id}"><span class="n">${w.n}</span><h3>${w.name}</h3><p>${w.desc}</p><span class="mono muted" style="font-size:13px">${b!=null?'Melhor: '+b+'%':'Ainda não jogada'}</span></button>`}).join('')}
+    <button class="world" data-w="mix"><span class="n">REVISÃO DO DIA</span><h3>Intercalada e espaçada</h3><p>Mistura os assuntos e traz primeiro o que venceu e o que você errou. Uma pergunta só vira "dominada" ao ser acertada em 3 sessões separadas por 3 h ou mais.</p><span class="mono muted" style="font-size:13px">${due} para rever · ${fresh} nova(s)</span></button>
+    <button class="world" data-w="lab"><span class="n">LABORATÓRIO</span><h3>Laboratório de contas</h3><p>10 problemas com números novos a cada vez. A prova dá a tabela de fórmulas: o treino é saber qual usar e como aplicar.</p><span class="mono muted" style="font-size:13px">${SAVE.labn||0} conta(s) feita(s)</span></button>
+    <button class="world" data-w="boss"><span class="n">CHEFÃO</span><h3>Dissertativas</h3><p>Escreva a resposta, preveja sua nota, compare com o modelo e marque os pontos que você cobriu.</p><span class="mono muted" style="font-size:13px">5 desafios</span></button></div></div>
+   <div><h2 class="sec">3. Lembrar com cenas <span class="mono muted" style="font-size:14px">${SAVE.done.length}/${Object.keys(SCENES).length}</span></h2><div class="row"><button class="btn" id="alb">Álbum de cenas</button><button class="btn pen" id="pas">Passeio relâmpago</button><button class="btn ghost" id="mapbtn">Mapa de decisão</button></div></div>
+   <div><h2 class="sec">Seu domínio <span class="mono muted" style="font-size:14px">${mast}/${Q.length}</span></h2><div class="dots">${domHtml()}</div><p class="muted" style="margin:8px 0 0;font-size:13px">✓ acertou em 3 sessões separadas · 1 e 2 em andamento · ! errou · vazio ainda não vista</p></div>
+   <div><h2 class="sec">Progresso e ajustes</h2><p class="muted" style="margin:0 0 10px;font-size:14px">Tudo é salvo sozinho neste navegador. Para guardar uma cópia ou levar a outro aparelho, gere um código.</p>
+    <label class="check"><input type="checkbox" id="cfg_think" ${SAVE.cfg.think?'checked':''}><span>Pensar na resposta antes de ver as opções</span></label>
+    <label class="check"><input type="checkbox" id="cfg_conf" ${SAVE.cfg.conf?'checked':''}><span>Dizer o quão certo estou (e comparar com o resultado)</span></label>
+    <div class="row" style="margin-top:12px"><button class="btn ghost" id="bk">Backup do progresso</button><button class="btn ghost" id="abt">Sobre este material</button></div></div>
+  </div>`;
+  app.querySelectorAll('.world').forEach(b=>b.onclick=()=>start(b.dataset.w));
+  app.querySelectorAll('.lrow').forEach(b=>b.onclick=()=>lessonStart(b.dataset.l));
+  $('#mapbtn').onclick=mapScreen;$('#alb').onclick=album;$('#pas').onclick=passeio;$('#bk').onclick=backupScreen;$('#abt').onclick=aboutScreen;$('#dic').onclick=dicScreen;
+  $('#cfg_think').onchange=e=>{SAVE.cfg.think=e.target.checked;persist()};
+  $('#cfg_conf').onchange=e=>{SAVE.cfg.conf=e.target.checked;persist()};
+  const g=id=>document.getElementById(id),on=(id,f)=>{if(g(id))g(id).onclick=f};
+  on('rrun',()=>{run=desRun(SAVE.run);question()});
+  on('drun',()=>{SAVE.run=null;persist();home()});
+  on('rles',()=>lessonStart(SAVE.lesson.id,SAVE.lesson.i));
+  on('dles',()=>{SAVE.lesson=null;persist();home()});
+  on('rbos',()=>boss(SAVE.boss.i,SAVE.boss.pts,SAVE.boss.log||[]));
+  on('dbos',()=>{SAVE.boss=null;persist();home()});
+}
+function aboutScreen(){
+  const li=a=>a.map(x=>`<li style="margin-bottom:6px">${x}</li>`).join('');
+  app.innerHTML=`<div class="top"><div class="brand">Sobre este <b>material</b></div><button class="btn ghost" id="back">Voltar</button></div><div class="stack">
+  <div class="card"><span class="tag">O que é</span><p style="margin:6px 0 0">Material de apoio de estudo para <b>Técnicas de Amostragem, N2</b>, montado com ajuda de IA a partir dos materiais da disciplina (conglomerados, intervalos de confiança e testes de hipótese). <b>Não é material oficial</b> da universidade nem do professor. Em caso de dúvida, vale o que está nos slides e na tabela de fórmulas da prova.</p></div>
+  <div class="card"><span class="tag">O que foi conferido</span><ul style="margin:6px 0 0;padding-left:20px">${li(['Todas as contas, valores críticos de tabela (z, t, χ²) e gabaritos foram recalculados por computador.','As regras de forma do curso seguem o que foi usado em aula, por exemplo: arredondar o tamanho efetivo para baixo e o tamanho de amostra para cima, usar o g.l. imediatamente menor quando faltar na tabela e o fluxograma de quatro perguntas.','Os "porquês", cenas e analogias são explicações didáticas minhas e têm limites (cada cena diz onde falha).'])}</ul></div>
+  <div class="card"><span class="tag">Limites</span><ul style="margin:6px 0 0;padding-left:20px">${li(['Pode haver erro ou diferença de notação em relação ao professor. Se achar algo estranho, confira nos slides.','As questões são de treino: não são as da prova.','O progresso fica salvo só neste navegador e neste aparelho. Use o Backup para levar para outro.'])}</ul></div>
+  <div class="card"><span class="tag">Por que este método</span><p style="margin:6px 0 6px">Cada recurso se apoia em pesquisa sobre aprendizagem. Os efeitos variam entre pessoas e situações, e nenhum garante nota.</p><ul style="margin:0;padding-left:20px">${li(['Testar a si mesmo em vez de reler: Roediger e Karpicke (2006); revisão de técnicas em Dunlosky e colegas (2013).','Revisar espaçado ao longo do tempo: Cepeda e colegas (2006).','Misturar tipos de problema (intercalar): Rohrer e Taylor (2007).','Tentar antes de ver a resposta (pré-teste): Richland, Kornell e Kao (2009).','Exemplos resolvidos: Sweller e Cooper (1985).','Corrigir mais fácil os erros em que você tinha certeza: Butterfield e Metcalfe (2001).','Texto mais imagem: princípio multimídia de Mayer.','Sono depois do estudo: Diekelmann e Born (2010).','Gamificação tem efeito pequeno a moderado e depende do desenho: Sailer e Homner (2020).'])}</ul></div>
+  <div class="card"><span class="tag">Compartilhar</span><p style="margin:6px 0 0">Cada pessoa tem o próprio progresso. Se o link não abrir para um colega, peça o arquivo HTML: ele abre direto no navegador do celular ou do computador.</p></div></div>`;
+  $('#back').onclick=home;
+}
+function backupScreen(){
+  const code=btoa(unescape(encodeURIComponent(JSON.stringify(SAVE))));
+  app.innerHTML=`<div class="top"><div class="brand">Backup do <b>progresso</b></div><button class="btn ghost" id="back">Voltar</button></div><div class="stack">
+  <div class="card"><h3 style="margin-bottom:6px">Guardar</h3><p class="muted" style="margin-top:0">Copie o código e guarde numa nota ou mensagem para você mesmo.</p><textarea id="code" readonly rows="4" class="mono" style="font-size:12px;width:100%">${code}</textarea><div class="row" style="margin-top:10px"><button class="btn pen" id="cp">Copiar código</button></div><p id="cpm" class="muted" style="margin:8px 0 0"></p></div>
+  <div class="card"><h3 style="margin-bottom:6px">Restaurar</h3><p class="muted" style="margin-top:0">Cole um código guardado antes. Isso substitui o progresso deste navegador.</p><textarea id="inp" rows="4" class="mono" style="font-size:12px;width:100%" placeholder="Cole o código aqui"></textarea><div class="row" style="margin-top:10px"><button class="btn" id="rs">Restaurar</button></div><p id="rsm" style="margin:8px 0 0"></p></div></div>`;
+  $('#back').onclick=home;
+  $('#cp').onclick=async()=>{const t=$('#code');let ok=false;try{await navigator.clipboard.writeText(t.value);ok=true}catch(e){}if(!ok){t.focus();t.select();try{ok=document.execCommand('copy')}catch(e){}}$('#cpm').textContent=ok?'Código copiado.':'Não consegui copiar sozinho. O texto está selecionado, copie com Ctrl+C.'};
+  $('#rs').onclick=()=>{
+    try{
+      const o=JSON.parse(decodeURIComponent(escape(atob($('#inp').value.trim()))));
+      if(typeof o!=='object'||o===null||typeof o.xp!=='number'||!Array.isArray(o.done)||!Array.isArray(o.wrong))throw 0;
+      SAVE=Object.assign({xp:0,best:{},wrong:[],done:[],run:null,lesson:null,boss:null,mem:{},hc:[],cal:{g:[0,0],a:[0,0],c:[0,0]},cfg:{think:true,conf:true},day:null,labk:{},labn:0},o);SAVE.cfg=Object.assign({think:true,conf:true},SAVE.cfg||{});persist();
+      $('#rsm').innerHTML='<b>Progresso restaurado.</b> <button class="btn pen sm" id="ok">Ir para o início</button>';$('#ok').onclick=home;
+    }catch(e){$('#rsm').textContent='Esse código não parece válido. Copie o código inteiro e tente de novo.'}
+  };
+}
+
+/* ---------- CENAS: ÁLBUM E PASSEIO ---------- */
+function sceneCard(id,open){const c=SCENES[id];
+  const mp=open&&c.m?`<table class="map-t"><thead><tr><th>Na história</th><th>Na estatística</th></tr></thead><tbody>${c.m.map(r=>`<tr><td>${esc(r[0])}</td><td>${lk(esc(r[1]))}</td></tr>`).join('')}</tbody></table>`:'';
+  const fl=open&&c.f?`<p class="muted" style="font-size:14px;margin:10px 0 0"><b>Onde a história falha:</b> ${esc(c.f)}</p>`:'';
+  const rc=open&&c.r?`<details class="rcl"><summary>Teste rápido: ${esc(c.r.q)}</summary><p style="margin:6px 0 0">${lk(esc(c.r.a))}</p></details>`:'';
+  if(open)return`<div class="scene open"><div class="row" style="flex-wrap:nowrap;gap:12px"><div class="glyph mono sm">${esc(c.g)}</div><div><span class="tag">Cena ${id.replace('L','')}</span><h3 class="stitle" style="margin:0">${esc(c.t)}</h3></div></div><p class="lp">${lk(esc(c.s))}</p>${mp}${fl}${rc}<div class="hook"><b>Gancho:</b> ${esc(c.h)}</div></div>`;
+  return`<div class="scene"><div class="glyph mono">${esc(c.g)}</div><div style="min-width:0"><span class="tag">Cena ${id.replace('L','')}</span><h3 class="stitle">${esc(c.t)}</h3><div class="hook"><b>Gancho:</b> ${esc(c.h)}</div></div></div>`}
+function album(){
+  const ids=Object.keys(SCENES);
+  app.innerHTML=`<div class="top"><div class="brand">Álbum de <b>cenas</b></div><button class="btn ghost" id="back">Voltar</button></div>
+  <p class="muted" style="margin-top:0">${SAVE.done.length} de ${ids.length} cartas. Cada carta é liberada ao concluir a lição do mesmo número. Toque numa carta para ver a cena.</p>
+  <div class="cards">${ids.map(id=>{const ok=SAVE.done.includes(id);return ok?`<button class="cardx on" data-s="${id}"><span class="glyph mono">${esc(SCENES[id].g)}</span><span class="ct">${esc(SCENES[id].t)}</span></button>`:`<div class="cardx off" aria-label="Carta bloqueada"><span class="glyph mono">?</span><span class="ct">Lição ${id.replace('L','')}</span></div>`}).join('')}</div>`;
+  $('#back').onclick=home;
+  app.querySelectorAll('.cardx.on').forEach(b=>b.onclick=()=>sceneView(b.dataset.s));
+}
+function sceneView(id){
+  app.innerHTML=`<div class="top"><div class="brand">Cena <b>${id.replace('L','')}</b></div><button class="btn ghost" id="back">Álbum</button></div><div>${sceneCard(id,true)}</div>`;
+  $('#back').onclick=album;
+}
+function passeio(){
+  const ids=Object.keys(SCENES).filter(id=>SAVE.done.includes(id));
+  if(!ids.length){app.innerHTML=`<div class="top"><div class="brand">Passeio <b>relâmpago</b></div><button class="btn ghost" id="back">Voltar</button></div><div class="card">Conclua pelo menos uma lição para liberar a primeira cena.</div>`;$('#back').onclick=home;return}
+  const P={q:shuffle(ids),i:0,ok:0,tot:ids.length,seen:{}};
+  const step=()=>{
+    if(P.i>=P.q.length){SAVE.xp+=P.ok*3;bump('pas');
+      app.innerHTML=`<div class="top"><div class="brand">Passeio <b>concluído</b></div></div><div class="card"><div class="big mono"><span class="grade">${P.ok}/${P.tot}</span></div><p class="muted">cenas lembradas de primeira · +${P.ok*3} XP</p><div class="row"><button class="btn pen" id="again">Repetir</button><button class="btn ghost" id="hm">Início</button></div></div>`;
+      $('#again').onclick=passeio;$('#hm').onclick=home;return}
+    const id=P.q[P.i],c=SCENES[id];
+    app.innerHTML=`<div class="hud"><button class="btn ghost" id="exit" style="padding:6px 12px">Sair</button><span class="chip">Passeio relâmpago</span><span>${Math.min(P.i+1,P.q.length)}/${P.q.length}</span></div><div class="bar" style="margin-bottom:14px"><i style="width:${Math.round(P.i/P.q.length*100)}%"></i></div>
+    <div class="card"><div class="glyph big2 mono">${esc(c.g)}</div><h3 class="stitle">${esc(c.t)}</h3><p class="muted">Sem olhar: ${c.r?esc(c.r.q):'Lembre a cena e diga em voz alta a regra.'} Responda em voz alta e depois confira.</p><div id="rv"></div><div class="row" style="justify-content:flex-end;margin-top:12px"><button class="btn pen" id="show">Conferir o gancho</button></div></div>`;
+    $('#exit').onclick=home;
+    $('#show').onclick=()=>{
+      $('#rv').innerHTML=`${c.r?`<div class="fb"><b>Resposta:</b> ${lk(esc(c.r.a))}</div>`:''}<div class="hook"><b>Gancho:</b> ${esc(c.h)}</div>`;
+      $('#show').parentElement.innerHTML=`<button class="btn" id="no">Esqueci</button><button class="btn pen" id="yes">Lembrei</button>`;
+      $('#yes').onclick=()=>{if(!P.seen[id])P.ok++;P.seen[id]=1;P.i++;step()};
+      $('#no').onclick=()=>{P.seen[id]=1;P.q.push(id);P.i++;step()};
+    };
+  };
+  step();
+}
+
+function mapScreen(){
+  app.innerHTML=`<div class="top"><div class="brand">Mapa de <b>decisão</b></div><button class="btn ghost" id="back">Voltar</button></div>
+  <div class="card map"><p class="muted" style="margin-top:0">As quatro perguntas, nesta ordem, levam ao intervalo certo (aula de 04/11). O teste de hipótese usa a mesma escolha de distribuição.</p><ol>${MAP.map(m=>`<li>${m}</li>`).join('')}</ol>
+  <table style="margin-top:14px"><tr><th>Parâmetro</th><th>Distribuição</th></tr><tr><td>Média, σ conhecido</td><td class="mono">z</td></tr><tr><td>Média, só s</td><td class="mono">t (n − 1 g.l.)</td></tr><tr><td>Proporção</td><td class="mono">z</td></tr><tr><td>Variância / desvio padrão</td><td class="mono">χ² (n − 1 g.l.)</td></tr></table></div>`;
+  $('#back').onclick=home;
+}
+function start(mode){
+  if(mode==='boss')return boss(0,0,[]);
+  if(mode==='lab')return labStart();
+  let pool;
+  if(mode==='mix'){
+    pool=buildMix();
+  }else pool=shuffle(Q.filter(q=>q.w===+mode));
+  run={mode,queue:pool.map(q=>({q,rev:false,view:null})),i:0,hearts:3,xp:0,streak:0,first:0,firstOk:0,missed:[],by:{0:[0,0],1:[0,0],2:[0,0],3:[0,0]},cal:{g:[0,0],a:[0,0],c:[0,0]},done:false};
+  persist();question();
+}
+function hud(){return`<div class="hud"><span class="hearts" aria-label="vidas">${'♥'.repeat(run.hearts)}${'·'.repeat(3-run.hearts)}</span><span class="chip">+${run.xp} XP</span><span class="chip">${run.streak>=2?'sequência '+run.streak:'sem sequência'}</span><span>${Math.min(run.i+1,run.queue.length)}/${run.queue.length}</span></div>
+  <div class="bar" style="margin-bottom:14px"><i style="width:${Math.round(run.i/run.queue.length*100)}%"></i></div>${navRow(run.i>0)}`}
+function question(){
+  if(run.i>=run.queue.length)return finish();
+  const it=run.queue[run.i],q=it.q;
+  if(!it.view&&run.hearts<=0)return finish();
+  if(breakDue())return pauseScreen(question);
+  const ord=it.view?it.view.ord:shuffle(q.o.map((t,k)=>k)),hide=!it.view&&SAVE.cfg.think;
+  app.innerHTML=`${hud()}<div class="card"><div class="row" style="justify-content:space-between"><span class="tag">${WORLDS[q.w].name}</span>${it.rev?'<span class="rev">revisão</span>':''}</div><p class="q">${esc(q.q)}</p>
+   ${hide?`<div id="th"><div class="hook" style="margin:0 0 12px"><b>Pense primeiro.</b> Tente responder de cabeça, ou diga em voz alta, antes de ver as opções. Lembrar sem olhar é o que fixa.</div><div class="row" style="justify-content:flex-end;margin-bottom:6px"><button class="btn pen" id="rv">Já pensei, mostrar as opções</button></div></div>`:''}
+   <div class="opts" id="op" ${hide?'style="display:none"':''}>${ord.map((k,n)=>`<button class="opt" data-k="${k}" data-ok="${k===q.a}"><span class="k">${'ABCD'[n]}</span><span>${esc(q.o[k])}</span></button>`).join('')}</div><div id="cf"></div><div id="fb"></div></div>`;
+  $('#prev').onclick=()=>{run.i--;persist();question()};
+  $('#sx').onclick=()=>{persist();home()};
+  if(it.view){showFb(it);return}
+  it.ord=ord;
+  if(hide)$('#rv').onclick=()=>{$('#th').remove();$('#op').style.display='flex'};
+  app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>choose(b,it));
+}
+function choose(btn,it){
+  if(!SAVE.cfg.conf)return answer(btn,it,'a');
+  app.querySelectorAll('.opt').forEach(b=>b.disabled=true);btn.classList.add('sel');
+  $('#cf').innerHTML=`<div class="hook"><b>Quão certo você está?</b><div class="row" style="margin-top:8px"><button class="btn ghost sm" data-c="g">Chute</button><button class="btn ghost sm" data-c="a">Acho que sim</button><button class="btn ghost sm" data-c="c">Certeza</button></div></div>`;
+  $('#cf').querySelectorAll('button').forEach(b=>b.onclick=()=>{$('#cf').innerHTML='';answer(btn,it,b.dataset.c)});
+}
+function showFb(it){
+  const q=it.q,ok=it.view.ok,cf=it.view.conf,sid=QSC[q.id],scn=sid&&SCENES[sid],nx=run.queue[run.i+1];
+  app.querySelectorAll('.opt').forEach(b=>{b.disabled=true;if(b.dataset.ok==='true')b.classList.add('right');if(+b.dataset.k===it.view.pick){b.classList.add('sel');if(!ok)b.classList.add('wrong')}});
+  let note='';
+  if(ok&&cf==='g')note='Acertou no chute. Isso ainda não conta como dominado: a pergunta volta mais adiante.';
+  else if(ok&&cf==='c')note='Certeza e acertou: seu radar está calibrado neste assunto.';
+  else if(!ok&&cf==='c')note='Errou com certeza. É o erro mais valioso de corrigir: leia a explicação devagar. Ele volta logo e de novo em outra sessão, porque erros confiantes costumam reaparecer.';
+  else if(!ok&&cf==='g')note='Era chute. Agora você sabe o que ainda falta.';
+  const last=run.i+1>=run.queue.length||(!(nx&&nx.view)&&run.hearts<=0);
+  $('#fb').innerHTML=`<div class="fb ${ok?'':'bad'}"><b>${ok?'Certo.':'Não foi essa.'}</b> ${lk(esc(q.ex))}${note?`<div class="muted" style="margin-top:8px;font-size:14px">${note}</div>`:''}${(!ok&&scn)?`<div class="hook" style="margin-top:10px"><b>Lembre da cena "${esc(scn.t)}":</b> ${esc(scn.h)}</div>`:''}</div><div class="row" style="margin-top:14px;justify-content:flex-end"><button class="btn pen" id="nx">${last?'Ver resultado':'Próxima'}</button></div>`;
+  $('#nx').onclick=()=>{run.i++;persist();question()};
+  $('#nx').focus();
+}
+function answer(btn,it,conf){
+  const k=+btn.dataset.k,ok=k===it.q.a,q=it.q;conf=conf||'a';
+  it.view={ord:it.ord,pick:k,ok,conf};
+  const cal=run.cal||(run.cal={g:[0,0],a:[0,0],c:[0,0]});
+  if(!it.rev){
+    cal[conf][1]++;if(ok)cal[conf][0]++;SAVE.cal[conf][1]++;if(ok)SAVE.cal[conf][0]++;
+    run.first++;run.by[q.w][1]++;memUpd(q,ok,conf);
+    if(ok){run.firstOk++;run.by[q.w][0]++;
+      if(conf==='g'){run.streak=0;run.xp+=5;run.queue.splice(Math.min(run.i+5,run.queue.length),0,{q,rev:true,view:null})}
+      else{run.streak++;run.xp+=10+Math.min(run.streak,5)*2;SAVE.wrong=SAVE.wrong.filter(x=>x!==q.id)}
+    }else{run.streak=0;run.hearts--;run.missed.push(q);if(!SAVE.wrong.includes(q.id))SAVE.wrong.push(q.id);
+      if(conf==='c'&&!SAVE.hc.includes(q.id))SAVE.hc.push(q.id);
+      run.queue.splice(Math.min(run.i+(conf==='c'?3:4),run.queue.length),0,{q,rev:true,view:null})}
+  }else if(ok){run.xp+=5;SAVE.wrong=SAVE.wrong.filter(x=>x!==q.id)}
+  else{run.queue.splice(Math.min(run.i+4,run.queue.length),0,{q,rev:true,view:null})}
+  persist();showFb(it);
+}
+function finish(){
+  run.done=true;SAVE.run=null;bump(run.mode==='mix'?'rev':'test');
+  const acc=run.first?Math.round(run.firstOk/run.first*100):0;
+  SAVE.xp+=run.xp;
+  if(run.mode!=='mix'){const b=SAVE.best[run.mode];if(b==null||acc>b)SAVE.best[run.mode]=acc}
+  persist();
+  const over=run.hearts<=0;
+  app.innerHTML=`<div class="top"><div class="brand">${over?'Fim das <b>vidas</b>':'Fase <b>concluída</b>'}</div></div><div class="stack"><div class="card">
+   <div class="big mono"><span class="grade">${acc}%</span></div><p class="muted" style="margin:6px 0 0">acertos de primeira · ${run.firstOk} de ${run.first} · +${run.xp} XP</p>
+   <table style="margin-top:14px"><tr><th>Fase</th><th>Acertos</th></tr>${WORLDS.map(w=>{const [a,b]=run.by[w.id]||[0,0];return b?`<tr><td>${w.name}</td><td class="mono">${a}/${b}</td></tr>`:''}).join('')}</table></div>
+   ${(()=>{const cl={g:'Chute',a:'Acho que sim',c:'Certeza'},cr=run.cal||{g:[0,0],a:[0,0],c:[0,0]},rows=['g','a','c'].filter(c=>cr[c][1]);if(!rows.length||!SAVE.cfg.conf)return'';const c=cr.c;let msg='';if(c[1]>=2)msg=c[0]/c[1]>=0.8?'Seus "certeza" estão confiáveis.':'Seus "certeza" erraram demais. Desconfie quando a resposta vier fácil.';return`<div class="card"><h3 style="margin-bottom:8px">Sua confiança x resultado</h3><table><tr><th>Você disse</th><th>Acertos</th></tr>${rows.map(c=>`<tr><td>${cl[c]}</td><td class="mono">${cr[c][0]}/${cr[c][1]}</td></tr>`).join('')}</table>${msg?`<p class="muted" style="margin:10px 0 0">${msg}</p>`:''}</div>`})()}
+   ${run.missed.length?`<div class="card"><h3 style="margin-bottom:8px">Para rever</h3>${run.missed.map(q=>`<div class="check" style="display:block"><b style="font-size:15px">${esc(q.q)}</b><div class="muted" style="font-size:14px;margin-top:4px">${lk(esc(q.ex))}</div></div>`).join('')}</div>`:'<div class="card">Nenhum erro de primeira. Tente o treino misto ou o chefão.</div>'}
+   <div class="row"><button class="btn pen" id="again">Jogar de novo</button><button class="btn ghost" id="hm">Início</button></div></div>`;
+  const m=run.mode;$('#again').onclick=()=>start(m);$('#hm').onclick=home;
+}
+function boss(i,pts,log){
+  if(i>=BOSS.length){
+    const tot=BOSS.reduce((s,b)=>s+b.pts.length,0),xp=pts*8;SAVE.xp+=xp;SAVE.boss=null;bump('boss');
+    app.innerHTML=`<div class="top"><div class="brand">Chefão <b>derrotado</b></div></div><div class="stack"><div class="card"><div class="big mono"><span class="grade">${pts}/${tot}</span></div><p class="muted">pontos-chave cobertos nas suas respostas · +${xp} XP</p><p>Se algum desafio ficou com poucos pontos, refaça só ele escrevendo de novo, sem olhar o modelo.</p></div><div class="row"><button class="btn pen" id="again">Jogar de novo</button><button class="btn ghost" id="hm">Início</button></div></div>`;
+    $('#again').onclick=()=>boss(0,0,[]);$('#hm').onclick=home;return;
+  }
+  const b=BOSS[i];
+  SAVE.boss={i,pts,log};persist();
+  app.innerHTML=`<div class="hud"><span class="chip">Desafio ${i+1}/${BOSS.length}</span><span class="chip">${pts} pontos-chave</span></div>${navRow(i>0)}
+  <div class="card"><span class="tag">Dissertativa</span><p class="q">${esc(b.q)}</p>
+   <label for="ans" class="muted" style="font-size:14px">Escreva em 2 a 4 frases. Sublinhe mentalmente a palavra de comando. Na prova, uma resposta parcial pode render pontos; em branco rende zero.</label>
+   <textarea id="ans" placeholder="Sua resposta"></textarea><div class="row" style="margin-top:12px;justify-content:space-between"><button class="btn ghost sm" id="sk">Esqueleto de resposta</button><button class="btn pen" id="see">Ver modelo e me corrigir</button></div><div id="res"></div></div>`;
+  $('#prev').onclick=()=>boss(i-1,pts-(log[i-1]||0),log.slice(0,-1));$('#sx').onclick=home;
+  $('#sk').onclick=()=>{const t=$('#ans');if(!t.value.trim()){t.value='1) O que a pergunta pede (palavra de comando):\n2) Resposta direta:\n3) Detalhe, condição ou exemplo:\n4) Conclusão em uma frase:\n';t.focus()}};
+  $('#see').onclick=()=>{
+    const ta=$('#ans');
+    if(ta.value.trim().length<20){ta.focus();ta.placeholder='Escreva ao menos uma frase antes de ver o modelo.';return}
+    $('#see').disabled=true;$('#sk').disabled=true;ta.readOnly=true;
+    const reveal=pred=>{
+      const nt=norm(ta.value);
+      $('#res').innerHTML=`<div class="model" style="margin-top:14px"><b>Modelo de resposta</b><p style="margin:6px 0 0">${lk(esc(b.m))}</p></div>
+       <p style="margin:14px 0 4px"><b>Marque os pontos que a sua resposta cobriu:</b></p>${b.pts.map((p,k)=>{const g=b.kw&&b.kw[k],h=g?(g.some(a=>a.every(t=>nt.includes(t)))?'termo-chave encontrado no seu texto':'termo-chave não encontrado no seu texto'):'';return`<label class="check"><input type="checkbox" class="pt" id="p${k}"><span>${esc(p)}${h?`<br><span class="muted" style="font-size:13px">${h}</span>`:''}</span></label>`}).join('')}
+       <p id="cmp" class="muted" style="margin:8px 0 0;font-size:14px"></p>
+       <div class="row" style="margin-top:12px;justify-content:flex-end"><button class="btn pen" id="nxt">Próximo desafio</button></div>`;
+      const upd=()=>{const got=app.querySelectorAll('.pt:checked').length;$('#cmp').textContent=pred==null?'':`Você previu ${pred} e marcou ${got}.`+(pred>got?' Esperava mais do que entregou: releia o modelo.':pred<got?' Você foi mais severo do que precisava.':' Boa calibração.')};
+      app.querySelectorAll('.pt').forEach(c=>c.onchange=upd);upd();
+      $('#nxt').onclick=()=>{const got=app.querySelectorAll('.pt:checked').length;boss(i+1,pts+got,log.concat([got]))};
+    };
+    if(SAVE.cfg.conf){
+      $('#res').innerHTML=`<div class="hook" style="margin-top:14px"><b>Antes de ver o modelo: quantos dos ${b.pts.length} pontos-chave você acha que cobriu?</b><div class="row" style="margin-top:8px">${Array.from({length:b.pts.length+1},(_,k)=>`<button class="btn ghost sm" data-p="${k}">${k}</button>`).join('')}</div></div>`;
+      $('#res').querySelectorAll('button').forEach(x=>x.onclick=()=>reveal(+x.dataset.p));
+    }else reveal(null);
+  };
+}
+home();
+</script>
+</body>
+</html>
