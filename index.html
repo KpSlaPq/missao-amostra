@@ -295,6 +295,56 @@ body::before{display:none}
 #boot .seg i.on{background:#59d4ff;box-shadow:0 0 10px #59d4ff}
 @media (prefers-reduced-motion:reduce){#boot{display:none!important}.rip,.pa,.flash{display:none}}
 
+/* ===== INÍCIO EM ABAS + MINI-GAME ===== */
+.tabs{position:sticky;top:8px;z-index:20;display:grid;grid-template-columns:repeat(5,1fr);gap:4px;padding:4px;margin:0 0 18px;border-radius:8px;background:var(--glass);border:1px solid var(--edge);box-shadow:0 8px 24px rgba(0,0,30,.45),inset 0 1px 0 rgba(255,255,255,.25)}
+.tabs button{position:relative;display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 2px 7px;border:0;border-radius:5px;background:transparent;color:var(--muted);font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:background .15s,color .15s,box-shadow .15s;min-height:50px}
+.tabs button:hover{color:var(--hi);background:var(--hov)}
+.tabs button.on{color:#fff;background:linear-gradient(180deg,rgba(89,212,255,.4),rgba(26,86,255,.7));box-shadow:0 0 14px rgba(89,212,255,.55),inset 0 1px 0 rgba(255,255,255,.55)}
+.tabs .bdg{position:absolute;top:3px;right:calc(50% - 22px);min-width:17px;height:17px;padding:0 4px;border-radius:99px;display:grid;place-items:center;font:700 10px/1 var(--mono);font-style:normal;color:#02123d;background:#88ff00;box-shadow:0 0 8px rgba(136,255,0,.8)}
+@media(min-width:560px){.tabs button{flex-direction:row;justify-content:center;gap:8px;font-size:11px}.tabs .bdg{position:static}}
+.pane{animation:paneIn .24s ease-out}
+@keyframes paneIn{from{opacity:0;transform:translateY(8px)}}
+.lvrow{display:flex;flex-direction:column;gap:6px;padding:0 2px}
+.hero h2{font-size:22px;margin:8px 0 6px}
+.hero>p{margin:0 0 16px}
+.big-cta{min-height:52px;padding:12px 30px;font-size:15px}
+details.fold>summary{list-style:none;cursor:pointer}
+details.fold>summary::-webkit-details-marker{display:none}
+details.fold>summary .bar{margin-top:10px}
+.row.sp{justify-content:space-between;flex-wrap:nowrap}
+details.fold.dn>summary{font-family:var(--display);font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:6px 2px}
+details.card.fold{padding:16px 20px}
+.lrow.next{border-color:var(--acc);box-shadow:0 0 0 1px var(--acc),0 0 26px rgba(89,212,255,.5),inset 0 1px 0 rgba(255,255,255,.3)}
+.lrow .nxt{margin-left:auto;font-family:var(--display);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--acc)}
+.gmt h3{font-size:17px;letter-spacing:.08em;text-transform:uppercase}
+.gm-rules{margin:10px 0 14px;padding-left:20px}.gm-rules li{margin-bottom:6px}
+.gm-hud{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;margin-bottom:10px}
+.gm-time{font-family:var(--display);font-weight:800;font-size:30px;text-align:center;color:var(--hi);text-shadow:var(--glowtxt)}
+.gm-time.low{color:var(--bad);animation:gmlow .5s ease-in-out infinite alternate}
+@keyframes gmlow{to{transform:scale(1.1)}}
+.gm-sc{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:800;font-size:22px;color:var(--acc)}
+.gm-sc .chip{font-size:13px}.gm-sc .chip.hot{color:#02123d;background:#88ff00;border-color:#fff;box-shadow:0 0 12px rgba(136,255,0,.8)}
+.gm-bar{margin-bottom:14px}.gm-bar>i{transition:width .12s linear}
+.gm-bar.low>i{background:linear-gradient(90deg,#ff3b5c,#ff8aa0);box-shadow:0 0 12px #ff3b5c}
+.gm-prop{margin:4px 0 2px;padding:14px 16px;border:1px solid var(--edge);border-left:4px solid var(--acc);background:var(--field);border-radius:4px}
+.gm-prop p{margin:6px 0 0;font-size:18px;font-weight:600}
+.gm-btns{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.gm-btns .btn{min-height:68px;font-size:16px}
+.btn.gm-yes{color:#032a14;background:linear-gradient(180deg,#c9ffe3,#4be39a 55%,#13b866);border-color:#fff;text-shadow:none;box-shadow:0 0 20px rgba(92,240,164,.55),inset 0 1px 0 #fff}
+.btn.gm-no{color:#3a0010;background:linear-gradient(180deg,#ffd9e0,#ff7f98 55%,#e03256);border-color:#fff;text-shadow:none;box-shadow:0 0 20px rgba(255,126,146,.5),inset 0 1px 0 #fff}
+[data-theme="light"] .btn.gm-yes{color:#032a14;background:linear-gradient(180deg,#d9ffec,#5deaa6 48%,#0fae60 52%,#52e69c 100%);border-color:#067a3c;text-shadow:none}
+[data-theme="light"] .btn.gm-no{color:#3a0010;background:linear-gradient(180deg,#ffe3e8,#ff8aa0 48%,#d62a50 52%,#ff7f98 100%);border-color:#a8173a;text-shadow:none}
+.gm-hint{text-align:center;font-size:12px;margin:12px 0 0}
+.card .gm-pop{position:absolute;right:16px;top:12px;font-family:var(--display);font-weight:800;font-size:24px;color:var(--ok);text-shadow:0 0 14px var(--ok);pointer-events:none;animation:gmpop .72s ease-out forwards}
+@keyframes gmpop{0%{transform:translateY(10px) scale(.7);opacity:0}25%{opacity:1;transform:translateY(0) scale(1.2)}100%{transform:translateY(-26px) scale(1);opacity:0}}
+.gm-okf{animation:gmok .36s ease-out}
+@keyframes gmok{50%{box-shadow:0 0 0 2px var(--ok),0 0 34px rgba(92,240,164,.55)}}
+.gm-count{display:grid;place-items:center;min-height:62vh;text-align:center}
+.gm-count .big{font-size:132px;animation:gmc .65s ease-out;color:var(--acc);text-shadow:0 0 30px rgba(89,212,255,.9)}
+@keyframes gmc{from{transform:scale(1.7);opacity:0}to{transform:scale(1);opacity:1}}
+@media(max-width:380px){.tabs button{font-size:9px;letter-spacing:.06em}}
+@media (prefers-reduced-motion:reduce){.pane,.gm-count .big{animation:none}}
+
 /* ===== POLIMENTO: detalhes, toque, desempenho ===== */
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;overscroll-behavior-y:none}
 body{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility;-webkit-tap-highlight-color:transparent}
@@ -663,10 +713,10 @@ function planFor(){
   if(d==='2026-11-25')return{title:'dia da prova',items:[t('Revisão do dia',r.rev,1),t('Passeio relâmpago',r.pas,1)]};
   return{title:'meta do dia',items:[t('Uma lição',r.les,1),t('Revisão do dia',r.rev,1),t('Laboratório de contas',r.lab,1)]};
 }
-function bump(k){const r=dayRec();r[k]=(r[k]||0)+1;const p=planFor();if(!r.paid&&p.items.every(i=>i.cur>=i.need)){r.paid=1;SAVE.xp+=40}persist()}
+function bump(k){const r=dayRec();r[k]=(r[k]||0)+1;persist()}
 function vesperaHtml(){const d=today();if(d!=='2026-11-24'&&d!=='2026-11-25')return'';
   const t=d==='2026-11-24'?['Véspera da prova','Estudo curto e dormir bem vale mais que virar a noite. O sono consolida o que você aprendeu hoje e a falta dele piora a atenção e a memória. Faça a revisão do dia à noite, pare e durma pelo menos 7 horas.']:['Dia da prova','Quinze minutos de recuperação ativa de manhã (Revisão do dia ou Passeio relâmpago), sem reler lição. Na prova, comece pelas questões que você tem certeza, marque as dissertativas com palavras-chave e escreva sempre algo: em branco rende zero.'];
-  return`<div class="card"><span class="tag">${t[0]}</span><p style="margin:6px 0 0">${t[1]}</p></div>`}
+  return`<details class="card fold vsp"><summary><div class="row sp"><span class="tag">${t[0]}</span><span class="mono">▾</span></div></summary><p style="margin:8px 0 0">${t[1]}</p></details>`}
 function contractHtml(){
   const p=planFor(),all=p.items.every(i=>i.cur>=i.need);
   return`<div class="card"><div class="row" style="justify-content:space-between"><span class="tag">Contrato · ${p.title}</span>${all?'<span class="chip">cumprido · +40 XP</span>':''}</div>${p.items.map(i=>`<div class="check" style="align-items:center"><span class="mono" style="min-width:44px">${i.cur>=i.need?'✓':i.cur+'/'+i.need}</span><span>${esc(i.label)}</span></div>`).join('')}</div>`;
@@ -921,7 +971,7 @@ function lessonRender(){
   }
   app.innerHTML=lessonHud()+body;
   SAVE.lesson={id:ls.L.id,i:ls.i};persist();
-  $('#prev').onclick=()=>{ls.i--;lessonRender()};$('#sx').onclick=home;
+  $('#prev').onclick=()=>{ls.i--;lessonRender()};$('#sx').onclick=()=>home('ini');
   if(s.t==='p'){
     app.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
       app.querySelectorAll('.opt').forEach(x=>x.disabled=true);b.classList.add('sel');
@@ -984,35 +1034,86 @@ function resumeHtml(){
   if(b&&b.i>0&&b.i<BOSS.length)h+=card('Chefão em andamento',`<b>Dissertativas</b> · desafio ${b.i+1} de ${BOSS.length}`,'rbos','dbos');
   return h;
 }
-function home(){
-  run=null;const l=lvl(),nd=SAVE.done.length,due=dueList().length,fresh=freshList().length,mast=masteredN(),cc=SAVE.cal.c;
-  app.innerHTML=`<div class="top"><div class="brand">Missão <b>Amostra</b></div><span class="chip mono">Nv ${l.L}</span></div>
-  <div class="stack">
-   <div class="card lvl"><div class="row" style="justify-content:space-between"><b>${l.n}</b><span class="mono muted">${SAVE.xp} XP</span></div><div class="bar"><i style="width:${l.pct}%"></i></div>
-    <p class="muted" style="margin:0;font-size:14px">Prova de quarta, 25/11. Primeiro aprenda (lições de 5 a 7 minutos), depois teste. Errou no teste: a pergunta volta mais adiante.${cc[1]>=5?` Quando você marca "certeza", acerta ${Math.round(cc[0]/cc[1]*100)}%.`:''}</p></div>
-   ${contractHtml()}
-   ${vesperaHtml()}
-   ${resumeHtml()}
-   <div><h2 class="sec">1. Aprender <span class="mono muted" style="font-size:14px">${nd}/${LESSONS.length}</span></h2>
-    <div class="lessons">${LESSONS.map((x,i)=>`<button class="lrow" data-l="${x.id}"><span class="ck mono">${SAVE.done.includes(x.id)?'✓':String(i).padStart(2,'0')}</span><span><b>${esc(x.title)}</b><br><span class="muted" style="font-size:13px">${x.time}${x.w>=0?' · '+WORLDS[x.w].name:' · comece por aqui'}</span></span></button>`).join('')}</div></div>
-   <div><button class="btn ghost" id="dic">Dicionário: o que é, por quê e quando usar</button></div>
-   <div><h2 class="sec">2. Testar</h2><div class="worlds">${WORLDS.map(w=>{const b=SAVE.best[w.id];return`<button class="world" data-w="${w.id}"><span class="n">${w.n}</span><h3>${w.name}</h3><p>${w.desc}</p><span class="mono muted" style="font-size:13px">${b!=null?'Melhor: '+b+'%':'Ainda não jogada'}</span></button>`}).join('')}
+/* ---------- INÍCIO EM ABAS ---------- */
+let HT='ini',CTA=null;
+const TNAME={ini:'Início',apr:'Aprender',tes:'Testar',jog:'Jogar',mais:'Mais'};
+const TICON={ini:'<path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',apr:'<path d="M4 4h6a2 2 0 0 1 2 2v14a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a2 2 0 0 0-2 2v14a2 2 0 0 1 2-2h6z"/>',tes:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".9" fill="currentColor"/>',jog:'<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',mais:'<circle cx="5" cy="12" r="1.5" fill="currentColor"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/><circle cx="19" cy="12" r="1.5" fill="currentColor"/>'};
+function tabsHtml(due){return`<nav class="tabs" aria-label="Seções">${Object.keys(TNAME).map(k=>`<button data-t="${k}"${HT===k?' class="on" aria-current="page"':''}><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${TICON[k]}</svg><span>${TNAME[k]}</span>${k==='tes'&&due?`<em class="bdg">${due>99?'99+':due}</em>`:''}</button>`).join('')}</nav>`}
+function topicStats(){
+  return WORLDS.map(w=>{const qs=Q.filter(q=>q.w===w.id),ls=LESSONS.filter(x=>x.w===w.id);
+    const m=qs.filter(q=>{const r=SAVE.mem[q.id];return r&&r.n>=3}).length,ld=ls.filter(x=>SAVE.done.includes(x.id)).length;
+    return{w,qn:qs.length,m,ln:ls.length,ld,f:qs.length?m/qs.length:1}});
+}
+function nextStep(){
+  const nl=LESSONS.find(x=>!SAVE.done.includes(x.id)),due=dueList().length;
+  if(nl)return{t:nl.title,s:`${nl.time}${nl.w>=0?' · '+WORLDS[nl.w].name:' · comece por aqui'}`,b:'Começar lição',a:()=>lessonStart(nl.id)};
+  if(due>0)return{t:'Revisão do dia',s:`${due} para rever · ${freshList().length} nova(s)`,b:'Começar revisão',a:()=>start('mix')};
+  const wk=topicStats().filter(x=>x.f<1).sort((a,b)=>a.f-b.f)[0];
+  if(wk)return{t:'Reforçar: '+wk.w.name,s:`${wk.m} de ${wk.qn} dominadas neste assunto`,b:'Treinar este assunto',a:()=>start(String(wk.w.id))};
+  return{t:'Laboratório de contas',s:'10 problemas com números novos a cada vez.',b:'Praticar contas',a:()=>start('lab')};
+}
+function homeIni(){
+  const l=lvl(),r=resumeHtml(),G=gmG(),nd=SAVE.done.length,mast=masteredN();
+  let hero='';
+  if(!r){CTA=nextStep();hero=`<div class="card hero"><span class="tag">Próximo passo</span><h2>${esc(CTA.t)}</h2><p class="muted">${esc(CTA.s)}</p><div class="row"><button class="btn pen big-cta" id="cta">${CTA.b}</button></div></div>`}
+  return`<div class="lvrow"><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><b>${l.n}</b><span class="mono muted">${SAVE.xp} XP</span></div><div class="bar"><i style="width:${l.pct}%"></i></div></div>
+   ${r}${hero}
+   <div class="card dev"><span class="tag">Seu desenvolvimento</span>
+    <div class="row sp" style="margin-top:10px"><span>Lições</span><span class="mono">${nd}/${LESSONS.length}</span></div><div class="bar"><i style="width:${Math.round(nd/LESSONS.length*100)}%"></i></div>
+    <div class="row sp" style="margin-top:10px"><span>Questões dominadas</span><span class="mono">${mast}/${Q.length}</span></div><div class="bar"><i style="width:${Math.round(mast/Q.length*100)}%"></i></div>
+    <details class="fold" style="margin-top:12px"><summary class="muted" style="font-size:14px">Por assunto ▾</summary>${topicStats().map(x=>`<div style="margin-top:10px"><div class="row sp"><b style="font-size:14px">${x.w.name}</b><span class="mono muted" style="font-size:13px">${x.ld}/${x.ln} lições · ${x.m}/${x.qn}</span></div><div class="bar"><i style="width:${Math.round(x.f*100)}%"></i></div></div>`).join('')}</details></div>
+   <div class="card gmt"><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><div><span class="tag">Mini-game</span><h3 style="margin:4px 0 2px">Relâmpago</h3><p class="muted" style="margin:0;font-size:14px">60 segundos · certa ou errada?${G.plays?' · recorde '+G.best:''}</p></div><button class="btn pen gmgo">Jogar</button></div></div>
+   ${vesperaHtml()}`;
+}
+function homeApr(){
+  const nd=SAVE.done.length,nl=LESSONS.find(x=>!SAVE.done.includes(x.id));
+  const row=(x,i)=>`<button class="lrow${nl&&x.id===nl.id?' next':''}" data-l="${x.id}"><span class="ck mono">${SAVE.done.includes(x.id)?'✓':String(i).padStart(2,'0')}</span><span><b>${esc(x.title)}</b><br><span class="muted" style="font-size:13px">${x.time}${x.w>=0?' · '+WORLDS[x.w].name:' · comece por aqui'}</span></span>${nl&&x.id===nl.id?'<span class="nxt">próxima</span>':''}</button>`;
+  const L=LESSONS.map((x,i)=>[x,i]),pend=L.filter(([x])=>!SAVE.done.includes(x.id)),done=L.filter(([x])=>SAVE.done.includes(x.id));
+  return`<div><h2 class="sec">Aprender <span class="mono muted" style="font-size:14px">${nd}/${LESSONS.length}</span></h2>
+   ${pend.length?`<div class="lessons">${pend.slice(0,4).map(([x,i])=>row(x,i)).join('')}</div>`:''}
+   ${pend.length>4?`<details class="fold dn" style="margin-top:12px"><summary class="muted">Mais lições (${pend.length-4}) ▾</summary><div class="lessons" style="margin-top:8px">${pend.slice(4).map(([x,i])=>row(x,i)).join('')}</div></details>`:''}
+   ${done.length?`<details class="fold dn"${pend.length?'':' open'} style="margin-top:12px"><summary class="muted">Concluídas (${done.length}) ▾</summary><div class="lessons" style="margin-top:8px">${done.map(([x,i])=>row(x,i)).join('')}</div></details>`:''}</div>
+   <div><button class="btn ghost" id="dic">Dicionário: o que é, por quê e quando usar</button></div>`;
+}
+function homeTes(){
+  const due=dueList().length,fresh=freshList().length;
+  return`<div><h2 class="sec">Fases</h2><div class="worlds">${WORLDS.map(w=>{const b=SAVE.best[w.id];return`<button class="world" data-w="${w.id}"><span class="n">${w.n}</span><h3>${w.name}</h3><p>${w.desc}</p><span class="mono muted" style="font-size:13px">${b!=null?'Melhor: '+b+'%':'Ainda não jogada'}</span></button>`}).join('')}</div></div>
+   <div><h2 class="sec">Treinos</h2><div class="worlds">
     <button class="world" data-w="mix"><span class="n">REVISÃO DO DIA</span><h3>Intercalada e espaçada</h3><p>Mistura os assuntos e traz primeiro o que venceu e o que você errou. Uma pergunta só vira "dominada" ao ser acertada em 3 sessões separadas por 3 h ou mais.</p><span class="mono muted" style="font-size:13px">${due} para rever · ${fresh} nova(s)</span></button>
     <button class="world" data-w="lab"><span class="n">LABORATÓRIO</span><h3>Laboratório de contas</h3><p>10 problemas com números novos a cada vez. A prova dá a tabela de fórmulas: o treino é saber qual usar e como aplicar.</p><span class="mono muted" style="font-size:13px">${SAVE.labn||0} conta(s) feita(s)</span></button>
-    <button class="world" data-w="boss"><span class="n">CHEFÃO</span><h3>Dissertativas</h3><p>Escreva a resposta, preveja sua nota, compare com o modelo e marque os pontos que você cobriu.</p><span class="mono muted" style="font-size:13px">5 desafios</span></button></div></div>
-   <div><h2 class="sec">3. Lembrar com cenas <span class="mono muted" style="font-size:14px">${SAVE.done.length}/${Object.keys(SCENES).length}</span></h2><div class="row"><button class="btn" id="alb">Álbum de cenas</button><button class="btn pen" id="pas">Passeio relâmpago</button><button class="btn ghost" id="mapbtn">Mapa de decisão</button></div></div>
+    <button class="world" data-w="boss"><span class="n">CHEFÃO</span><h3>Dissertativas</h3><p>Escreva a resposta, preveja sua nota, compare com o modelo e marque os pontos que você cobriu.</p><span class="mono muted" style="font-size:13px">5 desafios</span></button></div></div>`;
+}
+function homeJog(){
+  const G=gmG();
+  return`<div class="card hero gmh"><span class="tag">Mini-game</span><h2>Relâmpago</h2><p class="muted">60 segundos. Aparece uma pergunta e uma resposta: ela está certa ou errada? Acertos seguidos valem mais pontos.</p><div class="row"><button class="btn pen big-cta gmgo">Jogar</button><span class="chip mono">${G.plays?'Recorde '+G.best+' pts':'Sem recorde ainda'}</span></div></div>
+   <div><h2 class="sec">Lembrar com cenas <span class="mono muted" style="font-size:14px">${SAVE.done.length}/${Object.keys(SCENES).length}</span></h2><div class="worlds">
+    <button class="world" id="pas"><span class="n">PASSEIO</span><h3>Passeio relâmpago</h3><p>Lembre cada cena das lições concluídas, confira o gancho e marque se lembrou.</p></button>
+    <button class="world" id="alb"><span class="n">ÁLBUM</span><h3>Álbum de cenas</h3><p>Cada carta é liberada ao concluir a lição do mesmo número.</p></button>
+    <button class="world" id="mapbtn"><span class="n">MAPA</span><h3>Mapa de decisão</h3><p>As quatro perguntas, nesta ordem, levam ao intervalo certo.</p></button></div></div>`;
+}
+function homeMais(){
+  const cc=SAVE.cal.c,mast=masteredN();
+  return`<div class="card"><span class="tag">Como funciona</span><p style="margin:6px 0 0">Prova de quarta, 25/11. Primeiro aprenda (lições de 5 a 7 minutos), depois teste. Errou no teste: a pergunta volta mais adiante.${cc[1]>=5?` Quando você marca "certeza", acerta ${Math.round(cc[0]/cc[1]*100)}%.`:''}</p></div>
    <div><h2 class="sec">Seu domínio <span class="mono muted" style="font-size:14px">${mast}/${Q.length}</span></h2><div class="dots">${domHtml()}</div><p class="muted" style="margin:8px 0 0;font-size:13px">✓ acertou em 3 sessões separadas · 1 e 2 em andamento · ! errou · vazio ainda não vista</p></div>
    <div><h2 class="sec">Progresso e ajustes</h2><p class="muted" style="margin:0 0 10px;font-size:14px">Tudo é salvo sozinho neste navegador. Para guardar uma cópia ou levar a outro aparelho, gere um código.</p>
     <label class="check"><input type="checkbox" id="cfg_think" ${SAVE.cfg.think?'checked':''}><span>Pensar na resposta antes de ver as opções</span></label>
     <label class="check"><input type="checkbox" id="cfg_conf" ${SAVE.cfg.conf?'checked':''}><span>Dizer o quão certo estou (e comparar com o resultado)</span></label>
-    <div class="row" style="margin-top:12px"><button class="btn ghost" id="bk">Backup do progresso</button><button class="btn ghost" id="abt">Sobre este material</button></div></div>
-  </div>`;
-  app.querySelectorAll('.world').forEach(b=>b.onclick=()=>start(b.dataset.w));
-  app.querySelectorAll('.lrow').forEach(b=>b.onclick=()=>lessonStart(b.dataset.l));
-  $('#mapbtn').onclick=mapScreen;$('#alb').onclick=album;$('#pas').onclick=passeio;$('#bk').onclick=backupScreen;$('#abt').onclick=aboutScreen;$('#dic').onclick=dicScreen;
-  $('#cfg_think').onchange=e=>{SAVE.cfg.think=e.target.checked;persist()};
-  $('#cfg_conf').onchange=e=>{SAVE.cfg.conf=e.target.checked;persist()};
+    <div class="row" style="margin-top:12px"><button class="btn ghost" id="bk">Backup do progresso</button><button class="btn ghost" id="abt">Sobre este material</button></div></div>`;
+}
+function home(t){
+  gmStop();if(typeof t==='string')HT=t;
+  run=null;const l=lvl(),due=dueList().length;
+  const body={ini:homeIni,apr:homeApr,tes:homeTes,jog:homeJog,mais:homeMais}[HT]();
+  app.innerHTML=`<div class="top"><div class="brand">Missão <b>Amostra</b></div><span class="chip mono">Nv ${l.L}</span></div>${tabsHtml(due)}<div class="stack pane">${body}</div>`;
   const g=id=>document.getElementById(id),on=(id,f)=>{if(g(id))g(id).onclick=f};
+  app.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{if(b.dataset.t!==HT){home(b.dataset.t);window.scrollTo(0,0)}});
+  app.querySelectorAll('.world[data-w]').forEach(b=>b.onclick=()=>start(b.dataset.w));
+  app.querySelectorAll('.lrow').forEach(b=>b.onclick=()=>lessonStart(b.dataset.l));
+  app.querySelectorAll('.gmgo').forEach(b=>b.onclick=gmIntro);
+  on('cta',()=>CTA&&CTA.a());
+  on('mapbtn',mapScreen);on('alb',album);on('pas',passeio);on('bk',backupScreen);on('abt',aboutScreen);on('dic',dicScreen);
+  if(g('cfg_think'))g('cfg_think').onchange=e=>{SAVE.cfg.think=e.target.checked;persist()};
+  if(g('cfg_conf'))g('cfg_conf').onchange=e=>{SAVE.cfg.conf=e.target.checked;persist()};
   on('rrun',()=>{run=desRun(SAVE.run);question()});
   on('drun',()=>{SAVE.run=null;persist();home()});
   on('rles',()=>lessonStart(SAVE.lesson.id,SAVE.lesson.i));
@@ -1088,6 +1189,94 @@ function passeio(){
   step();
 }
 
+/* ---------- MINI-GAME: RELÂMPAGO ---------- */
+function gmPool(){return Q.filter(q=>q.o.length>=2)}
+function gmG(){return SAVE.game||(SAVE.game={best:0,plays:0,maxc:0})}
+let GM=null;
+function gmStop(){if(GM){clearInterval(GM.iv);clearTimeout(GM.to);clearTimeout(GM.nt);if(GM.kd)document.removeEventListener('keydown',GM.kd);GM=null}}
+function gmIntro(){
+  gmStop();const g=gmG();
+  app.innerHTML=`<div class="top"><div class="brand">Modo <b>Relâmpago</b></div><button class="btn ghost" id="back">Voltar</button></div><div class="stack">
+  <div class="card hero"><span class="tag">Como jogar</span><h2>60 segundos no relógio</h2>
+   <ul class="gm-rules"><li>Aparece uma pergunta e <b>uma</b> resposta. Diga se ela está <b>certa</b> ou <b>errada</b>.</li><li>Acertos seguidos aumentam o multiplicador, até ×5.</li><li>Erro: −10 pontos, −3 s e a explicação aparece. O tempo para enquanto você lê.</li><li>O que você errar volta na Revisão do dia.</li></ul>
+   <p class="muted mono" style="font-size:13px;margin:0 0 14px">Teclado: ← errada · → certa</p>
+   <div class="row"><button class="btn pen big-cta" id="gstart">Começar</button><span class="chip mono">${g.plays?'Recorde '+g.best+' pts':'Sem recorde ainda'}</span></div></div></div>`;
+  $('#back').onclick=()=>home('jog');$('#gstart').onclick=gmCount;
+}
+function gmCount(){
+  gmStop();GM={};let n=3;
+  const show=()=>{app.innerHTML=`<div class="gm-count" id="gmc"><div><span class="tag">Prepare-se</span><div class="big mono" id="gmn">${n}</div></div></div>`};
+  show();
+  const tick=()=>{if(!GM||!$('#gmc'))return;n--;if(n<=0)return gmPlay();show();GM.to=setTimeout(tick,650)};
+  GM.to=setTimeout(tick,650);
+}
+function gmPlay(){
+  const pool=shuffle(gmPool());
+  Object.assign(GM,{pool,i:0,left:60000,score:0,combo:0,maxc:0,hits:0,tot:0,miss:[],paused:false,lock:false,lt:performance.now(),pt:0});
+  app.innerHTML=`<div id="gm"><div class="gm-hud"><button class="btn ghost sm" id="gx">Sair</button><div class="gm-time mono" id="gt">1:00</div><div class="gm-sc"><span class="mono" id="gs">0</span><span class="chip mono" id="gc">×1</span></div></div>
+   <div class="bar gm-bar" id="gbar"><i id="gb" style="width:100%"></i></div>
+   <div class="card" id="gcard"><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><span class="tag" id="gtag"></span><span class="muted mono" style="font-size:12px" id="gn"></span></div>
+    <p class="q" id="gq"></p><div class="gm-prop"><span class="tag">Resposta proposta</span><p id="gp"></p></div><div id="gfb"></div>
+    <div class="gm-btns" id="gbt"><button class="btn gm-no" id="gno">✗ Errada</button><button class="btn gm-yes" id="gyes">✓ Certa</button></div></div>
+   <p class="muted mono gm-hint">← errada · → certa</p></div>`;
+  $('#gx').onclick=()=>{gmStop();home('jog')};
+  $('#gno').onclick=()=>gmAnswer(false);$('#gyes').onclick=()=>gmAnswer(true);
+  GM.kd=e=>{if(!GM||e.ctrlKey||e.metaKey||e.altKey)return;const k=e.key.toLowerCase(),sh=document.getElementById('sheet');if(sh&&sh.children.length)return;
+    if(GM.paused){if((k==='enter'||k===' '||k==='arrowright')&&performance.now()-GM.pt>700){e.preventDefault();const b=$('#gnx');if(b)b.click()}return}
+    if(k==='arrowleft'||k==='e'){e.preventDefault();gmAnswer(false)}else if(k==='arrowright'||k==='c'){e.preventDefault();gmAnswer(true)}};
+  document.addEventListener('keydown',GM.kd);
+  GM.iv=setInterval(()=>{if(!GM)return;if(!$('#gm')){gmStop();return}const n=performance.now(),d=n-GM.lt;GM.lt=n;if(GM.paused||document.hidden)return;GM.left-=d;if(GM.left<=0){GM.left=0;gmPaint();gmEnd();return}gmPaint()},100);
+  gmCard();
+}
+function gmPaint(){
+  const s=Math.ceil(GM.left/1000),t=$('#gt');if(!t)return;
+  t.textContent=Math.floor(s/60)+':'+String(s%60).padStart(2,'0');t.classList.toggle('low',s<=10);
+  $('#gb').style.width=(GM.left/600)+'%';$('#gbar').classList.toggle('low',s<=10);
+}
+function gmMult(){return Math.min(5,1+Math.floor(GM.combo/3))}
+function gmHud(){$('#gs').textContent=GM.score;const c=$('#gc');c.textContent='×'+gmMult();c.classList.toggle('hot',gmMult()>1)}
+function gmCard(){
+  if(GM.i>=GM.pool.length){GM.pool=shuffle(gmPool());GM.i=0}
+  const q=GM.pool[GM.i++],truth=Math.random()<.5;
+  const wr=q.o.map((t,k)=>k).filter(k=>k!==q.a),idx=truth?q.a:wr[Math.floor(Math.random()*wr.length)];
+  GM.cur={q,idx,truth};GM.lock=false;
+  $('#gtag').textContent=WORLDS[q.w].name;$('#gn').textContent='#'+(GM.tot+1);
+  $('#gq').textContent=q.q;$('#gp').textContent=q.o[idx];
+  $('#gfb').innerHTML='';$('#gbt').style.display='';
+  gmHud();
+}
+function gmAnswer(says){
+  if(!GM||GM.lock||GM.paused||!GM.cur)return;
+  const c=GM.cur,q=c.q,ok=says===c.truth,card=$('#gcard');GM.tot++;GM.lock=true;
+  if(ok){
+    GM.hits++;GM.combo++;GM.maxc=Math.max(GM.maxc,GM.combo);const m=gmMult(),pts=10*m;GM.score+=pts;gmHud();
+    const pop=document.createElement('span');pop.className='gm-pop';pop.textContent='+'+pts+(m>1?' ×'+m:'');card.appendChild(pop);setTimeout(()=>pop.remove(),720);
+    card.classList.remove('gm-okf');void card.offsetWidth;card.classList.add('gm-okf');
+    if(window.FX){const r=card.getBoundingClientRect();FX.burst(r.left+r.width/2,r.top+90,10+m*3,.8);FX.snd('ok')}
+    GM.nt=setTimeout(()=>{if(GM)gmCard()},240);
+  }else{
+    GM.combo=0;GM.score=Math.max(0,GM.score-10);GM.left=Math.max(0,GM.left-3000);gmHud();gmPaint();
+    if(!GM.miss.includes(q))GM.miss.push(q);
+    if(!SAVE.wrong.includes(q.id))SAVE.wrong.push(q.id);persist();
+    GM.paused=true;GM.pt=performance.now();
+    const msg=c.truth?'<b>Quase.</b> Essa resposta estava certa.':`<b>Quase.</b> Essa resposta está errada. A certa é: <b>${esc(q.o[q.a])}</b>.`;
+    $('#gbt').style.display='none';
+    $('#gfb').innerHTML=`<div class="fb bad">${msg} ${lk(esc(q.ex))}</div><div class="row" style="margin-top:12px;justify-content:flex-end"><button class="btn pen" id="gnx">${GM.left<=0?'Ver resultado':'Continuar'}</button></div>`;
+    $('#gnx').onclick=()=>{if(!GM)return;GM.paused=false;GM.lt=performance.now();if(GM.left<=0)gmEnd();else gmCard()};
+  }
+}
+function gmEnd(){
+  if(!GM)return;const R=GM;clearInterval(R.iv);clearTimeout(R.nt);if(R.kd)document.removeEventListener('keydown',R.kd);GM=null;
+  const g=gmG(),rec=R.score>g.best&&R.score>0,xp=Math.min(20,R.hits);
+  g.plays++;if(rec)g.best=R.score;g.maxc=Math.max(g.maxc,R.maxc);SAVE.xp+=xp;bump('jogo');persist();
+  app.innerHTML=`<div class="top"><div class="brand">Rodada <b>concluída</b></div></div><div class="stack"><div class="card">
+   <div class="big mono"><span class="grade">${R.score}</span></div><p class="muted" style="margin:6px 0 0">pontos${rec?' · <b style="color:var(--acc)">novo recorde!</b>':''} · +${xp} XP</p>
+   <table style="margin-top:14px"><tr><td>Acertos</td><td class="mono">${R.hits} de ${R.tot}</td></tr><tr><td>Maior sequência</td><td class="mono">${R.maxc}</td></tr><tr><td>Recorde</td><td class="mono">${g.best} pts</td></tr></table></div>
+   ${R.miss.length?`<div class="card"><h3 style="margin-bottom:8px">Para rever</h3>${R.miss.map(q=>`<div class="check" style="display:block"><b style="font-size:15px">${esc(q.q)}</b><div class="muted" style="font-size:14px;margin-top:4px">${lk(esc(q.ex))}</div></div>`).join('')}</div>`:'<div class="card">Nenhum erro nesta rodada.</div>'}
+   <div class="row"><button class="btn pen" id="again">Jogar de novo</button><button class="btn ghost" id="hm">Voltar</button></div></div>`;
+  $('#again').onclick=gmCount;$('#hm').onclick=()=>home('jog');
+}
+
 function mapScreen(){
   app.innerHTML=`<div class="top"><div class="brand">Mapa de <b>decisão</b></div><button class="btn ghost" id="back">Voltar</button></div>
   <div class="card map"><p class="muted" style="margin-top:0">As quatro perguntas, nesta ordem, levam ao intervalo certo (aula de 04/11). O teste de hipótese usa a mesma escolha de distribuição.</p><ol>${MAP.map(m=>`<li>${m}</li>`).join('')}</ol>
@@ -1116,7 +1305,7 @@ function question(){
    ${hide?`<div id="th"><div class="hook" style="margin:0 0 12px"><b>Pense primeiro.</b> Tente responder de cabeça, ou diga em voz alta, antes de ver as opções. Lembrar sem olhar é o que fixa.</div><div class="row" style="justify-content:flex-end;margin-bottom:6px"><button class="btn pen" id="rv">Já pensei, mostrar as opções</button></div></div>`:''}
    <div class="opts" id="op" ${hide?'style="display:none"':''}>${ord.map((k,n)=>`<button class="opt" data-k="${k}" data-ok="${k===q.a}"><span class="k">${'ABCD'[n]}</span><span>${esc(q.o[k])}</span></button>`).join('')}</div><div id="cf"></div><div id="fb"></div></div>`;
   $('#prev').onclick=()=>{run.i--;persist();question()};
-  $('#sx').onclick=()=>{persist();home()};
+  $('#sx').onclick=()=>{persist();home('ini')};
   if(it.view){showFb(it);return}
   it.ord=ord;
   if(hide)$('#rv').onclick=()=>{$('#th').remove();$('#op').style.display='flex';focusLater('.opt')};
@@ -1185,7 +1374,7 @@ function boss(i,pts,log){
   <div class="card"><span class="tag">Dissertativa</span><p class="q">${esc(b.q)}</p>
    <label for="ans" class="muted" style="font-size:14px">Escreva em 2 a 4 frases. Sublinhe mentalmente a palavra de comando. Na prova, uma resposta parcial pode render pontos; em branco rende zero.</label>
    <textarea id="ans" placeholder="Sua resposta"></textarea><div class="row" style="margin-top:12px;justify-content:space-between"><button class="btn ghost sm" id="sk">Esqueleto de resposta</button><button class="btn pen" id="see">Ver modelo e me corrigir</button></div><div id="res"></div></div>`;
-  $('#prev').onclick=()=>boss(i-1,pts-(log[i-1]||0),log.slice(0,-1));$('#sx').onclick=home;
+  $('#prev').onclick=()=>boss(i-1,pts-(log[i-1]||0),log.slice(0,-1));$('#sx').onclick=()=>home('ini');
   $('#sk').onclick=()=>{const t=$('#ans');if(!t.value.trim()){t.value='1) O que a pergunta pede (palavra de comando):\n2) Resposta direta:\n3) Detalhe, condição ou exemplo:\n4) Conclusão em uma frase:\n';t.focus()}};
   $('#see').onclick=()=>{
     const ta=$('#ans');
@@ -1277,6 +1466,7 @@ var op=document.querySelectorAll("#op .opt, .opts .opt");var b=op[i];if(b&&!b.di
 var bt=document.getElementById("boot"),sg=bt.querySelector(".seg"),k;for(k=0;k<10;k++)sg.appendChild(document.createElement("i"));
 var seen=false;try{seen=sessionStorage.getItem("missao-boot")==="1"}catch(e){}
 if(RM||navigator.webdriver||seen){bt.remove()}else{try{sessionStorage.setItem("missao-boot","1")}catch(e){}bt.classList.add("show");var n=0,iv=setInterval(function(){var it=sg.children[n++];if(it)it.classList.add("on");if(n>=10){clearInterval(iv);setTimeout(function(){bt.classList.add("out");setTimeout(function(){bt.remove()},500)},180)}},110)}
+window.FX={burst:burst,confetti:confetti,snd:snd};
 })()}catch(err){}
 </script>
 </body>
